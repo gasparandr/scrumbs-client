@@ -34,6 +34,10 @@ export class HeaderView extends View {
     private scrumBtn: HTMLButtonElement;
     private blockersBtn: HTMLButtonElement;
     private headerButtonsContainer: HTMLElement;
+    private dropdown: HTMLElement;
+    private about: HTMLElement;
+    private settings: HTMLElement;
+    private signOut: HTMLElement;
 
 
     constructor() {
@@ -58,15 +62,21 @@ export class HeaderView extends View {
         this.headerButtonsContainer     = document.getElementById( "header-buttons-container");
         this.scrumBtn                   = document.getElementById( "records-button" ) as HTMLButtonElement;
         this.blockersBtn                = document.getElementById( "blockers-button" ) as HTMLButtonElement;
+        this.dropdown                   = document.getElementById( "header-dropdown" );
+        this.about                      = document.getElementById( "header-dropdown-about" );
+        this.settings                   = document.getElementById( "header-dropdown-settings" );
+        this.signOut                    = document.getElementById( "header-dropdown-sign-out" );
 
-        this.addRecordHandler                   = this.addRecordHandler.bind( this );
+        this.profileMenuToggleClickHandler      = this.profileMenuToggleClickHandler.bind( this );
+        this.setActiveMenuBtnClickHandler       = this.setActiveMenuBtnClickHandler.bind( this );
         this.addRecordBtnMouseOverHandler       = this.addRecordBtnMouseOverHandler.bind( this );
         this.addRecordBtnMouseOutHandler        = this.addRecordBtnMouseOutHandler.bind( this );
-        this.profileMenuToggleClickHandler      = this.profileMenuToggleClickHandler.bind( this );
-        this.scrumBtnHandler                    = this.scrumBtnHandler.bind( this );
+        this.documentClickHandler               = this.documentClickHandler.bind( this );
         this.blockersBtnHandler                 = this.blockersBtnHandler.bind( this );
+        this.addRecordHandler                   = this.addRecordHandler.bind( this );
+        this.scrumBtnHandler                    = this.scrumBtnHandler.bind( this );
         this.keyPressHandler                    = this.keyPressHandler.bind( this );
-        this.setActiveMenuBtnClickHandler       = this.setActiveMenuBtnClickHandler.bind( this );
+        this.signOutHandler                     = this.signOutHandler.bind( this );
     }
 
 
@@ -90,8 +100,11 @@ export class HeaderView extends View {
 
         this.blockersBtn.addEventListener( "click", this.blockersBtnHandler );
 
+        this.signOut.addEventListener( "click", this.signOutHandler );
+
         document.addEventListener( "keypress", this.keyPressHandler );
 
+        document.addEventListener( "click", this.documentClickHandler );
 
     }
 
@@ -115,7 +128,11 @@ export class HeaderView extends View {
 
         this.blockersBtn.removeEventListener( "click", this.blockersBtnHandler );
 
+        this.signOut.removeEventListener( "click", this.signOutHandler );
+
         document.removeEventListener( "keypress", this.keyPressHandler );
+
+        document.removeEventListener( "click", this.documentClickHandler );
     }
 
 
@@ -165,7 +182,7 @@ export class HeaderView extends View {
 
 
     private profileMenuToggleClickHandler(): void {
-        this.sendNotification( HeaderNotifications.SIGN_OUT );
+        this.dropdown.style.display = this.dropdown.style.display === "none" ? "block" : "none";
     }
 
 
@@ -195,10 +212,29 @@ export class HeaderView extends View {
     }
 
 
+
+    private signOutHandler(e: any): void {
+        this.dropdown.style.display = "none";
+
+        this.sendNotification( HeaderNotifications.SIGN_OUT );
+    }
+
+
+
+    private documentClickHandler(e: any): void {
+        if ( e.target !== this.dropdown && e.target !== this.profileMenuToggle ) {
+
+            if ( this.dropdown.style.display === "block" ) this.dropdown.style.display = "none";
+
+        }
+    }
+
+
+
     private setActiveMenuBtn(btn: HTMLElement) {
         const buttons = this.headerButtonsContainer.getElementsByTagName("button" );
 
-        for( let i = 0; i < buttons.length; i++ ) {
+        for ( let i = 0; i < buttons.length; i++ ) {
             buttons[i].classList.remove( "active" );
         }
 
