@@ -104,9 +104,6 @@ export class Blocker {
     private registerEventListeners(): void {
         this.container.addEventListener( "click", () => {
 
-            console.info( "click recorded on blocker" );
-            console.info( "isChecked: " + this.checkbox.checked );
-
             if ( this.checkbox.checked ) {
 
                 this.checkbox.checked = false;

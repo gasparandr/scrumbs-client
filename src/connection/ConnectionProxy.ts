@@ -21,9 +21,6 @@ export class ConnectionProxy extends CoreEntity {
     constructor(proxyName: string) {
         super( proxyName );
 
-        // this.address = "http://192.168.0.192:4200";
-        // this.address = "http://192.168.1.4:4200";
-        // this.address = "http://192.168.1.6:4200";
         this.address = "http://138.68.82.238:4200";
     }
 
@@ -349,7 +346,5 @@ export class ConnectionProxy extends CoreEntity {
 
         xhr.send( JSON.stringify( { recordId, name } ) );
     }
-
-
 
 }

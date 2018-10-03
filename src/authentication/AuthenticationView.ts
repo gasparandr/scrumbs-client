@@ -67,9 +67,6 @@ export class AuthenticationView extends View {
     public handleNotification(notification: INotification) {
 
         switch ( notification.name ) {
-            case ConnectionNotifications.LOGIN_SUCCESS :
-                console.log( "Authentication view received the notification" );
-                break;
 
             default :
                 break;

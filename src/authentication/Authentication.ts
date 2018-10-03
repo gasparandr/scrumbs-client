@@ -318,7 +318,7 @@ export class Authentication extends ViewComponent {
         TweenLite.to( this.contentContainer, 0.4, { css:{ top: this.contentContainerOffset }, ease: Back.easeOut.config( 0.25 ), onComplete: function () {
             self.container.style.display = "none";
             self.view.componentExited( self.name );
-        } } );
+        }});
 
     }
 
@@ -422,8 +422,6 @@ export class Authentication extends ViewComponent {
 
 
     private initializeLoader(): void {
-
-        console.log( "initialize loader called" );
 
         this.loadingState = true;
 
