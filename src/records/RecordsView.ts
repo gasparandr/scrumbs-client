@@ -1,5 +1,6 @@
 
 
+import {ConnectionNotifications} from "../connection/ConnectionNotifications";
 import {HeaderNotifications} from "../header/HeaderNotifications";
 import {PromptNotifications} from "../prompt/PromptNotifications";
 import {RecordNotifications} from "./RecordNotifications";
@@ -55,6 +56,7 @@ export class RecordsView extends View {
     public listNotificationInterests(): any[] {
         let notifications = super.listNotificationInterests();
 
+        notifications.push( ConnectionNotifications.SIGNUP_SUCCESS );
         notifications.push( HeaderNotifications.ADD_ITEM );
         notifications.push( PromptNotifications.DELETE_RECORD );
 
@@ -66,6 +68,13 @@ export class RecordsView extends View {
     public handleNotification(notification: INotification) {
 
         switch ( notification.name ) {
+
+            case ConnectionNotifications.SIGNUP_SUCCESS :
+
+
+                break;
+
+
             case HeaderNotifications.ADD_ITEM :
 
                 ( this.records as Records ).initializeRecordInput();

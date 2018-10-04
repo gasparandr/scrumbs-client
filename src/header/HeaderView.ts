@@ -272,6 +272,12 @@ export class HeaderView extends View {
 
                 break;
 
+
+            case ConnectionNotifications.SIGNUP_SUCCESS :
+
+                
+                break;
+
             case RecordNotifications.RECORD_ADDED :
 
                 this.addRecordBtnAnimation();
