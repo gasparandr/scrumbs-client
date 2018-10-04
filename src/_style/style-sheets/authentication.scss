@@ -108,6 +108,25 @@
     margin-top: 25px;
     position: fixed;
     width: 100%;
+
+
+    .primary-btn-loading {
+      color: transparent;
+      box-shadow: none;
+      @include gradient( $septenary-color, $septenary-color );
+    }
+
+
+    .primary-btn-loading-animation {
+      background: $septenary-color url("../img/auth-loader-animation.gif") no-repeat center;
+      background-size: 35px;
+    }
+
+    .secondary-btn-loading {
+      color: transparent;
+    }
+
+
   }
 
 

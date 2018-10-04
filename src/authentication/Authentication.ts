@@ -160,21 +160,27 @@ export class Authentication extends ViewComponent {
 
         if ( this.authStateLogin && this.validateForLogin() ) {
 
-            this.initializeLoader();
+            this.setButtonsLoadingState();
 
             this.connection.login( new LoginModel(
                 this.emailInput.value,
                 this.passwordInput.value
             ), (data: any) => {
+
                 this.sendSignal( AuthenticationNotifications.LOGIN_SUCCESS, data );
+                this.removeButtonsLoadingState();
+
             }, (message: string) => {
+
                 this.sendSignal( AuthenticationNotifications.LOGIN_FAILURE, message );
+                this.removeButtonsLoadingState();
+
             });
 
 
         } else if ( ! this.authStateLogin && this.validateForSignUp() ) {
 
-            this.initializeLoader();
+            this.setButtonsLoadingState();
 
             this.connection.signUp( new SignUpModel(
                 this.firstNameInput.value,
@@ -182,9 +188,15 @@ export class Authentication extends ViewComponent {
                 this.emailInput.value,
                 this.passwordInput.value
             ), (data: any) => {
+
                 this.sendSignal( AuthenticationNotifications.SIGN_UP_SUCCESS, data );
+                this.removeButtonsLoadingState();
+
             }, (message: string) => {
+
                 this.sendSignal( AuthenticationNotifications.SIGN_UP_FAILURE, message );
+                this.removeButtonsLoadingState();
+
             });
 
         } else {
@@ -421,16 +433,6 @@ export class Authentication extends ViewComponent {
 
 
 
-    private initializeLoader(): void {
-
-        this.loadingState = true;
-
-        this.actionBtn.style.backgroundColor = "red";
-
-    }
-
-
-
     private animateButtonClick(): void {
         TweenLite.to( this.actionBtn, 0.05, { scale: 0.98, ease: Power0.easeIn } );
         TweenLite.to( this.actionBtn, 0.1, { scale: 1, delay: 0.05, ease: Back.easeIn } );
@@ -438,10 +440,20 @@ export class Authentication extends ViewComponent {
 
 
 
-    private terminateLoader(): void {
+    private setButtonsLoadingState(): void {
+        TweenLite.to( this.actionBtn, 0.5, { delay: 0.7, color: "transparent", ease: Power1.easeOut } );
+        TweenLite.to( this.actionBtn, 0.9, { delay: 1, css:{ className: "+=primary-btn-loading" }, ease: Power1.easeOut } );
+        TweenLite.to( this.actionBtn, 0, { delay: 2.5, css:{ className: "+=primary-btn-loading-animation" }, ease: Power1.easeOut } );
+        TweenLite.to( this.switchBtn, 0.5, { delay: 0.7, css:{ className: "+=secondary-btn-loading" }, ease: Power1.easeOut } );
+    }
 
-        this.loadingState = false;
 
+
+    private removeButtonsLoadingState(): void {
+        this.actionBtn.style.removeProperty( "color" );
+        this.actionBtn.classList.remove( "primary-btn-loading" );
+        this.actionBtn.classList.remove( "primary-btn-loading-animation" );
+        this.switchBtn.classList.remove( "secondary-btn-loading" );
     }
 
 
