@@ -1,6 +1,6 @@
 
 
-import {ScrumbsProxy} from "../connection/ScrumbsProxy";
+import {ConnectionProxy} from "../connection/ConnectionProxy";
 import {Blockers} from "./Blockers";
 
 import TweenLite = gsap.TweenLite;
@@ -110,7 +110,7 @@ export class Blocker {
                 this.container.classList.remove( "ready" );
 
                 TweenLite.to( this.container, 0.5, { opacity: 0, onComplete: () => {
-                    let proxy = new ScrumbsProxy( "BlockerProxy" );
+                    let proxy = new ConnectionProxy( "BlockerProxy" );
 
                     const self = this;
 
@@ -133,7 +133,7 @@ export class Blocker {
                 this.container.classList.add( "ready" );
 
                 TweenLite.to( this.container, 0.5, { opacity: 0, onComplete: () => {
-                    let proxy = new ScrumbsProxy( "BlockerProxy" );
+                    let proxy = new ConnectionProxy( "BlockerProxy" );
 
                     const self = this;
 

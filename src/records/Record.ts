@@ -1,6 +1,6 @@
 
 
-import {ScrumbsProxy} from "../connection/ScrumbsProxy";
+import {ConnectionProxy} from "../connection/ConnectionProxy";
 import {HTMLHelper} from "../helpers/HTMLHelper";
 import {Records} from "./Records";
 
@@ -152,7 +152,7 @@ export class Record {
 
             if ( key === 13 ) {
                 e.preventDefault();
-                let p = new ScrumbsProxy( "RecordProxy" );
+                let p = new ConnectionProxy( "RecordProxy" );
 
                 let content = this.noteInput.value;
                 let isBlocker = false;
@@ -570,7 +570,7 @@ export class Record {
 
         this.showHeaderContent( editedName );
 
-        let proxy = new ScrumbsProxy( "RecordProxy" );
+        let proxy = new ConnectionProxy( "RecordProxy" );
 
 
         const editRecordModel = new EditRecordModel( this.id, editedName );

@@ -67,8 +67,6 @@ export class Records extends ViewComponent {
         this.createRecordBlurHandler        = this.createRecordBlurHandler.bind( this );
 
 
-        this.connection.getRecords( this.populate.bind( this ), () => console.warn( "Failed to get records!") );
-
         this.createRecordInput = document.createElement( "input" );
         this.createRecordInput.setAttribute( "style", "border: 0; padding-left: 0; font-weight: bold;" );
 
@@ -246,6 +244,8 @@ export class Records extends ViewComponent {
         this.contentContainer.style.overflow = "hidden";
 
         this.adjustViewHeight();
+
+        this.populate();
     }
 
 
@@ -265,14 +265,20 @@ export class Records extends ViewComponent {
 
                 //TODO: Calculate speed based on the number of records?
 
-                /** If there are no records, send out the exit signal right away */
-                if ( ! this.records.length ) this.sendSignal( RecordNotifications.EXIT_FINISHED, null, this.name );
+                /** If there are no records, exit right away */
+                if ( ! this.records.length ) {
+                    this.view.componentExited( this.name );
+                    return;
+                }
 
                 this.container.style.overflow = "hidden";
 
                 const start = new Date().getTime();
 
                 let delay = 0;
+
+
+
                 for ( let i = this.records.length - 1; i >= 0; i-- ) {
 
                     delay += 0.02;
@@ -319,17 +325,26 @@ export class Records extends ViewComponent {
 
 
 
-    public populate(recordsData: any[]): void {
+    public populate(): void {
 
-        for (let i = 0; i < recordsData.length; i++) {
 
-            this.lastRecord = new Record( this, recordsData[i], this.container, this.colors[ i % this.colors.length ], 0 );
+        this.connection.getRecords(
+            (response: any) => {
 
-            this.records.unshift( this.lastRecord )
+                const { records } = response;
 
-        }
+                for ( let i = 0; i < records.length; i++ ) {
 
-        this.enterScene();
+                    this.lastRecord = new Record( this, records[i], this.container, this.colors[ i % this.colors.length ], 0 );
+
+                    this.records.unshift( this.lastRecord )
+                }
+
+            },
+            (message: string) => {
+                console.error( message );
+            }
+        );
 
     }
 
@@ -389,17 +404,22 @@ export class Records extends ViewComponent {
 
             this.createRecordInput.parentNode.removeChild( this.createRecordInput );
 
-            const self = this;
+            this.connection.createRecord(
+                recordName,
+                (response: any) => {
 
-            this.connection.createRecord( recordName, function (record: any) {
+                    const { record } = response;
 
-                self.lastRecord =  new Record( self, { record: record, logs: [] }, self.container, self.colors[ Math.floor( Math.random() * ( self.colors.length - 1 ) ) ] );
-                self.records.unshift( self.lastRecord );
-                self.activeRecordIndex = -1;
-                self.setNextActiveRecord();
-            }, function (message: string) {
-                console.warn( message );
-            });
+                    this.lastRecord =  new Record( this, { record: record, logs: [] }, this.container, this.colors[ Math.floor( Math.random() * ( this.colors.length - 1 ) ) ] );
+                    this.records.unshift( this.lastRecord );
+                    this.activeRecordIndex = -1;
+                    this.setNextActiveRecord();
+
+                },
+                (message: string) => {
+                    console.error( message );
+                }
+            );
 
         }
     }

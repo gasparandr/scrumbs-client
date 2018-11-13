@@ -10,6 +10,7 @@ import {IProxyVO} from "./IProxyVO";
 export class Proxy extends CoreEntity implements IProxy {
     protected address: string;
     protected static token: string;
+    protected static tokenExpires: Date;
     protected static VO: IProxyVO;
 
 
@@ -43,6 +44,7 @@ export class Proxy extends CoreEntity implements IProxy {
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.setRequestHeader('Accept', 'application/json');
         if ( Proxy.token ) xhr.setRequestHeader('Authorization', Proxy.token );
+
 
         xhr.onload = () => {
 
