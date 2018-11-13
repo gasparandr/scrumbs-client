@@ -1,6 +1,5 @@
 
 
-import {ConnectionNotifications} from "../connection/ConnectionNotifications";
 import {HeaderNotifications} from "../header/HeaderNotifications";
 import {SystemConstants} from "../core/SystemConstants";
 import {ViewComponent} from "../core/ViewComponent";
@@ -56,8 +55,6 @@ export class BlockersView extends View {
 
         let notifications = super.listNotificationInterests();
 
-        notifications.push( ConnectionNotifications.SIGNUP_SUCCESS );
-
         notifications.push( HeaderNotifications.ADD_ITEM );
 
         return notifications;
@@ -69,9 +66,6 @@ export class BlockersView extends View {
 
         switch ( notification.name ) {
 
-            case ConnectionNotifications.SIGNUP_SUCCESS :
-
-                break;
 
             case HeaderNotifications.ADD_ITEM :
 

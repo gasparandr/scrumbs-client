@@ -17,7 +17,6 @@ import {View} from "./View";
 
 
 export class ViewManager extends CoreEntity {
-    public NAME: string;
     private headerView: View;
     private currentView: View;
 

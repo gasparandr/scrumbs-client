@@ -1,6 +1,5 @@
 
 
-import {ConnectionNotifications} from "../connection/ConnectionNotifications";
 import {RecordNotifications} from "../records/RecordNotifications";
 import {HeaderNotifications} from "./HeaderNotifications";
 import {SystemConstants} from "../core/SystemConstants";
@@ -147,8 +146,6 @@ export class HeaderView extends View {
     public listNotificationInterests(): string[] {
         let notifications = super.listNotificationInterests();
 
-        notifications.push( ConnectionNotifications.LOGIN_SUCCESS );
-        notifications.push( ConnectionNotifications.SIGNUP_SUCCESS );
 
         notifications.push( HeaderNotifications.SIGN_OUT );
 
@@ -265,18 +262,6 @@ export class HeaderView extends View {
     public handleNotification(notification: INotification): void {
 
         switch ( notification.name ) {
-
-            case ConnectionNotifications.LOGIN_SUCCESS :
-
-                this.profileImage.innerHTML = notification.data;
-
-                break;
-
-
-            case ConnectionNotifications.SIGNUP_SUCCESS :
-
-                
-                break;
 
             case RecordNotifications.RECORD_ADDED :
 

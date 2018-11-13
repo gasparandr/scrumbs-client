@@ -1,6 +1,5 @@
 
 
-import {ConnectionNotifications} from "../connection/ConnectionNotifications";
 import {AuthenticationNotifications} from "./AuthenticationNotifications";
 import {SystemConstants} from "../core/SystemConstants";
 import {INotification} from "../core/INotification";

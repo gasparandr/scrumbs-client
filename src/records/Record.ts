@@ -1,11 +1,13 @@
 
 
-import {ConnectionProxy} from "../connection/ConnectionProxy";
+import {ScrumbsProxy} from "../connection/ScrumbsProxy";
 import {HTMLHelper} from "../helpers/HTMLHelper";
 import {Records} from "./Records";
 
 import TweenLite = gsap.TweenLite;
 import Power1 = gsap.Power1;
+import {AddNoteModel} from "../connection/models/AddNoteModel";
+import {EditRecordModel} from "../connection/models/EditRecordModel";
 
 
 
@@ -150,7 +152,7 @@ export class Record {
 
             if ( key === 13 ) {
                 e.preventDefault();
-                let p = new ConnectionProxy( "RecordProxy" );
+                let p = new ScrumbsProxy( "RecordProxy" );
 
                 let content = this.noteInput.value;
                 let isBlocker = false;
@@ -163,8 +165,11 @@ export class Record {
                 console.info( "is blocker: " + isBlocker );
                 console.info( "content: " + content );
 
+                const addNoteModel = new AddNoteModel( this.id, content, isBlocker );
 
-                p.addNote( this.id, content, isBlocker, function (log: any) {
+                p.addNote(
+                    addNoteModel,
+                    (log: any) => {
 
                     console.log( "Log id received from server" + log );
 
@@ -218,10 +223,10 @@ export class Record {
 
                     self.adjustForHiddenScrollbar();
 
-                } );
-
-
-
+                },
+                (message: string) => {
+                    console.error( message );
+                });
 
             }
         });
@@ -565,13 +570,20 @@ export class Record {
 
         this.showHeaderContent( editedName );
 
-        let proxy = new ConnectionProxy( "RecordProxy" );
+        let proxy = new ScrumbsProxy( "RecordProxy" );
 
-        proxy.editRecord( this.id, editedName, () => {
-            // Handle success use case
-        }, () => {
-            // Handle failure use case
-        } );
+
+        const editRecordModel = new EditRecordModel( this.id, editedName );
+
+
+        proxy.editRecord(
+            editRecordModel,
+            (response: any) => {
+
+        }, (message: string) => {
+
+                console.error( message );
+        });
     }
 
 
