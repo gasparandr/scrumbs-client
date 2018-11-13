@@ -18,6 +18,7 @@ import Back = gsap.Back;
 import "../_style/style-sheets/authentication.scss";
 import {Language} from "../languages/Language";
 import {StringPointers} from "../languages/StringPointers";
+import {ViewExitTypes} from "../core/ViewExitTypes";
 
 //HTML template
 const template = require("../_view-templates/authentication.html");
@@ -32,6 +33,7 @@ export class Authentication extends ViewComponent {
     private screenHeight: number;
     private contentContainerOffset: string;
 
+    private authenticationContainer: HTMLElement;
     private contentContainer: HTMLElement;
     private authLoginHeader: HTMLElement;
     private authSignUpHeader: HTMLElement;
@@ -43,6 +45,7 @@ export class Authentication extends ViewComponent {
     private passwordInput: HTMLInputElement;
     private checkboxSection: HTMLElement;
     private rememberMe: HTMLInputElement;
+    private forgotPassword: HTMLElement;
     private authFooter: HTMLElement;
     private actionBtn: HTMLElement;
     private actionBtnContent: HTMLElement;
@@ -67,22 +70,24 @@ export class Authentication extends ViewComponent {
 
         this.container.innerHTML = template;
 
-        this.contentContainer       = document.getElementById( "content-container" );
-        this.authLoginHeader        = document.getElementById( "authentication-header-login" );
-        this.authSignUpHeader       = document.getElementById( "authentication-header-signup" );
-        this.authenticationBody     = document.getElementById( "authentication-body" );
-        this.nameInputWrapper       = document.getElementById( "input-name-wrapper" );
-        this.firstNameInput         = document.getElementById( "authentication-first-name" ) as HTMLInputElement;
-        this.lastNameInput          = document.getElementById( "authentication-last-name" ) as HTMLInputElement;
-        this.emailInput             = document.getElementById( "authentication-email" ) as HTMLInputElement;
-        this.passwordInput          = document.getElementById( "authentication-password" ) as HTMLInputElement;
-        this.checkboxSection        = document.getElementById( "checkbox-wrapper" );
-        this.rememberMe             = document.getElementById( "authentication-remember-me" ) as HTMLInputElement;
-        this.authFooter             = document.getElementById( "authentication-footer" );
-        this.actionBtn              = document.getElementById( "authentication-button-action" );
-        this.actionBtnContent       = document.getElementById( "action-span" );
-        this.switchBtn              = document.getElementById( "authentication-button-switch" );
-        this.switchBtnContent       = document.getElementById( "switch-span" );
+        this.authenticationContainer    = document.getElementById( "authentication-container" );
+        this.contentContainer           = document.getElementById( "content-container" );
+        this.authLoginHeader            = document.getElementById( "authentication-header-login" );
+        this.authSignUpHeader           = document.getElementById( "authentication-header-signup" );
+        this.authenticationBody         = document.getElementById( "authentication-body" );
+        this.nameInputWrapper           = document.getElementById( "input-name-wrapper" );
+        this.firstNameInput             = document.getElementById( "authentication-first-name" ) as HTMLInputElement;
+        this.lastNameInput              = document.getElementById( "authentication-last-name" ) as HTMLInputElement;
+        this.emailInput                 = document.getElementById( "authentication-email" ) as HTMLInputElement;
+        this.passwordInput              = document.getElementById( "authentication-password" ) as HTMLInputElement;
+        this.checkboxSection            = document.getElementById( "checkbox-wrapper" );
+        this.rememberMe                 = document.getElementById( "authentication-remember-me" ) as HTMLInputElement;
+        this.forgotPassword             = document.getElementById( "authentication-forgot-password" );
+        this.authFooter                 = document.getElementById( "authentication-footer" );
+        this.actionBtn                  = document.getElementById( "authentication-button-action" );
+        this.actionBtnContent           = document.getElementById( "action-span" );
+        this.switchBtn                  = document.getElementById( "authentication-button-switch" );
+        this.switchBtnContent           = document.getElementById( "switch-span" );
 
         this.translateComponent();
 
@@ -102,6 +107,7 @@ export class Authentication extends ViewComponent {
         this.submitFormHandler          = this.submitFormHandler.bind( this );
         this.mobileInputFocusHandler    = this.mobileInputFocusHandler.bind( this );
         this.mobileInputBlurHandler     = this.mobileInputBlurHandler.bind( this );
+        this.forgotPasswordHandler      = this.forgotPasswordHandler.bind( this );
 
 
         this.enterScene();
@@ -124,6 +130,8 @@ export class Authentication extends ViewComponent {
 
         this.passwordInput.addEventListener( "click", this.passwordInputHandler, true );
 
+        this.forgotPassword.addEventListener( "click", this.forgotPasswordHandler );
+
         document.addEventListener( "keypress", this.submitFormHandler, true );
 
     }
@@ -145,6 +153,8 @@ export class Authentication extends ViewComponent {
         this.emailInput.removeEventListener( "click", this.emailInputHandler, true );
 
         this.passwordInput.removeEventListener( "click", this.passwordInputHandler, true );
+
+        this.forgotPassword.removeEventListener( "click", this.forgotPasswordHandler );
 
         document.removeEventListener( "keypress", this.submitFormHandler, true );
 
@@ -281,6 +291,15 @@ export class Authentication extends ViewComponent {
 
 
 
+
+    private forgotPasswordHandler(e: any): void {
+
+        this.exitScene( ViewExitTypes.SWITCH );
+
+    }
+
+
+
     private translateComponent(): void {
 
         document.getElementById( "authentication-login-title" ).innerHTML                                   = Language.getTranslation( StringPointers.AUTH_TITLE_LOGIN );
@@ -313,24 +332,52 @@ export class Authentication extends ViewComponent {
 
 
 
-    public enterScene(): void {
-        this.registerEventListeners();
-        this.switchToLoginState();
-        this.container.style.display = "block";
+    public enterScene(enterType?:string): void {
+
+        if ( enterType === ViewExitTypes.SWITCH ) {
+
+            TweenLite.to( this.authenticationContainer, 0.4, { css: { opacity: 1, top: "calc(50% + 50px)" } } );
+
+
+        } else {
+            this.registerEventListeners();
+            this.switchToLoginState();
+            this.container.style.display = "block";
+        }
+
     }
 
 
 
     public exitScene(exitType?:string): void {
-        super.exitScene( exitType );
-        this.unregisterEventListeners();
 
-        const self = this;
 
-        TweenLite.to( this.contentContainer, 0.4, { css:{ top: this.contentContainerOffset }, ease: Back.easeOut.config( 0.25 ), onComplete: function () {
-            self.container.style.display = "none";
-            self.view.componentExited( self.name );
-        }});
+        if ( exitType === ViewExitTypes.SWITCH ) {
+
+            const self = this;
+
+
+            TweenLite.to( this.authenticationContainer, 0.4, { opacity: 0, onComplete: function () {
+                self.sendSignal( AuthenticationNotifications.FORGOT_PASSWORD );
+            }});
+
+
+            TweenLite.to( this.authenticationContainer, 3.5, { css: { top: "calc(50% + 60px)"}  } );
+
+        } else {
+
+            super.exitScene( exitType );
+            this.unregisterEventListeners();
+
+            const self = this;
+
+            TweenLite.to( this.contentContainer, 0.4, { css:{ top: this.contentContainerOffset }, ease: Back.easeOut.config( 0.25 ), onComplete: function () {
+                self.container.style.display = "none";
+                self.view.componentExited( self.name );
+            }});
+
+        }
+
 
     }
 

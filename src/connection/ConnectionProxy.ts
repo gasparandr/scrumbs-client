@@ -21,7 +21,8 @@ export class ConnectionProxy extends CoreEntity {
     constructor(proxyName: string) {
         super( proxyName );
 
-        this.address = "http://138.68.82.238:4200";
+        // this.address = "http://138.68.82.238:4200";
+        this.address = "http://192.168.0.101:3000/api/v1";
     }
 
 
@@ -31,7 +32,7 @@ export class ConnectionProxy extends CoreEntity {
         console.info("Proxy login executed");
 
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', this.address + "/login", true );
+        xhr.open('POST', this.address + "/users/login", true );
         xhr.setRequestHeader('Content-type', 'application/json' );
         xhr.onload = () => {
             let response = JSON.parse( xhr.responseText );
@@ -323,7 +324,7 @@ export class ConnectionProxy extends CoreEntity {
         console.info("Proxy edit record executed");
 
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', this.address + "/records/edit", true );
+        xhr.open('PUT', this.address + "/records/edit", true );
         xhr.setRequestHeader('Content-type', 'application/json' );
         xhr.onload = () => {
             let response = JSON.parse( xhr.responseText );

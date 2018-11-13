@@ -12,7 +12,7 @@
     "b": "webpack-cli && gulp",
     "watch": "webpack --watch",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "tsc && electron ./_desktop/js/main.js",
+    "start": "npm run b && tsc && electron ./_desktop/js/main.js",
     "electron-build-w": "build -w ./desktop"
   },
   "author": "",

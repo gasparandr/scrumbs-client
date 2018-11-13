@@ -8,6 +8,8 @@ import {ViewComponent} from "../core/ViewComponent";
 import {Authentication} from "./Authentication";
 import {ISignal} from "../core/ISignal";
 import {View} from "../core/View";
+import {ForgotPassword} from "./ForgotPassword";
+import {ViewExitTypes} from "../core/ViewExitTypes";
 
 
 
@@ -16,6 +18,9 @@ import {View} from "../core/View";
 export class AuthenticationView extends View {
     private authentication: ViewComponent;
     private authenticationContainer: HTMLElement;
+
+    private forgotPassword: ViewComponent;
+    private forgotPasswordContainer: HTMLElement;
 
 
     constructor() {
@@ -27,10 +32,14 @@ export class AuthenticationView extends View {
         document.getElementById( SystemConstants.MAIN_CONTAINER ).appendChild( this.container );
 
         this.authenticationContainer = document.createElement( "div" );
+        this.forgotPasswordContainer = document.createElement( "div" );
+        this.forgotPasswordContainer.style.display = "none";
 
         this.container.appendChild( this.authenticationContainer );
+        this.container.appendChild( this.forgotPasswordContainer );
 
         this.authentication = new Authentication( this, this.authenticationContainer );
+        this.forgotPassword = new ForgotPassword( this, this.forgotPasswordContainer );
 
     }
 
@@ -48,6 +57,7 @@ export class AuthenticationView extends View {
         this.exitCallback = callback;
 
         this.authentication.exitScene( exitType );
+        this.forgotPassword.exitScene( exitType );
 
     }
 
@@ -90,6 +100,28 @@ export class AuthenticationView extends View {
             case AuthenticationNotifications.SIGN_UP_SUCCESS :
 
                 this.sendNotification( AuthenticationNotifications.USER_SIGNED_UP, signal.data );
+                break;
+
+
+            case AuthenticationNotifications.FORGOT_PASSWORD :
+
+                this.authenticationContainer.style.display = "none";
+                this.forgotPasswordContainer.style.display = "block";
+                ( this.forgotPassword as ForgotPassword ).enterScene( ViewExitTypes.SWITCH );
+
+
+
+
+
+                break;
+
+            case AuthenticationNotifications.TRY_LOGGING_IN :
+
+                this.authenticationContainer.style.display = "block";
+                this.forgotPasswordContainer.style.display = "none";
+                ( this.authentication as Authentication ).enterScene( ViewExitTypes.SWITCH );
+
+
                 break;
 
             default :
