@@ -334,15 +334,14 @@ export class Authentication extends ViewComponent {
 
     public enterScene(enterType?:string): void {
 
-        if ( enterType === ViewExitTypes.SWITCH ) {
-
-            TweenLite.to( this.authenticationContainer, 0.4, { css: { opacity: 1, top: "calc(50% + 50px)" } } );
+        TweenLite.to( this.authenticationContainer, 0.4, { css: { opacity: 1, top: "calc(50% + 50px)" } } );
 
 
-        } else {
+        if ( enterType !== ViewExitTypes.SWITCH ) {
             this.registerEventListeners();
             this.switchToLoginState();
             this.container.style.display = "block";
+
         }
 
     }
@@ -357,12 +356,12 @@ export class Authentication extends ViewComponent {
             const self = this;
 
 
-            TweenLite.to( this.authenticationContainer, 0.4, { opacity: 0, onComplete: function () {
+            TweenLite.to( this.authenticationContainer, 0.25, { opacity: 0 } );
+
+
+            TweenLite.to( this.authenticationContainer, 0.5, { css: { top: "calc(50% + 60px)"}, onComplete: function () {
                 self.sendSignal( AuthenticationNotifications.FORGOT_PASSWORD );
             }});
-
-
-            TweenLite.to( this.authenticationContainer, 3.5, { css: { top: "calc(50% + 60px)"}  } );
 
         } else {
 

@@ -78,9 +78,6 @@ export class ForgotPassword extends ViewComponent {
 
         if ( enterType === ViewExitTypes.SWITCH ) {
 
-            // TweenLite.to( this.forgotPasswordContainer, 0.4, { opacity: 1 } );
-            // TweenLite.to( this.forgotPasswordContainer, 0.4, { top: "calc( 50% + 50px )" } );
-
             TweenLite.to( this.forgotPasswordContainer, 0.4, { css: { opacity: 1, top: "calc(50% + 50px)" } } );
 
         }
@@ -98,12 +95,12 @@ export class ForgotPassword extends ViewComponent {
 
 
 
-            TweenLite.to( this.forgotPasswordContainer, 0.4, { opacity: 0, onComplete: function () {
+            TweenLite.to( this.forgotPasswordContainer, 0.25, { opacity: 0 } );
+
+
+            TweenLite.to( this.forgotPasswordContainer, 0.5, { css: { top: "calc(50% + 60px)"}, onComplete: function () {
                 self.sendSignal( AuthenticationNotifications.TRY_LOGGING_IN );
             }});
-
-
-            TweenLite.to( this.forgotPasswordContainer, 3.5, { top: "calc( 50% + 60px )" } );
 
 
 
