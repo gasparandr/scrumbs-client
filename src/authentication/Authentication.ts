@@ -1,10 +1,14 @@
 
 
 import {AuthenticationNotifications} from "./AuthenticationNotifications";
+import {ValidationHelper} from "../helpers/ValidationHelper";
 import {SignUpModel} from "../connection/models/SignUpModel";
 import {LoginModel} from "../connection/models/LoginModel";
+import {StringPointers} from "../languages/StringPointers";
+import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {HTMLHelper} from "../helpers/HTMLHelper";
+import {Language} from "../languages/Language";
 import {View} from "../core/View";
 
 
@@ -16,9 +20,7 @@ import Back = gsap.Back;
 
 //CSS
 import "../_style/style-sheets/authentication.scss";
-import {Language} from "../languages/Language";
-import {StringPointers} from "../languages/StringPointers";
-import {ViewExitTypes} from "../core/ViewExitTypes";
+
 
 //HTML template
 const template = require("../_view-templates/authentication.html");
@@ -387,7 +389,7 @@ export class Authentication extends ViewComponent {
         this.authStateLogin = false;
 
         TweenLite.to( this.actionBtnContent, 0.15, { opacity: 0, onComplete: () => {
-            this.actionBtnContent.innerText = "sign up";
+            this.actionBtnContent.innerText = Language.getTranslation( StringPointers.AUTH_SIGN_UP );
         }});
 
 
@@ -395,7 +397,7 @@ export class Authentication extends ViewComponent {
 
 
         TweenLite.to( this.switchBtnContent, 0.15, { opacity: 0, onComplete: () => {
-            this.switchBtnContent.innerText = "login";
+            this.switchBtnContent.innerText = Language.getTranslation( StringPointers.AUTH_LOGIN );
         }});
 
 
@@ -418,7 +420,7 @@ export class Authentication extends ViewComponent {
         this.authStateLogin = true;
 
         TweenLite.to( this.actionBtnContent, 0.15, { opacity: 0, onComplete: () => {
-            this.actionBtnContent.innerText = "login";
+            this.actionBtnContent.innerText = Language.getTranslation( StringPointers.AUTH_LOGIN );
         }});
 
 
@@ -426,7 +428,7 @@ export class Authentication extends ViewComponent {
 
 
         TweenLite.to( this.switchBtnContent, 0.15, { opacity: 0, onComplete: () => {
-            this.switchBtnContent.innerText = "sign up";
+            this.switchBtnContent.innerText = Language.getTranslation( StringPointers.AUTH_SIGN_UP );
         }});
 
 
@@ -447,7 +449,7 @@ export class Authentication extends ViewComponent {
     private validateForLogin(): boolean {
 
         const email: string = this.emailInput.value;
-        const isEmailValid: boolean = this.validateEmail( email );
+        const isEmailValid: boolean = ValidationHelper.validateEmail( email );
         const password: string = this.passwordInput.value;
 
         if ( ! isEmailValid ) TweenLite.to( this.emailInput, 0.3, { css:{ className: "+=invalid" }, ease: Power1.easeOut } );
@@ -463,7 +465,7 @@ export class Authentication extends ViewComponent {
         const firstName: string = this.firstNameInput.value;
         const lastName: string = this.lastNameInput.value;
         const email: string = this.emailInput.value;
-        const isEmailValid: boolean = this.validateEmail( email );
+        const isEmailValid: boolean = ValidationHelper.validateEmail( email );
         const password: string = this.passwordInput.value;
 
         if ( ! firstName ) TweenLite.to( this.firstNameInput, 0.3, { css:{ className: "+=invalid" }, ease: Power1.easeOut } );
@@ -508,11 +510,5 @@ export class Authentication extends ViewComponent {
         this.loadingState = value;
     }
 
-
-
-    private validateEmail(email: string): boolean {
-        let regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-        return regex.test( String(email).toLocaleLowerCase() );
-    }
 
 }

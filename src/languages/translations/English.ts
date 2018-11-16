@@ -2,12 +2,12 @@
 
 export class English {
 
-    /** AUTHENTICATION VIEW */
+    /** AUTHENTICATION VIEW COMPONENT */
 
     public static readonly AUTH_TITLE_LOGIN = "Welcome Back!";
-    public static readonly AUTH_SUBTITLE_LOGIN = "Sem nunc aliquet tellus bibendum, iaculis aliquam curabitur vitae porttitor, ligula mi voluptatum feugiat sapien lacus.";
+    public static readonly AUTH_SUBTITLE_LOGIN = "Enter your email and password below and you'll be on your way.";
     public static readonly AUTH_TITLE_SIGN_UP = "Create your Account!";
-    public static readonly AUTH_SUBTITLE_SIGN_UP = "Semper mollis urna velit nulla, nec a viverra pellentesque hendrerit, class euismod nibh sed, torquent rhoncus wisi ea dictum.";
+    public static readonly AUTH_SUBTITLE_SIGN_UP = "Scrumbs is a lightweight agile management tool, which allows you to effortlessly track the development process, and highlight blockers.";
     public static readonly AUTH_EMAIL_LABEL = "email";
     public static readonly AUTH_EMAIL_PLACEHOLDER = "Enter your email";
     public static readonly AUTH_PASSWORD_LABEL = "password";
@@ -22,5 +22,14 @@ export class English {
     public static readonly AUTH_SIGN_UP = "sign up";
 
 
+
+    /** FORGOT PASSWORD VIEW COMPONENT */
+
+    public static readonly FORGOT_PW_TITLE = "Forgot Your Password? Don't worry, we got your back.";
+    public static readonly FORGOT_PW_EMAIL_LABEL = "email";
+    public static readonly FORGOT_PW_EMAIL_PLACEHOLDER = "Enter your email";
+    public static readonly FORGOT_PW_SEND_INSTRUCTIONS = "Send Instructions";
+    public static readonly FORGOT_PW_REMEMBERED_PASSWORD = "Did you remember your password?";
+    public static readonly FORGOT_PW_TRY_LOGGING_IN = "Try logging in";
 
 }

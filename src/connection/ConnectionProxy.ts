@@ -206,4 +206,19 @@ export class ConnectionProxy extends Proxy {
 
     }
 
+
+
+    public forgotPassword(email: string, success: Function, failure: Function): void {
+        console.info( "Proxy forgot password executed" );
+
+        this.httpRequest(
+            HTTPMethods.POST,
+            "/authentication/forgot",
+        { email },
+            success,
+            failure
+        );
+
+    }
+
 }
