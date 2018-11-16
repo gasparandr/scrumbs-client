@@ -1,28 +1,22 @@
 
 
-
-
-
-import {ViewComponent} from "../core/ViewComponent";
-import {View} from "../core/View";
-
+import { AuthenticationNotifications } from "./AuthenticationNotifications";
+import { ValidationHelper } from "../helpers/ValidationHelper";
+import { StringPointers } from "../languages/StringPointers";
+import { ViewExitTypes } from "../core/ViewExitTypes";
+import { ViewComponent } from "../core/ViewComponent";
+import { Language } from "../languages/Language";
+import { View } from "../core/View";
 
 import TweenLite = gsap.TweenLite;
 import Power1 = gsap.Power1;
-import Power0 = gsap.Power0;
-import Back = gsap.Back;
-
 
 //CSS
 import "../_style/style-sheets/forgot-password.scss";
-import {AuthenticationNotifications} from "./AuthenticationNotifications";
-import {ViewExitTypes} from "../core/ViewExitTypes";
-import {ValidationHelper} from "../helpers/ValidationHelper";
-import {Language} from "../languages/Language";
-import {StringPointers} from "../languages/StringPointers";
 
 //HTML template
 const template = require("../_view-templates/forgot-password.html");
+
 
 
 
@@ -40,6 +34,9 @@ export class ForgotPassword extends ViewComponent {
     private backToLoginBtn: HTMLElement;
     private errorText: HTMLElement;
     private footerText: HTMLElement;
+
+
+
 
 
     constructor(view: View, container: HTMLElement) {
@@ -77,23 +74,26 @@ export class ForgotPassword extends ViewComponent {
     }
 
 
+
     private registerEventListeners(): void {
 
-        this.tryLoggingInBtn.addEventListener( "click", this.tryLoggingInHandler );
-        this.sendInstructionsBtn.addEventListener( "click", this.sendInstructionsHandler );
-        this.backToLoginBtn.addEventListener( "click", this.backToLoginBtnHandler );
         this.emailInput.addEventListener( "focus", this.emailInputHandler );
+        this.tryLoggingInBtn.addEventListener( "click", this.tryLoggingInHandler );
+        this.backToLoginBtn.addEventListener( "click", this.backToLoginBtnHandler );
+        this.sendInstructionsBtn.addEventListener( "click", this.sendInstructionsHandler );
 
     }
+
 
 
     private unregisterEventListeners(): void {
 
-        this.tryLoggingInBtn.removeEventListener( "click", this.tryLoggingInHandler );
-        this.sendInstructionsBtn.removeEventListener( "click", this.sendInstructionsHandler );
-        this.backToLoginBtn.removeEventListener( "click", this.backToLoginBtnHandler );
         this.emailInput.removeEventListener( "focus", this.emailInputHandler );
+        this.tryLoggingInBtn.removeEventListener( "click", this.tryLoggingInHandler );
+        this.backToLoginBtn.removeEventListener( "click", this.backToLoginBtnHandler );
+        this.sendInstructionsBtn.removeEventListener( "click", this.sendInstructionsHandler );
     }
+
 
 
     private tryLoggingInHandler(e: any): void {
@@ -161,7 +161,6 @@ export class ForgotPassword extends ViewComponent {
     private backToLoginBtnHandler(e: any): void {
         this.exitScene( ViewExitTypes.SWITCH );
     }
-
 
 
 
@@ -246,6 +245,7 @@ export class ForgotPassword extends ViewComponent {
     }
 
 
+
     private enterSuccessState(message: string): void {
 
         const self = this;
@@ -273,6 +273,7 @@ export class ForgotPassword extends ViewComponent {
     }
 
 
+
     private resetComponent(): void {
 
         this.exitLoadingState();
@@ -291,6 +292,6 @@ export class ForgotPassword extends ViewComponent {
 
         this.emailInput.classList.remove( "invalid" );
     }
-    
+
 
 }
