@@ -9,14 +9,14 @@ import {Proxy} from "../core/Proxy";
 import {UserVO} from "./UserVO";
 
 
-
+declare const SERVICE_URL: string;
 
 
 
 export class ConnectionProxy extends Proxy {
 
     constructor(proxyName: string) {
-        super( proxyName, "http://192.168.0.101:3000/api/v1" );
+        super( proxyName, SERVICE_URL );
     }
 
 
@@ -63,8 +63,14 @@ export class ConnectionProxy extends Proxy {
             data,
             (response: any) => {
 
-                Proxy.token = response.token;
+                Proxy.token = response.tokenData.token;
+                Proxy.tokenExpires = new Date( response.tokenData.expires );
 
+                const { user, email, firstName, lastName } = response.userData;
+
+                const userVO = new UserVO( user, email, firstName, lastName );
+
+                this.setVO( userVO );
 
                 success( response );
             },
