@@ -1,5 +1,7 @@
 
 
+import {AuthenticationView} from "../authentication/AuthenticationView";
+import {HeaderView} from "../header/HeaderView";
 import {INotification} from "./INotification";
 import {ViewExitTypes} from "./ViewExitTypes";
 import {CoreEntity} from "./CoreEntity";
@@ -11,7 +13,12 @@ import {View} from "./View";
 
 
 export class ViewManager extends CoreEntity {
+    private headerView: View;
     private currentView: View;
+
+
+
+
 
 
     constructor() {
@@ -20,11 +27,13 @@ export class ViewManager extends CoreEntity {
     }
 
 
+
     private initView(): void {
 
-
-        this.currentView = null
+        this.headerView = new HeaderView();
+        this.currentView = new AuthenticationView();
     }
+
 
 
     private switchView(view: any, exitType?: string, callback?: Function): void {
