@@ -8,6 +8,8 @@ import {View} from "../core/View";
 import {AuthenticationLogin} from "./AuthenticationLogin";
 
 
+// CSS
+import "../_style/style-sheets/authentication-view.scss";
 
 // HTML
 const authenticationViewTemplate = require( "../_view-templates/authentication-view.html" );

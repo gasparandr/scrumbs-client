@@ -1,0 +1,53 @@
+
+/** Authentication */
+
+#authentication-view-container {
+    width: 370px;
+    height: 100%;
+    margin: 57px auto 0;
+    font-weight: bold;
+}
+
+
+#authentication-view-container h1,
+#authentication-view-container h2 {
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+#authentication-view-container h1 {
+    font-size: 1.85em;
+    line-height: 2em;
+}
+
+#authentication-view-container h2 {
+    max-width: 315px;
+    line-height: 1.6em;
+}
+
+
+#authentication-view-container .input-wrapper {
+    margin-top: 25px;
+}
+
+
+#input-email-login~.input-icon,
+#input-email-signup~.input-icon {
+    width: 16px;
+    height: 12px;
+    background-image: url(../img/icons/email-icon.svg);
+}
+
+#input-password-login~.input-icon,
+#input-password-signup~.input-icon {
+    width: 12px;
+    height: 16px;
+    background-image: url(../img/icons/password-icon.svg);
+}
+
+#input-name-signup~.input-icon {
+    width: 14px;
+    height: 15px;
+    background-image: url(../img/icons/user-icon.svg);
+}

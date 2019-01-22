@@ -8,6 +8,10 @@ import {CoreEntity} from "./CoreEntity";
 import {View} from "./View";
 
 
+// CSS
+import "../_style/style-sheets/main.scss";
+
+
 
 
 

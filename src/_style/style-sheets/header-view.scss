@@ -1,0 +1,35 @@
+
+/** Header */
+
+#header-view-container {
+    background: #FFFFFF;
+    height: 80px;
+    padding-left: 30px;
+    padding-right: 37px;
+    position: relative;
+}
+
+
+#header-view-container #logo {
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    margin-top: 18px;
+    background: url(../img/icons/scrumbs-logo-colored.svg) no-repeat center / contain;
+    position: relative;
+}
+
+
+#header-view-container .button-group {
+    position: absolute;
+    right: 37px;
+    top: 50%;
+    transform: translateY( -50% );
+    height: 50px;
+}
+
+
+#header-button {
+    width: 165px;
+    margin-left: 35px;
+}
