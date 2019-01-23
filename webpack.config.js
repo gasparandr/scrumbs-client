@@ -15,8 +15,8 @@ module.exports = {
             { test: /\.ts$/, loader: "ts-loader" },
             { test: /\.css$/, use: [ "style-loader", "css-loader" ] },
             { test: /\.scss$/, use: [ "style-loader", "css-loader", "sass-loader" ] },
-            { test: /\.(jpg|png|svg|gif)$/, use: { loader: "file-loader", options: { name: "[name].[ext]", outputPath: "../img/" } } },
-            { test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/, use: { loader: "file-loader", options: { name: "[name].[ext]", outputPath: "../fonts/" } } },
+            { test: /\.(jpg|png|svg|gif)$/, use: { loader: "file-loader", options: { name: "[name].[ext]", outputPath: "../img/", publicPath: "./img" } } },
+            { test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/, use: { loader: "file-loader", options: { name: "[name].[ext]", outputPath: "../fonts/", publicPath: "./fonts" } } },
             { include: path.resolve(__dirname, "node_modules/pixi.js"), loader: "transform-loader?brfs", enforce: "post" }
         ]
     },
