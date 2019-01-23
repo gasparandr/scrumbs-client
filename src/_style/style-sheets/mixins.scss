@@ -1,14 +1,7 @@
 
 
-@mixin drop-shadow( $color, $blur, $y: 0, $x: 0, $spread: 0 ) {
-  -webkit-box-shadow: $x $y $blur $spread $color;
-  -moz-box-shadow: $x $y $blur $spread $color;
-  box-shadow: $x $y $blur $spread $color;
-}
 
-
-
-@mixin center-layout( $position: 'both' ) {
+@mixin center( $position: 'both' ) {
   position: absolute;
 
   @if $position == 'horizontal' {
