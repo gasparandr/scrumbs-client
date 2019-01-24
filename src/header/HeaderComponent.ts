@@ -1,6 +1,5 @@
 
 
-
 import {ViewComponent} from "../core/ViewComponent";
 import {View} from "../core/View";
 
@@ -19,6 +18,9 @@ const template = require( "../_view-templates/header-component.html" );
 
 export class HeaderComponent extends ViewComponent {
 
+    private actionBtn: HTMLButtonElement;
+    private authMessage: HTMLSpanElement;
+
 
 
 
@@ -27,6 +29,11 @@ export class HeaderComponent extends ViewComponent {
         super( view, container );
 
         this.container.innerHTML = template;
+
+
+        this.actionBtn      = document.getElementById( "" ) as HTMLButtonElement;
+        this.authMessage    = document.getElementById( "" ) as HTMLSpanElement;
+
 
         this.enterScene();
     }
