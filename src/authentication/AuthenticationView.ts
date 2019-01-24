@@ -10,6 +10,7 @@ import {AuthenticationLogin} from "./AuthenticationLogin";
 
 // CSS
 import "../_style/style-sheets/authentication-view.scss";
+import {AuthenticationSignUp} from "./AuthenticationSignUp";
 
 // HTML
 const authenticationViewTemplate = require( "../_view-templates/authentication-view.html" );
@@ -41,6 +42,7 @@ export class AuthenticationView extends View {
 
 
         this.authenticationLogin            = new AuthenticationLogin( this, this.authenticationLoginContainer );
+        this.authenticationSignUp           = new AuthenticationSignUp( this, this.authenticationSignUpContainer );
 
 
 
