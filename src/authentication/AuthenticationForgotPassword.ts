@@ -5,11 +5,11 @@ import {ViewComponent} from "../core/ViewComponent";
 
 
 // CSS
-// import "../_style/style-sheets/authentication-forgot-password.scss";
+import "../_style/style-sheets/authentication-forgot-password.scss";
 
 
 // HTML
-// const template = require( "../_view-templates/authentication-forgot-password.html" );
+const template = require( "../_view-templates/authentication-forgot-password.html" );
 
 
 
