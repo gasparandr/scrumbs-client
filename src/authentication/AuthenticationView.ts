@@ -19,9 +19,11 @@ const authenticationViewTemplate = require( "../_view-templates/authentication-v
 export class AuthenticationView extends View {
     private authenticationLogin: ViewComponent;
     private authenticationSignUp: ViewComponent;
+    private authenticationForgotPassword: ViewComponent;
 
     private authenticationLoginContainer: HTMLElement;
     private authenticationSignUpContainer: HTMLElement;
+    private authenticationForgotPasswordContainer: HTMLElement;
 
 
 
@@ -64,6 +66,7 @@ export class AuthenticationView extends View {
 
         this.authenticationLogin.exitScene( exitType );
         this.authenticationSignUp.exitScene( exitType );
+        this.authenticationForgotPassword.exitScene( exitType );
     }
 
 

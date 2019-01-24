@@ -5,18 +5,18 @@ import {ViewComponent} from "../core/ViewComponent";
 
 
 // CSS
-import "../_style/style-sheets/authentication-log-in.scss";
+// import "../_style/style-sheets/authentication-forgot-password.scss";
 
 
 // HTML
-const template = require( "../_view-templates/authentication-log-in.html" );
+// const template = require( "../_view-templates/authentication-forgot-password.html" );
 
 
 
 
 
 
-export class AuthenticationLogin extends ViewComponent {
+export class AuthenticationForgotPassword extends ViewComponent {
 
     private title: HTMLHeadingElement;
     private subTitle: HTMLHeadingElement;
@@ -24,11 +24,6 @@ export class AuthenticationLogin extends ViewComponent {
     private emailInputLabel: HTMLLabelElement;
     private emailInput: HTMLInputElement;
     private emailInputError: HTMLSpanElement;
-
-    private passwordInputLabel: HTMLLabelElement;
-    private passwordInput: HTMLInputElement;
-    private passwordInputError: HTMLSpanElement;
-
 
 
 
@@ -38,7 +33,7 @@ export class AuthenticationLogin extends ViewComponent {
 
         console.info( "Login view component initialized." );
 
-        this.container.innerHTML = template;
+        // this.container.innerHTML = template;
 
         this.title                  = document.getElementById( "" ) as HTMLHeadingElement;
         this.subTitle               = document.getElementById( "" ) as HTMLHeadingElement;
@@ -46,10 +41,6 @@ export class AuthenticationLogin extends ViewComponent {
         this.emailInputLabel        = document.getElementById( "" ) as HTMLLabelElement;
         this.emailInput             = document.getElementById( "" ) as HTMLInputElement;
         this.emailInputError        = document.getElementById( "" ) as HTMLSpanElement;
-
-        this.passwordInputLabel     = document.getElementById( "" ) as HTMLLabelElement;
-        this.passwordInput          = document.getElementById( "" ) as HTMLInputElement;
-        this.passwordInputError     = document.getElementById( "" ) as HTMLSpanElement;
 
 
 
