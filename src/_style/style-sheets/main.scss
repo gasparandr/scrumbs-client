@@ -5,6 +5,32 @@
 @import "style-fonts";
 
 
+/** ==================================== Miscellaneous ==================================== */
+
+.accent { color: $accent-color; }
+
+.pointer { cursor: pointer; }
+
+.bold { font-weight: bold; }
+
+.semibold { font-weight: 600; }
+
+.light { font-weight: 300; }
+
+.underline, a.underline { text-decoration: underline; }
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+
+
+
 
 
 /** ==================================== Body ==================================== */
@@ -48,7 +74,7 @@ body {
     height: calc( 100% - 107px );   
     background: $tertiary-color;
     border-radius: 5px 5px 0 0;
-    box-shadow: 0 2px 15px 0 $septenary-color;
+    box-shadow: 0 2px 20px 0 $quinary-color;
 }
 
 
@@ -103,7 +129,7 @@ input, textarea {
         background-color: transparent;
         color: $text-secondary-color;
 
-        &:focus { box-shadow: inset 0 0 0 1px black; }
+        &:focus { box-shadow: inset 0 0 0 1px $accent-color; }
     }
 
     .input-icon {
@@ -118,6 +144,65 @@ input, textarea {
     .input-error {
         font-size: 0.85em;
         color: $senary-color;
+        display: none;
+    }
+
+    .input-container.error ~ .input-error {
+        display: unset;
+    }
+
+}
+
+
+
+
+/** ==================================== Checkbox ==================================== */
+
+.checkbox-group {
+
+    display: inline-block;
+    position: relative;
+
+    .checkbox {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $quinary-color;
+        border-radius: 3px;
+    }
+
+    label {
+        color: $text-tertiary-color;
+        font-size: 0.86em;
+        line-height: 23px;
+        padding-left: 28px;
+        background-color: white;
+
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid $quinary-color;
+            border-radius: 3px;
+        }
+    }
+
+    input:checked + label::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: grey;
+        @include center( "vertical" );
+        left: 6px;
+        border-radius: 3px;
     }
 
 }
