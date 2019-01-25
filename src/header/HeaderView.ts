@@ -14,6 +14,7 @@ import {HeaderComponent} from "./HeaderComponent";
 
 // CSS
 import "../_style/style-sheets/header-view.scss";
+import {HeaderNotifications} from "./HeaderNotifications";
 
 // HTML
 const headerViewTemplate = require( "../_view-templates/header-view.html" );
@@ -33,7 +34,7 @@ export class HeaderView extends View {
 
 
     constructor() {
-        super( "AuthenticationView" );
+        super( "HeaderView" );
 
         this.container = document.createElement( "div" );
         this.container.id = "header-view-container";
@@ -94,7 +95,17 @@ export class HeaderView extends View {
 
         switch ( signal.name ) {
 
+            case HeaderNotifications.SIGN_UP :
 
+                this.sendNotification( HeaderNotifications.SIGN_UP );
+
+                break;
+
+            case HeaderNotifications.LOG_IN :
+
+                this.sendNotification( HeaderNotifications.LOG_IN );
+
+                break;
 
 
             default:
