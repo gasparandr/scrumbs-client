@@ -48,17 +48,6 @@ body {
     background: -moz-linear-gradient( top,    $quaternary-color 0%, $tertiary-color 100% );
     background: -webkit-linear-gradient( top, $quaternary-color 0%, $tertiary-color 100% );
     background: linear-gradient( to bottom,   $quaternary-color 0%, $tertiary-color 100% );
-    position: relative;
-
-    /** background image */
-    &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: url( ../img/icons/bg-shape.svg ) no-repeat center 92px;
-        background-size: 90%;
-    }
 }
 
 
@@ -66,15 +55,33 @@ body {
 
 /** ==================================== Main Container ==================================== */
 
-#content-container {
-    position: absolute;
-    bottom: 0;
-    @include center( "horizontal" );
+#content-wrapper {
     width: 80%;
-    height: calc( 100% - 107px );   
-    background: $tertiary-color;
+    height: calc( 100% - 107px );
+    @include center( "horizontal" );
+    bottom: 0;
+}
+
+#content-container {
+
+    height: 100%;
+    background-color: $tertiary-color;
     border-radius: 5px 5px 0 0;
     box-shadow: 0 2px 20px 0 $quinary-color;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -5%;
+        width: 110%;
+        height: 10000%;
+        background: url( ../img/icons/bg-shape.svg ) no-repeat top center;
+        background-size: contain;
+        z-index: -1;
+    }
+
 }
 
 

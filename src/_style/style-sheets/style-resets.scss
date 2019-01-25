@@ -6,7 +6,7 @@
 
 /** ==================================== HTML5 display definitions ==================================== */
 
-* {
+*, *::after, *::before {
 
   box-sizing: border-box;
 
