@@ -6,6 +6,8 @@ import {ViewComponent} from "../core/ViewComponent";
 
 // CSS
 import "../_style/style-sheets/authentication-log-in.scss";
+import {ViewExitTypes} from "../core/ViewExitTypes";
+import {ViewEnterTypes} from "../core/ViewEnterTypes";
 
 
 // HTML
@@ -73,19 +75,34 @@ export class AuthenticationLogin extends ViewComponent {
 
 
 
-    public enterScene(): void {
-        this.registerEventListeners();
+    public enterScene(enterType?: string): void {
+
+        if ( enterType === ViewEnterTypes.SWITCH_COMPONENT ) {
+            this.container.style.display = "block";
+            console.log( "Authentication login view component enter scene" );
+        } else {
+            this.registerEventListeners();
+        }
 
     }
 
 
 
     public exitScene(exitType: string): void {
-        super.exitScene( exitType );
-        this.unregisterEventListeners();
 
         console.info( "Exit being called in authentication login view component" );
 
-        this.view.componentExited( this.name );
+
+        if ( exitType === ViewExitTypes.SWITCH_COMPONENT ) {
+
+            this.container.style.display = "none";
+
+        } else {
+            super.exitScene( exitType );
+            this.unregisterEventListeners();
+            this.view.componentExited( this.name );
+
+        }
+
     }
 }

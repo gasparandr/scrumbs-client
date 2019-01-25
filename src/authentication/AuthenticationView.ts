@@ -11,6 +11,9 @@ import {AuthenticationLogin} from "./AuthenticationLogin";
 // CSS
 import "../_style/style-sheets/authentication-view.scss";
 import {AuthenticationSignUp} from "./AuthenticationSignUp";
+import {HeaderNotifications} from "../header/HeaderNotifications";
+import {ViewExitTypes} from "../core/ViewExitTypes";
+import {ViewEnterTypes} from "../core/ViewEnterTypes";
 
 // HTML
 const authenticationViewTemplate = require( "../_view-templates/authentication-view.html" );
@@ -74,16 +77,34 @@ export class AuthenticationView extends View {
     public listNotificationInterests(): string[] {
         let notifications = super.listNotificationInterests();
 
+        notifications.push( HeaderNotifications.SIGN_UP );
+        notifications.push( HeaderNotifications.LOG_IN );
+
         return notifications;
     }
 
 
 
     public handleNotification(notification: INotification): void {
+        console.log( "Notification received in " + this.NAME + ": " + notification.name );
 
         switch ( notification.name ) {
 
+            case HeaderNotifications.SIGN_UP :
 
+                this.authenticationLogin.exitScene( ViewExitTypes.SWITCH_COMPONENT );
+                this.authenticationSignUp.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
+
+
+                break;
+
+            case HeaderNotifications.LOG_IN :
+
+                this.authenticationSignUp.exitScene( ViewExitTypes.SWITCH_COMPONENT );
+                this.authenticationLogin.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
+
+
+                break;
 
             default :
                 break;

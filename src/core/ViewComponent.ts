@@ -30,7 +30,7 @@ export class ViewComponent implements IViewComponent {
 
 
 
-    public enterScene(): void {
+    public enterScene(enterType?: string): void {
 
     }
 
