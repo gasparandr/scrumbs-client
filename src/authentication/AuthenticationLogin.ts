@@ -8,6 +8,7 @@ import {ViewComponent} from "../core/ViewComponent";
 import "../_style/style-sheets/authentication-log-in.scss";
 import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
+import {AuthenticationNotifications} from "./AuthenticationNotifications";
 
 
 // HTML
@@ -31,6 +32,8 @@ export class AuthenticationLogin extends ViewComponent {
     private passwordInput: HTMLInputElement;
     private passwordInputError: HTMLSpanElement;
 
+    private forgotPassBtn: HTMLParagraphElement;
+
 
 
 
@@ -53,6 +56,11 @@ export class AuthenticationLogin extends ViewComponent {
         this.passwordInput          = document.getElementById( "" ) as HTMLInputElement;
         this.passwordInputError     = document.getElementById( "" ) as HTMLSpanElement;
 
+        this.forgotPassBtn          = document.getElementById( "forgot-password" ) as HTMLParagraphElement;
+
+
+        this.forgotPassBtnListener  = this.forgotPassBtnListener.bind( this );
+
 
 
         this.enterScene();
@@ -61,16 +69,19 @@ export class AuthenticationLogin extends ViewComponent {
 
 
     private registerEventListeners(): void {
-
-
+        this.forgotPassBtn.addEventListener( "click", this.forgotPassBtnListener );
     }
 
 
 
     private unregisterEventListeners(): void {
+        this.forgotPassBtn.removeEventListener( "click", this.forgotPassBtnListener );
+    }
 
 
-
+    
+    private forgotPassBtnListener( e: any ) {
+        this.sendSignal( AuthenticationNotifications.FORGOT_PASSWORD );
     }
 
 
@@ -88,7 +99,7 @@ export class AuthenticationLogin extends ViewComponent {
 
 
 
-    public exitScene(exitType: string): void {
+    public exitScene( exitType: string ): void {
 
         console.info( "Exit being called in authentication login view component" );
 

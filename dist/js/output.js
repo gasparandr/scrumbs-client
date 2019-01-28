@@ -71,6 +71,26 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./src/_style/style-sheets/authentication-forgot-password.scss":
+/*!****************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./src/_style/style-sheets/authentication-forgot-password.scss ***!
+  \****************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var escape = __webpack_require__(/*! ../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/** Colors */\n/** Text Colors */\n/** Complementary colors */\n/**  Drop Shadows */\n/** ==================================== HTML5 display definitions ==================================== */\n*, *::after, *::before {\n  box-sizing: border-box;\n  /* Remove background highlight on touch from mobile devices */\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n\n/**\r\n * Reset browser margins and padding\r\n */\nhtml, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote,\naddress, time, span, em, strong, img, ol, ul, li, figure, canvas, video, th, td, tr {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  vertical-align: baseline;\n  font: inherit; }\n\n/**\r\n * Correct `block` display not defined in IE 8/9.\r\n */\narticle, aside, details, figcaption, figure, footer,\nheader, hgroup, main, nav, section, summary {\n  display: block; }\n\n/**\r\n * Correct `inline-block` display not defined in IE 8/9.\r\n */\naudio, canvas, video {\n  display: inline-block; }\n\n/**\r\n * Prevent modern browsers from displaying `audio` without controls.\r\n * Remove excess height in iOS 5 devices.\r\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\r\n * Address `[hidden]` styling not present in IE 8/9.\r\n * Hide the `template` element in IE, Safari, and Firefox < 22.\r\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/** ==================================== Base ==================================== */\n/**\r\n * 1. Set default font family to sans-serif.\r\n * 2. Prevent iOS text size adjust after orientation change, without disabling\r\n *    user zoom.\r\n */\nhtml {\n  font-family: sans-serif;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%; }\n\n/** ==================================== Links ==================================== */\n/**\r\n * Remove the gray background color from active links in IE 10.\r\n */\na {\n  background: transparent;\n  text-decoration: none;\n  color: inherit;\n  text-decoration: none;\n  /** Improve readability when focused and also mouse hovered in all browsers */ }\n  a:link, a :visited, a :hover, a :active {\n    text-decoration: none;\n    outline: 0; }\n  a:hover {\n    cursor: pointer; }\n\n/** ==================================== Typography ==================================== */\n/**\r\n * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.\r\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\r\n * Address styling not present in Safari 5 and Chrome.\r\n */\ndfn {\n  font-style: italic; }\n\nem {\n  font-style: italic; }\n\n/**\r\n * Address differences between Firefox and other browsers.\r\n */\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0; }\n\n/**\r\n * Address styling not present in IE 8/9.\r\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/** ==================================== Embedded content ==================================== */\n/**\r\n * Remove border when inside `a` element in IE 8/9.\r\n */\nimg {\n  border: 0; }\n\n/**\r\n * Correct overflow displayed oddly in IE 9.\r\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/**\r\n * 1. Correct font family not being inherited in all browsers.\r\n * 2. Correct font size not being inherited in all browsers.\r\n * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.\r\n */\nbutton, input, select, textarea {\n  font-family: inherit;\n  font-size: 100%;\n  margin: 0;\n  resize: none; }\n\n/**\r\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\r\n * the UA stylesheet.\r\n */\nbutton, input {\n  line-height: normal;\n  outline: none; }\n\n/**\r\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\r\n * All other form control elements do not inherit `text-transform` values.\r\n * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.\r\n * Correct `select` style inheritance in Firefox 4+ and Opera.\r\n */\nbutton, select {\n  text-transform: none; }\n\n/**\r\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\r\n *    and `video` controls.\r\n * 2. Correct inability to style clickable `input` types in iOS.\r\n * 3. Improve usability and consistency of cursor style between image-type\r\n *    `input` and others.\r\n */\nbutton,\ninput[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  cursor: pointer;\n  /* 3 */ }\n\n/**\r\n * Re-set default cursor for disabled elements.\r\n */\nbutton[disabled],\ninput[disabled] {\n  cursor: default; }\n\n/**\r\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\r\n * 2. Remove excess padding in IE 8/9/10.\r\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  padding: 0; }\n\n/**\r\n * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.\r\n * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome\r\n *    (include `-moz` to future-proof).\r\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n  /** Remove inner padding and search cancel button in Safari 5 and Chrome on OS X */ }\n  input[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"] ::-webkit-search-decoration {\n    -webkit-appearance: none; }\n\n/**\r\n * Remove inner padding and border in Firefox 4+.\r\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\r\n * 1. Remove default vertical scrollbar in IE 8/9.\r\n * 2. Improve readability and alignment in all browsers.\r\n */\ntextarea {\n  overflow: auto;\n  /* 1 */\n  vertical-align: top;\n  /* 2 */ }\n\n/** ==================================== Tables ==================================== */\n/**\r\n * Remove most spacing between table cells.\r\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nul {\n  list-style: none; }\n\n/** ==================================== Clearfix ==================================== */\n.clearfix {\n  zoom: 1; }\n  .clearfix::before, .clearfix ::after {\n    content: \"\";\n    display: block; }\n  .clearfix::after {\n    clear: both;\n    visibility: hidden;\n    display: block;\n    font-size: 0;\n    content: \".\";\n    height: 0; }\n\n/** ==================================== Inputs and buttons ==================================== */\ninput, textarea, button {\n  -webkit-appearance: none;\n  border-radius: 0; }\n\ninput:focus, textarea:focus {\n  outline: none; }\n\n/** Colors */\n/** Text Colors */\n/** Complementary colors */\n/**  Drop Shadows */\n/** ==================================== Normal ==================================== */\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Regular.ttf */ "./src/_style/fonts/Muli-Regular.ttf")) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Bold.ttf */ "./src/_style/fonts/Muli-Bold.ttf")) + ") format(\"truetype\");\n  font-weight: bold;\n  font-style: normal; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-SemiBold.ttf */ "./src/_style/fonts/Muli-SemiBold.ttf")) + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: normal; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Light.ttf */ "./src/_style/fonts/Muli-Light.ttf")) + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: normal; }\n\n/** ==================================== Italic ==================================== */\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Italic.ttf */ "./src/_style/fonts/Muli-Italic.ttf")) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: italic; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-SemiBoldItalic.ttf */ "./src/_style/fonts/Muli-SemiBoldItalic.ttf")) + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: italic; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-LightItalic.ttf */ "./src/_style/fonts/Muli-LightItalic.ttf")) + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: italic; }\n\n#authentication-forgot-password-container {\n  display: none;\n  position: absolute;\n  width: 410px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n  -moz-transform: translate(-50%, -50%);\n  -ms-transform: translate(-50%, -50%);\n  -o-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%); }\n  #authentication-forgot-password-container .logo {\n    display: block;\n    width: 160px;\n    height: 37px;\n    margin: 0 auto 30px; }\n  #authentication-forgot-password-container h2 {\n    max-width: none; }\n  #authentication-forgot-password-container .forgot-password-body {\n    max-width: 335px;\n    margin: 0 auto; }\n    #authentication-forgot-password-container .forgot-password-body .input-wrapper {\n      margin-top: 40px; }\n    #authentication-forgot-password-container .forgot-password-body .primary-button {\n      margin: 30px auto; }\n  #authentication-forgot-password-container .forgot-password-footer {\n    text-align: center; }\n    #authentication-forgot-password-container .forgot-password-footer span {\n      font-size: 0.86em; }\n    #authentication-forgot-password-container .forgot-password-footer span:not(.accent) {\n      color: #9B9AA9;\n      margin-right: 5px; }\n  @media screen and (max-width: 700px) {\n    #authentication-forgot-password-container .forgot-password-footer span {\n      display: block; }\n    #authentication-forgot-password-container .forgot-password-footer span:not(.accent) {\n      margin-right: 0;\n      margin-bottom: 10px; } }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./src/_style/style-sheets/authentication-log-in.scss":
 /*!*******************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./src/_style/style-sheets/authentication-log-in.scss ***!
@@ -83,7 +103,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "#authentication-log-in-container {\n  width: 370px;\n  margin: 0 auto;\n  padding-top: 57px; }\n  #authentication-log-in-container #forgot-password {\n    float: right;\n    font-size: 0.86em;\n    line-height: 23px; }\n  @media screen and (max-width: 560px) {\n    #authentication-log-in-container {\n      padding-top: 45px; } }\n  @media screen and (max-width: 480px) {\n    #authentication-log-in-container {\n      width: 100%;\n      padding-left: 40px;\n      padding-right: 40px; } }\n  @media screen and (max-width: 400px) {\n    #authentication-log-in-container {\n      padding-left: 20px;\n      padding-right: 20px; } }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./src/_style/style-sheets/authentication-sign-up.scss":
+/*!********************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./src/_style/style-sheets/authentication-sign-up.scss ***!
+  \********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#authentication-sign-up-container {\n  display: none;\n  width: 370px;\n  margin: 0 auto;\n  padding-top: 57px; }\n  @media screen and (max-width: 560px) {\n    #authentication-sign-up-container {\n      padding-top: 45px; } }\n  @media screen and (max-width: 480px) {\n    #authentication-sign-up-container {\n      width: 100%;\n      padding-left: 40px;\n      padding-right: 40px; } }\n  @media screen and (max-width: 400px) {\n    #authentication-sign-up-container {\n      padding-left: 20px;\n      padding-right: 20px; } }\n", ""]);
 
 // exports
 
@@ -103,7 +142,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/** Authentication */\n#authentication-view-container {\n  width: 370px;\n  height: 100%;\n  margin: 57px auto 0;\n  font-weight: bold; }\n\n#authentication-view-container h1,\n#authentication-view-container h2 {\n  text-align: center;\n  margin: 0 auto; }\n\n#authentication-view-container h1 {\n  font-size: 1.85em;\n  line-height: 2em; }\n\n#authentication-view-container h2 {\n  max-width: 315px;\n  line-height: 1.6em; }\n\n#authentication-view-container .input-wrapper {\n  margin-top: 25px; }\n\n#input-email-login ~ .input-icon,\n#input-email-signup ~ .input-icon {\n  width: 16px;\n  height: 12px;\n  background-image: url(" + escape(__webpack_require__(/*! ../img/icons/email-icon.svg */ "./src/_style/img/icons/email-icon.svg")) + "); }\n\n#input-password-login ~ .input-icon,\n#input-password-signup ~ .input-icon {\n  width: 12px;\n  height: 16px;\n  background-image: url(" + escape(__webpack_require__(/*! ../img/icons/password-icon.svg */ "./src/_style/img/icons/password-icon.svg")) + "); }\n\n#input-name-signup ~ .input-icon {\n  width: 14px;\n  height: 15px;\n  background-image: url(" + escape(__webpack_require__(/*! ../img/icons/user-icon.svg */ "./src/_style/img/icons/user-icon.svg")) + "); }\n", ""]);
+exports.push([module.i, "/** Colors */\n/** Text Colors */\n/** Complementary colors */\n/**  Drop Shadows */\n/** ==================================== Normal ==================================== */\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Regular.ttf */ "./src/_style/fonts/Muli-Regular.ttf")) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Bold.ttf */ "./src/_style/fonts/Muli-Bold.ttf")) + ") format(\"truetype\");\n  font-weight: bold;\n  font-style: normal; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-SemiBold.ttf */ "./src/_style/fonts/Muli-SemiBold.ttf")) + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: normal; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Light.ttf */ "./src/_style/fonts/Muli-Light.ttf")) + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: normal; }\n\n/** ==================================== Italic ==================================== */\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Italic.ttf */ "./src/_style/fonts/Muli-Italic.ttf")) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: italic; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-SemiBoldItalic.ttf */ "./src/_style/fonts/Muli-SemiBoldItalic.ttf")) + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: italic; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-LightItalic.ttf */ "./src/_style/fonts/Muli-LightItalic.ttf")) + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: italic; }\n\n/** ==================================== Authentication ==================================== */\n#authentication-view-container h1, #authentication-view-container h2 {\n  text-align: center;\n  margin: 0 auto; }\n\n#authentication-view-container h1 {\n  font-size: 1.85em;\n  font-weight: bold;\n  margin-bottom: 12px; }\n\n#authentication-view-container h2 {\n  max-width: 315px;\n  line-height: 1.6em;\n  color: #242E4C; }\n\n#authentication-view-container .input-wrapper {\n  margin-top: 25px; }\n\n#authentication-view-container .input-email ~ .input-icon {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/icons/icon-email.svg */ "./src/_style/img/icons/icon-email.svg")) + ");\n  width: 16px;\n  height: 12px; }\n\n#authentication-view-container .input-password ~ .input-icon {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/icons/icon-password.svg */ "./src/_style/img/icons/icon-password.svg")) + ");\n  width: 12px;\n  height: 16px; }\n\n#authentication-view-container .input-user ~ .input-icon {\n  background-image: url(" + escape(__webpack_require__(/*! ../img/icons/icon-user.svg */ "./src/_style/img/icons/icon-user.svg")) + ");\n  width: 14px;\n  height: 15px; }\n\n#authentication-view-container .checkbox-wrapper {\n  margin: 35px 0; }\n\n#authentication-view-container .primary-button {\n  display: block;\n  width: 95%;\n  margin: 0 auto; }\n\n#authentication-view-container .social-media-auth-wrapper p {\n  text-align: center;\n  color: #9B9AA9;\n  font-size: 0.86em;\n  margin: 35px 0; }\n\n#authentication-view-container .social-media-auth-wrapper .social-media-auth-container {\n  height: 50px;\n  margin: 0 auto;\n  position: relative; }\n  #authentication-view-container .social-media-auth-wrapper .social-media-auth-container a {\n    position: absolute;\n    display: block;\n    width: 28%;\n    height: 100%;\n    border-radius: 5px;\n    transition: all 0.2s linear; }\n    #authentication-view-container .social-media-auth-wrapper .social-media-auth-container a:hover {\n      box-shadow: 0 0 0 1px #E1E0E9; }\n    #authentication-view-container .social-media-auth-wrapper .social-media-auth-container a::after {\n      content: \"\";\n      position: absolute;\n      width: 22px;\n      height: 22px;\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      -webkit-transform: translate(-50%, -50%);\n      -moz-transform: translate(-50%, -50%);\n      -ms-transform: translate(-50%, -50%);\n      -o-transform: translate(-50%, -50%);\n      transform: translate(-50%, -50%);\n      background-repeat: no-repeat;\n      background-position: center;\n      background-size: contain; }\n    #authentication-view-container .social-media-auth-wrapper .social-media-auth-container a:nth-child(1) {\n      left: 0; }\n      #authentication-view-container .social-media-auth-wrapper .social-media-auth-container a:nth-child(1)::after {\n        background-image: url(" + escape(__webpack_require__(/*! ../img/icons/google-icon.svg */ "./src/_style/img/icons/google-icon.svg")) + "); }\n    #authentication-view-container .social-media-auth-wrapper .social-media-auth-container a:nth-child(2) {\n      position: absolute;\n      left: 50%;\n      -webkit-transform: translateX(-50%);\n      -moz-transform: translateX(-50%);\n      -ms-transform: translateX(-50%);\n      -o-transform: translateX(-50%);\n      transform: translateX(-50%); }\n      #authentication-view-container .social-media-auth-wrapper .social-media-auth-container a:nth-child(2)::after {\n        background-image: url(" + escape(__webpack_require__(/*! ../img/icons/twitter-icon.svg */ "./src/_style/img/icons/twitter-icon.svg")) + "); }\n    #authentication-view-container .social-media-auth-wrapper .social-media-auth-container a:nth-child(3) {\n      right: 0; }\n      #authentication-view-container .social-media-auth-wrapper .social-media-auth-container a:nth-child(3)::after {\n        background-image: url(" + escape(__webpack_require__(/*! ../img/icons/linked-in-icon.svg */ "./src/_style/img/icons/linked-in-icon.svg")) + "); }\n\n@media screen and (max-width: 480px) {\n  #authentication-view-container .primary-button {\n    width: 100%; } }\n", ""]);
 
 // exports
 
@@ -136,13 +175,12 @@ exports.push([module.i, "", ""]);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var escape = __webpack_require__(/*! ../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "/** Header */\n#header-view-container {\n  background: #FFFFFF;\n  height: 80px;\n  padding-left: 30px;\n  padding-right: 37px;\n  position: relative; }\n\n#header-view-container #logo {\n  display: inline-block;\n  width: 120px;\n  height: 30px;\n  margin-top: 18px;\n  background: url(" + escape(__webpack_require__(/*! ../img/icons/scrumbs-logo-colored.svg */ "./src/_style/img/icons/scrumbs-logo-colored.svg")) + ") no-repeat center/contain;\n  position: relative; }\n\n#header-view-container .button-group {\n  position: absolute;\n  right: 37px;\n  top: 50%;\n  transform: translateY(-50%);\n  height: 50px; }\n\n#header-button {\n  width: 165px;\n  margin-left: 35px; }\n", ""]);
+exports.push([module.i, "/** Colors */\n/** Text Colors */\n/** Complementary colors */\n/**  Drop Shadows */\n/** ==================================== Header ==================================== */\n#header-view-container {\n  background: #FFFFFF;\n  height: 70px;\n  padding-left: 30px;\n  padding-right: 37px;\n  position: relative;\n  z-index: 1000; }\n  #header-view-container #logo {\n    display: inline-block;\n    width: 120px;\n    height: 30px;\n    margin-top: 16px;\n    position: relative; }\n  #header-view-container .button-group {\n    position: absolute;\n    right: 37px;\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n    -moz-transform: translateY(-50%);\n    -ms-transform: translateY(-50%);\n    -o-transform: translateY(-50%);\n    transform: translateY(-50%);\n    height: 50px; }\n  #header-view-container #header-button {\n    width: 152px;\n    margin-left: 30px; }\n  @media screen and (max-width: 560px) {\n    #header-view-container {\n      padding-left: 15px;\n      padding-right: 15px; }\n      #header-view-container .button-group {\n        right: 15px; }\n      #header-view-container #auth-message {\n        display: none; } }\n", ""]);
 
 // exports
 
@@ -162,7 +200,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box; }\n\n/**\r\n   * Reset browser margins and padding\r\n   */\nhtml, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote,\naddress, time, span, em, strong, img, ol, ul, li, figure, canvas, video, th, td, tr {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  vertical-align: baseline;\n  font: inherit; }\n\n/**\r\n   * Correct `block` display not defined in IE 8/9.\r\n   */\narticle, aside, details, figcaption, figure, footer,\nheader, hgroup, main, nav, section, summary {\n  display: block; }\n\na {\n  text-decoration: none; }\n\ninput {\n  outline: none; }\n\n/** Buttons */\n.primary-button {\n  display: inline-block;\n  border-radius: 5px;\n  color: #FFFFFF;\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 0.97em;\n  height: 50px;\n  line-height: 51px;\n  background: linear-gradient(90deg, #6CB7FF 0%, #7985FF 100%);\n  box-shadow: 0 15px 8px -9px rgba(118, 147, 255, 0.45);\n  transition: all 0.1s ease-out; }\n\n.primary-button:hover {\n  transform: scale(1.02);\n  box-shadow: 0 18px 10px -14px rgba(118, 147, 255, 0.45); }\n\n.primary-button:active {\n  transform: scale(1);\n  box-shadow: 0 1px 1px 0 rgba(118, 147, 255, 0.45); }\n\n/** Inputs */\n.input-group {\n  margin-bottom: 20px;\n  position: relative; }\n\n.input-group .input-label {\n  display: block;\n  margin-bottom: 5px; }\n\n.input-group .input-container {\n  height: 50px;\n  background-color: #FFFFFF;\n  box-shadow: inset 0 0 0 1px #E1E0E9;\n  border-radius: 5px;\n  margin-bottom: 4px;\n  position: relative; }\n\n.input-group .input {\n  display: block;\n  width: 100%;\n  height: 100%;\n  border: none;\n  border-radius: 5px;\n  padding: 0 20px 0 40px;\n  background-color: transparent; }\n\n.input-container.input-type-password .input {\n  padding-right: 40px; }\n\n.input-container.input-type-password::after {\n  content: \"\";\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  top: 15px;\n  right: 15px;\n  background: black; }\n\n.input-group .input:focus {\n  box-shadow: inset 0 0 0 1px black; }\n\n.input-group .input-icon {\n  position: absolute;\n  left: 15px;\n  top: 50%;\n  transform: translateY(-50%);\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: contain; }\n\n.input-group .input-error {\n  font-size: 0.85em;\n  color: #D00262; }\n\n/** Body - Main container - */\nhtml, body {\n  height: 100%;\n  overflow: hidden;\n  font-size: 14px; }\n\nbody {\n  font-family: Muli;\n  position: relative;\n  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f7f7fa+0,fffcfc+100 */\n  background: #f7f7fa;\n  /* Old browsers */\n  background: -moz-linear-gradient(top, #f7f7fa 0%, #fffcfc 100%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(top, #f7f7fa 0%, #fffcfc 100%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #f7f7fa 0%, #fffcfc 100%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7fa', endColorstr='#fffcfc',GradientType=0 );\n  /* IE6-9 */\n  /** SCSS */\n  /** // Needs latest Compass, add '@import \"compass\"' to your scss\r\n    // Permalink - use to edit and share this gradient:\r\n    // http://colorzilla.com/gradient-editor/#f7f7fa+0,fffcfc+100\r\n    background-color: rgb(247,247,250); // Old browsers\r\n    @include filter-gradient(#f7f7fa, #fffcfc, vertical); // IE6-9\r\n    @include background-image(linear-gradient(top, rgba(247,247,250,1) 0%,rgba(255,252,252,1) 100%)); */ }\n\nbody::before {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background: url(" + escape(__webpack_require__(/*! ../img/icons/bg-shape.svg */ "./src/_style/img/icons/bg-shape.svg")) + ") no-repeat center 92px;\n  background-size: 90%; }\n\n#content-container {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  width: 80%;\n  height: calc( 100% - 107px);\n  background: #FFFFFF;\n  border-radius: 5px 5px 0 0;\n  box-shadow: 0 2px 15px 0 rgba(221, 220, 234, 0.7); }\n", ""]);
+exports.push([module.i, "/** Colors */\n/** Text Colors */\n/** Complementary colors */\n/**  Drop Shadows */\n/** ==================================== HTML5 display definitions ==================================== */\n*, *::after, *::before {\n  box-sizing: border-box;\n  /* Remove background highlight on touch from mobile devices */\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }\n\n/**\r\n * Reset browser margins and padding\r\n */\nhtml, body, div, section, article, aside, header, hgroup, footer, nav, h1, h2, h3, h4, h5, h6, p, blockquote,\naddress, time, span, em, strong, img, ol, ul, li, figure, canvas, video, th, td, tr {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  vertical-align: baseline;\n  font: inherit; }\n\n/**\r\n * Correct `block` display not defined in IE 8/9.\r\n */\narticle, aside, details, figcaption, figure, footer,\nheader, hgroup, main, nav, section, summary {\n  display: block; }\n\n/**\r\n * Correct `inline-block` display not defined in IE 8/9.\r\n */\naudio, canvas, video {\n  display: inline-block; }\n\n/**\r\n * Prevent modern browsers from displaying `audio` without controls.\r\n * Remove excess height in iOS 5 devices.\r\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\r\n * Address `[hidden]` styling not present in IE 8/9.\r\n * Hide the `template` element in IE, Safari, and Firefox < 22.\r\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/** ==================================== Base ==================================== */\n/**\r\n * 1. Set default font family to sans-serif.\r\n * 2. Prevent iOS text size adjust after orientation change, without disabling\r\n *    user zoom.\r\n */\nhtml {\n  font-family: sans-serif;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%; }\n\n/** ==================================== Links ==================================== */\n/**\r\n * Remove the gray background color from active links in IE 10.\r\n */\na {\n  background: transparent;\n  text-decoration: none;\n  color: inherit;\n  text-decoration: none;\n  /** Improve readability when focused and also mouse hovered in all browsers */ }\n  a:link, a :visited, a :hover, a :active {\n    text-decoration: none;\n    outline: 0; }\n  a:hover {\n    cursor: pointer; }\n\n/** ==================================== Typography ==================================== */\n/**\r\n * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.\r\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\r\n * Address styling not present in Safari 5 and Chrome.\r\n */\ndfn {\n  font-style: italic; }\n\nem {\n  font-style: italic; }\n\n/**\r\n * Address differences between Firefox and other browsers.\r\n */\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0; }\n\n/**\r\n * Address styling not present in IE 8/9.\r\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/** ==================================== Embedded content ==================================== */\n/**\r\n * Remove border when inside `a` element in IE 8/9.\r\n */\nimg {\n  border: 0; }\n\n/**\r\n * Correct overflow displayed oddly in IE 9.\r\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/**\r\n * 1. Correct font family not being inherited in all browsers.\r\n * 2. Correct font size not being inherited in all browsers.\r\n * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.\r\n */\nbutton, input, select, textarea {\n  font-family: inherit;\n  font-size: 100%;\n  margin: 0;\n  resize: none; }\n\n/**\r\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\r\n * the UA stylesheet.\r\n */\nbutton, input {\n  line-height: normal;\n  outline: none; }\n\n/**\r\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\r\n * All other form control elements do not inherit `text-transform` values.\r\n * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.\r\n * Correct `select` style inheritance in Firefox 4+ and Opera.\r\n */\nbutton, select {\n  text-transform: none; }\n\n/**\r\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\r\n *    and `video` controls.\r\n * 2. Correct inability to style clickable `input` types in iOS.\r\n * 3. Improve usability and consistency of cursor style between image-type\r\n *    `input` and others.\r\n */\nbutton,\ninput[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  cursor: pointer;\n  /* 3 */ }\n\n/**\r\n * Re-set default cursor for disabled elements.\r\n */\nbutton[disabled],\ninput[disabled] {\n  cursor: default; }\n\n/**\r\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\r\n * 2. Remove excess padding in IE 8/9/10.\r\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  padding: 0; }\n\n/**\r\n * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.\r\n * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome\r\n *    (include `-moz` to future-proof).\r\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n  /** Remove inner padding and search cancel button in Safari 5 and Chrome on OS X */ }\n  input[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"] ::-webkit-search-decoration {\n    -webkit-appearance: none; }\n\n/**\r\n * Remove inner padding and border in Firefox 4+.\r\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\r\n * 1. Remove default vertical scrollbar in IE 8/9.\r\n * 2. Improve readability and alignment in all browsers.\r\n */\ntextarea {\n  overflow: auto;\n  /* 1 */\n  vertical-align: top;\n  /* 2 */ }\n\n/** ==================================== Tables ==================================== */\n/**\r\n * Remove most spacing between table cells.\r\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nul {\n  list-style: none; }\n\n/** ==================================== Clearfix ==================================== */\n.clearfix {\n  zoom: 1; }\n  .clearfix::before, .clearfix ::after {\n    content: \"\";\n    display: block; }\n  .clearfix::after {\n    clear: both;\n    visibility: hidden;\n    display: block;\n    font-size: 0;\n    content: \".\";\n    height: 0; }\n\n/** ==================================== Inputs and buttons ==================================== */\ninput, textarea, button {\n  -webkit-appearance: none;\n  border-radius: 0; }\n\ninput:focus, textarea:focus {\n  outline: none; }\n\n/** Colors */\n/** Text Colors */\n/** Complementary colors */\n/**  Drop Shadows */\n/** ==================================== Normal ==================================== */\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Regular.ttf */ "./src/_style/fonts/Muli-Regular.ttf")) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: normal; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Bold.ttf */ "./src/_style/fonts/Muli-Bold.ttf")) + ") format(\"truetype\");\n  font-weight: bold;\n  font-style: normal; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-SemiBold.ttf */ "./src/_style/fonts/Muli-SemiBold.ttf")) + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: normal; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Light.ttf */ "./src/_style/fonts/Muli-Light.ttf")) + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: normal; }\n\n/** ==================================== Italic ==================================== */\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-Italic.ttf */ "./src/_style/fonts/Muli-Italic.ttf")) + ") format(\"truetype\");\n  font-weight: normal;\n  font-style: italic; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-SemiBoldItalic.ttf */ "./src/_style/fonts/Muli-SemiBoldItalic.ttf")) + ") format(\"truetype\");\n  font-weight: 600;\n  font-style: italic; }\n\n@font-face {\n  font-family: \"Muli\";\n  src: url(" + escape(__webpack_require__(/*! ../fonts/Muli-LightItalic.ttf */ "./src/_style/fonts/Muli-LightItalic.ttf")) + ") format(\"truetype\");\n  font-weight: 300;\n  font-style: italic; }\n\n/** ==================================== Miscellaneous ==================================== */\n.logo {\n  background: url(" + escape(__webpack_require__(/*! ../img/icons/scrumbs-logo-colored.svg */ "./src/_style/img/icons/scrumbs-logo-colored.svg")) + ") no-repeat;\n  background-size: contain; }\n\n.accent {\n  color: #6390F6; }\n\n.pointer {\n  cursor: pointer; }\n\n.bold {\n  font-weight: bold; }\n\n.semibold {\n  font-weight: 600; }\n\n.light {\n  font-weight: 300; }\n\n.underline, a.underline {\n  text-decoration: underline; }\n\n.noselect {\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none; }\n\n/** ==================================== Body ==================================== */\nhtml, body {\n  height: 100%;\n  overflow: hidden;\n  font-size: 14px; }\n\nbody {\n  font-family: Muli, Arial, Helvetica, sans-serif;\n  color: #242246;\n  background: #FFFFFF;\n  background: -moz-linear-gradient(top, #F6F6F9 0%, #FFFFFF 100%);\n  background: -webkit-linear-gradient(top, #F6F6F9 0%, #FFFFFF 100%);\n  background: linear-gradient(to bottom, #F6F6F9 0%, #FFFFFF 100%); }\n\n/** ==================================== Main Container ==================================== */\n#content-wrapper {\n  width: 80%;\n  height: calc( 100% - 95px);\n  position: absolute;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n  -moz-transform: translateX(-50%);\n  -ms-transform: translateX(-50%);\n  -o-transform: translateX(-50%);\n  transform: translateX(-50%);\n  bottom: 0; }\n\n#content-container {\n  height: 100%;\n  background-color: #FFFFFF;\n  border-radius: 5px 5px 0 0;\n  box-shadow: 0 2px 20px 0 #E1E0E9;\n  position: relative; }\n  #content-container::before {\n    content: \"\";\n    position: absolute;\n    top: -10px;\n    left: -5%;\n    width: 110%;\n    height: 105%;\n    background: url(" + escape(__webpack_require__(/*! ../img/icons/bg-shape.svg */ "./src/_style/img/icons/bg-shape.svg")) + ") no-repeat;\n    background-size: 100% 100%;\n    z-index: -1; }\n\n/** ==================================== Inputs ==================================== */\ninput, textarea {\n  color: #242E4C;\n  background-color: #FFFFFF; }\n\n::placeholder {\n  color: #9B9AA9;\n  opacity: 1; }\n\n:-ms-input-placeholder {\n  color: #9B9AA9; }\n\n::-ms-input-placeholder {\n  color: #9B9AA9; }\n\n.input-group {\n  position: relative; }\n  .input-group:not(:last-child) {\n    margin-bottom: 20px; }\n  .input-group .input-label {\n    display: block;\n    margin-bottom: 5px; }\n  .input-group .input-container {\n    height: 50px;\n    background-color: #FFFFFF;\n    box-shadow: inset 0 0 0 1px #E1E0E9;\n    border-radius: 5px;\n    margin-bottom: 4px;\n    position: relative; }\n  .input-group .input {\n    display: block;\n    width: 100%;\n    height: 100%;\n    border: none;\n    border-radius: 5px;\n    padding: 0 20px 0 40px;\n    background-color: transparent;\n    color: #242E4C; }\n    .input-group .input:focus {\n      box-shadow: inset 0 0 0 1px #6390F6; }\n  .input-group .input-icon {\n    position: absolute;\n    left: 15px;\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n    -moz-transform: translateY(-50%);\n    -ms-transform: translateY(-50%);\n    -o-transform: translateY(-50%);\n    transform: translateY(-50%);\n    background-repeat: no-repeat;\n    background-position: center;\n    background-size: contain; }\n  .input-group .input-error {\n    font-size: 0.85em;\n    color: #D00262;\n    display: none; }\n  .input-group .input-container.error ~ .input-error {\n    display: unset; }\n\n/** ==================================== Checkbox ==================================== */\n.checkbox-group {\n  display: inline-block;\n  position: relative; }\n  .checkbox-group .checkbox {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 20px;\n    height: 20px;\n    border: 1px solid #E1E0E9;\n    border-radius: 3px; }\n  .checkbox-group label {\n    color: #9B9AA9;\n    font-size: 0.86em;\n    line-height: 23px;\n    padding-left: 28px;\n    background-color: white; }\n    .checkbox-group label::before {\n      content: \"\";\n      display: block;\n      position: absolute;\n      left: 0;\n      top: 0;\n      width: 20px;\n      height: 20px;\n      border: 1px solid #E1E0E9;\n      border-radius: 3px; }\n  .checkbox-group input:checked + label::after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    width: 10px;\n    height: 10px;\n    background: grey;\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n    -moz-transform: translateY(-50%);\n    -ms-transform: translateY(-50%);\n    -o-transform: translateY(-50%);\n    transform: translateY(-50%);\n    left: 6px;\n    border-radius: 3px; }\n\n/** ==================================== Buttons ==================================== */\n.primary-button {\n  display: inline-block;\n  border-radius: 5px;\n  border: none;\n  color: #FFFFFF;\n  text-transform: uppercase;\n  text-align: center;\n  font-size: 0.97em;\n  height: 50px;\n  line-height: 51px;\n  box-shadow: 0 12px 8px -9px #d0d4ff;\n  background: #FFFFFF;\n  background: -moz-linear-gradient(left, #6CB7FF 0%, #7985FF 100%);\n  background: -webkit-linear-gradient(left, #6CB7FF 0%, #7985FF 100%);\n  background: linear-gradient(to right, #6CB7FF 0%, #7985FF 100%);\n  transition: all 0.1s ease-out; }\n  .primary-button:active {\n    box-shadow: 0 1px 1px 0 #d0d4ff; }\n\n@media screen and (max-width: 560px) {\n  #content-wrapper {\n    width: 95%;\n    height: calc( 100% - 85px); } }\n", ""]);
 
 // exports
 
@@ -560,6 +598,83 @@ window.onload = function () {
 
 /***/ }),
 
+/***/ "./src/_style/fonts/Muli-Bold.ttf":
+/*!****************************************!*\
+  !*** ./src/_style/fonts/Muli-Bold.ttf ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "./fonts/Muli-Bold.ttf";
+
+/***/ }),
+
+/***/ "./src/_style/fonts/Muli-Italic.ttf":
+/*!******************************************!*\
+  !*** ./src/_style/fonts/Muli-Italic.ttf ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "./fonts/Muli-Italic.ttf";
+
+/***/ }),
+
+/***/ "./src/_style/fonts/Muli-Light.ttf":
+/*!*****************************************!*\
+  !*** ./src/_style/fonts/Muli-Light.ttf ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "./fonts/Muli-Light.ttf";
+
+/***/ }),
+
+/***/ "./src/_style/fonts/Muli-LightItalic.ttf":
+/*!***********************************************!*\
+  !*** ./src/_style/fonts/Muli-LightItalic.ttf ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "./fonts/Muli-LightItalic.ttf";
+
+/***/ }),
+
+/***/ "./src/_style/fonts/Muli-Regular.ttf":
+/*!*******************************************!*\
+  !*** ./src/_style/fonts/Muli-Regular.ttf ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "./fonts/Muli-Regular.ttf";
+
+/***/ }),
+
+/***/ "./src/_style/fonts/Muli-SemiBold.ttf":
+/*!********************************************!*\
+  !*** ./src/_style/fonts/Muli-SemiBold.ttf ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "./fonts/Muli-SemiBold.ttf";
+
+/***/ }),
+
+/***/ "./src/_style/fonts/Muli-SemiBoldItalic.ttf":
+/*!**************************************************!*\
+  !*** ./src/_style/fonts/Muli-SemiBoldItalic.ttf ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "./fonts/Muli-SemiBoldItalic.ttf";
+
+/***/ }),
+
 /***/ "./src/_style/img/icons/bg-shape.svg":
 /*!*******************************************!*\
   !*** ./src/_style/img/icons/bg-shape.svg ***!
@@ -567,29 +682,62 @@ window.onload = function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "../img/bg-shape.svg";
+module.exports = "./img/bg-shape.svg";
 
 /***/ }),
 
-/***/ "./src/_style/img/icons/email-icon.svg":
+/***/ "./src/_style/img/icons/google-icon.svg":
+/*!**********************************************!*\
+  !*** ./src/_style/img/icons/google-icon.svg ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "./img/google-icon.svg";
+
+/***/ }),
+
+/***/ "./src/_style/img/icons/icon-email.svg":
 /*!*********************************************!*\
-  !*** ./src/_style/img/icons/email-icon.svg ***!
+  !*** ./src/_style/img/icons/icon-email.svg ***!
   \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "../img/email-icon.svg";
+module.exports = "./img/icon-email.svg";
 
 /***/ }),
 
-/***/ "./src/_style/img/icons/password-icon.svg":
+/***/ "./src/_style/img/icons/icon-password.svg":
 /*!************************************************!*\
-  !*** ./src/_style/img/icons/password-icon.svg ***!
+  !*** ./src/_style/img/icons/icon-password.svg ***!
   \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "../img/password-icon.svg";
+module.exports = "./img/icon-password.svg";
+
+/***/ }),
+
+/***/ "./src/_style/img/icons/icon-user.svg":
+/*!********************************************!*\
+  !*** ./src/_style/img/icons/icon-user.svg ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "./img/icon-user.svg";
+
+/***/ }),
+
+/***/ "./src/_style/img/icons/linked-in-icon.svg":
+/*!*************************************************!*\
+  !*** ./src/_style/img/icons/linked-in-icon.svg ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "./img/linked-in-icon.svg";
 
 /***/ }),
 
@@ -600,18 +748,38 @@ module.exports = "../img/password-icon.svg";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "../img/scrumbs-logo-colored.svg";
+module.exports = "./img/scrumbs-logo-colored.svg";
 
 /***/ }),
 
-/***/ "./src/_style/img/icons/user-icon.svg":
-/*!********************************************!*\
-  !*** ./src/_style/img/icons/user-icon.svg ***!
-  \********************************************/
+/***/ "./src/_style/img/icons/twitter-icon.svg":
+/*!***********************************************!*\
+  !*** ./src/_style/img/icons/twitter-icon.svg ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "../img/user-icon.svg";
+module.exports = "./img/twitter-icon.svg";
+
+/***/ }),
+
+/***/ "./src/_style/style-sheets/authentication-forgot-password.scss":
+/*!*********************************************************************!*\
+  !*** ./src/_style/style-sheets/authentication-forgot-password.scss ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./authentication-forgot-password.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./src/_style/style-sheets/authentication-forgot-password.scss");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/addStyles.js */ "./node_modules/style-loader/addStyles.js")(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
 
 /***/ }),
 
@@ -626,6 +794,26 @@ module.exports = "../img/user-icon.svg";
 
 // load the styles
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./authentication-log-in.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./src/_style/style-sheets/authentication-log-in.scss");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/addStyles.js */ "./node_modules/style-loader/addStyles.js")(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/_style/style-sheets/authentication-sign-up.scss":
+/*!*************************************************************!*\
+  !*** ./src/_style/style-sheets/authentication-sign-up.scss ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./authentication-sign-up.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./src/_style/style-sheets/authentication-sign-up.scss");
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(/*! ../../../node_modules/style-loader/addStyles.js */ "./node_modules/style-loader/addStyles.js")(content, {});
@@ -715,6 +903,17 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./src/_view-templates/authentication-forgot-password.html":
+/*!*****************************************************************!*\
+  !*** ./src/_view-templates/authentication-forgot-password.html ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<span class=\"logo\"></span>\r\n\r\n<h1>Forgot yout password?</h1>\r\n\r\n<h2>Don't worry, we got your back. Enter the email address you used when you joined, and we'll send you a password reset link</h2>\r\n\r\n<div class=\"forgot-password-body\">\r\n\r\n        <div class=\"input-wrapper\">\r\n\r\n            <div class=\"input-group\">\r\n        \r\n                <label class=\"input-label\" for=\"input-email-forgot-password\">Email</label>\r\n        \r\n                <div class=\"input-container input-type-text\">\r\n        \r\n                    <input id=\"input-email-forgot-password\" type=\"text\" class=\"input input-email\" placeholder=\"Enter your email address\" spellcheck=\"false\">\r\n        \r\n                    <span class=\"input-icon\"></span>\r\n        \r\n                </div>\r\n        \r\n                <span class=\"input-error\">Some error message</span>\r\n        \r\n            </div>\r\n            <!-- email -->\r\n                \r\n        </div>\r\n            \r\n        <button id=\"request-reset-link\" class=\"primary-button\">Request Reset Link</button>\r\n\r\n        <div class=\"forgot-password-footer\">\r\n\r\n            <span>Did you remember your password?</span>\r\n\r\n            <span id=\"try-logging-in\" class=\"accent underline pointer noselect\">Try logging in</span>\r\n\r\n        </div>\r\n\r\n        \r\n\r\n</div>\r\n\r\n";
+
+/***/ }),
+
 /***/ "./src/_view-templates/authentication-log-in.html":
 /*!********************************************************!*\
   !*** ./src/_view-templates/authentication-log-in.html ***!
@@ -722,7 +921,18 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<h1 class=\"authentication-title\">Log in to your account</h1>\r\n\r\n<h2 class=\"authentication-description\">Enter your email and password here and you'll be on your way</h2>\r\n\r\n<div class=\"input-wrapper\">\r\n\r\n    <div class=\"input-group\">\r\n\r\n        <label class=\"input-label\" for=\"input-email-login\">Email</label>\r\n\r\n        <div class=\"input-container input-type-text\">\r\n\r\n            <input id=\"input-email-login\" type=\"text\" class=\"input\" placeholder=\"Enter your email address\">\r\n\r\n            <span class=\"input-icon\"></span>\r\n\r\n        </div>\r\n\r\n        <span class=\"input-error\">Some error message</span>\r\n\r\n    </div>\r\n    <!-- email -->\r\n\r\n    <div class=\"input-group\">\r\n\r\n            <label class=\"input-label\" for=\"input-password-login\">Password</label>\r\n\r\n            <div class=\"input-container input-type-password\">\r\n\r\n                <input id=\"input-password-login\" type=\"text\" class=\"input\" placeholder=\"5+ characters\">\r\n\r\n                <span class=\"input-icon\"></span>\r\n\r\n            </div>\r\n\r\n            <span class=\"input-error\">Some error message</span>\r\n\r\n    </div>\r\n    <!-- password -->\r\n\r\n</div>";
+module.exports = "\r\n<h1 class=\"authentication-title\">Log in to your account</h1>\r\n\r\n<h2 class=\"authentication-description\">Enter your email and password here and you'll be on your way</h2>\r\n\r\n<div class=\"input-wrapper\">\r\n\r\n    <div class=\"input-group\">\r\n\r\n        <label class=\"input-label\" for=\"input-email-login\">Email</label>\r\n\r\n        <div class=\"input-container input-type-text\">\r\n\r\n            <input id=\"input-email-login\" type=\"text\" class=\"input input-email\" placeholder=\"Enter your email address\" spellcheck=\"false\">\r\n\r\n            <span class=\"input-icon\"></span>\r\n\r\n        </div>\r\n\r\n        <span class=\"input-error\">Some error message</span>\r\n\r\n    </div>\r\n    <!-- email -->\r\n\r\n    <div class=\"input-group\">\r\n\r\n            <label class=\"input-label\" for=\"input-password-login\">Password</label>\r\n\r\n            <div class=\"input-container input-type-password\">\r\n\r\n                <input id=\"input-password-login\" type=\"text\" class=\"input input-password\" placeholder=\"5+ characters\" spellcheck=\"false\">\r\n\r\n                <span class=\"input-icon\"></span>\r\n\r\n            </div>\r\n\r\n            <span class=\"input-error\">Some error message</span>\r\n\r\n    </div>\r\n    <!-- password -->\r\n\r\n</div>\r\n\r\n\r\n<div class=\"authentication-footer\">\r\n\r\n    <div class=\"checkbox-wrapper\">\r\n\r\n        <div class=\"checkbox-group\">\r\n            <input id=\"remember-me\" type=\"checkbox\">\r\n            <label for=\"remember-me\" class=\"noselect pointer\">Remember Me</label>\r\n        </div>\r\n        \r\n        <p id=\"forgot-password\" class=\"accent pointer noselect\">Forgot Password?</p>\r\n\r\n    </div>\r\n\r\n    <button id=\"log-in\" class=\"primary-button\">Log In</button>\r\n\r\n    <div class=\"social-media-auth-wrapper\">\r\n\r\n        <p>Or log in with:</p>\r\n\r\n        <div class=\"social-media-auth-container\">\r\n\r\n            <a href=\"#\" class=\"button-google\"></a>\r\n            <a href=\"#\" class=\"button-twitter\"></a>\r\n            <a href=\"#\" class=\"button-linkedin\"></a>\r\n\r\n        </div>\r\n\r\n    </div>\r\n\r\n</div>";
+
+/***/ }),
+
+/***/ "./src/_view-templates/authentication-sign-up.html":
+/*!*********************************************************!*\
+  !*** ./src/_view-templates/authentication-sign-up.html ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<h1 class=\"authentication-title\">Create your account</h1>\r\n\r\n<h2 class=\"authentication-description\">Enter your accout details below and you'll be on your way</h2>\r\n\r\n<div class=\"input-wrapper\">\r\n\r\n        <div class=\"input-group input-type-text\">\r\n\r\n            <label class=\"input-label\" for=\"input-name-signup\">Name</label>\r\n\r\n            <div class=\"input-container input-text\">\r\n\r\n                <input id=\"input-name-signup\" type=\"text\" class=\"input input-user\" placeholder=\"Enter your full name\" spellcheck=\"false\">\r\n\r\n                <span class=\"input-icon\"></span>\r\n\r\n            </div>\r\n\r\n            <span class=\"input-error\">Some error message</span>\r\n\r\n        </div>\r\n        <!-- name -->\r\n\r\n        <div class=\"input-group input-type-text\">\r\n\r\n                <label class=\"input-label\" for=\"input-email-signup\">Email</label>\r\n\r\n                <div class=\"input-container\">\r\n\r\n                    <input id=\"input-email-signup\" type=\"text\" class=\"input input-email\" placeholder=\"Enter your email address\" spellcheck=\"false\">\r\n\r\n                    <span class=\"input-icon\"></span>\r\n\r\n                </div>\r\n\r\n                <span class=\"input-error\">Some error message</span>\r\n\r\n        </div>\r\n        <!-- email -->\r\n\r\n        <div class=\"input-group\">\r\n\r\n                <label class=\"input-label\" for=\"input-password-signup\">Password</label>\r\n\r\n                <div class=\"input-container input-type-password\">\r\n\r\n                    <input id=\"input-password-signup\" type=\"text\" class=\"input input-password\" placeholder=\"5+ characters\" spellcheck=\"false\">\r\n\r\n                    <span class=\"input-icon\"></span>\r\n\r\n                </div>\r\n\r\n                <span class=\"input-error\">Some error message</span>\r\n\r\n        </div>\r\n        <!-- password -->\r\n\r\n</div>\r\n\r\n<div class=\"authentication-footer\">\r\n\r\n        <div class=\"checkbox-wrapper\">\r\n    \r\n            <div class=\"checkbox-group\">\r\n                <input id=\"agree-terms\" type=\"checkbox\">\r\n                <label for=\"agree-terms\" class=\"noselect pointer\">I agree to Scrumbs' <a href=\"#\" class=\"accent underline\">Terms of Service</a></label>\r\n            </div>\r\n    \r\n        </div>\r\n\r\n        <button id=\"sing-up\" class=\"primary-button\">Sign Up</button>\r\n\r\n        <div class=\"social-media-auth-wrapper\">\r\n\r\n                <p>Or sign up with:</p>\r\n        \r\n                <div class=\"social-media-auth-container\">\r\n\r\n                    <a href=\"#\" class=\"button-google\"></a>\r\n                    <a href=\"#\" class=\"button-twitter\"></a>\r\n                    <a href=\"#\" class=\"button-linkedin\"></a>\r\n\r\n                </div>\r\n        \r\n        </div>\r\n    \r\n</div>";
 
 /***/ }),
 
@@ -733,7 +943,7 @@ module.exports = "\r\n<h1 class=\"authentication-title\">Log in to your account<
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n\r\n<div id=\"authentication-log-in-container\"></div>\r\n\r\n\r\n<div id=\"authentication-sign-up-container\"></div>";
+module.exports = "\r\n\r\n\r\n<div id=\"authentication-log-in-container\"></div>\r\n\r\n\r\n<div id=\"authentication-sign-up-container\"></div>\r\n\r\n\r\n<div id=\"authentication-forgot-password-container\"></div>";
 
 /***/ }),
 
@@ -744,7 +954,7 @@ module.exports = "\r\n\r\n\r\n<div id=\"authentication-log-in-container\"></div>
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<a href=\"#\" id=\"logo\"></a>\r\n\r\n<div class=\"button-group\">\r\n\r\n    <span class=\"\">Already have an account?</span>\r\n\r\n    <a href=\"#\" id=\"header-button\" class=\"primary-button\">Login</a>\r\n\r\n</div>";
+module.exports = "\r\n<span id=\"logo\" class=\"logo\"></span>\r\n\r\n<div class=\"button-group\">\r\n\r\n    <span class=\"\" id=\"auth-message\">Don't have an account?</span>\r\n\r\n    <button id=\"header-button\" class=\"primary-button\">Sign Up</button>\r\n\r\n</div>";
 
 /***/ }),
 
@@ -756,6 +966,86 @@ module.exports = "\r\n<a href=\"#\" id=\"logo\"></a>\r\n\r\n<div class=\"button-
 /***/ (function(module, exports) {
 
 module.exports = "\r\n\r\n<div id=\"header-component-container\"></div>";
+
+/***/ }),
+
+/***/ "./src/authentication/AuthenticationForgotPassword.ts":
+/*!************************************************************!*\
+  !*** ./src/authentication/AuthenticationForgotPassword.ts ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+exports.__esModule = true;
+var ViewComponent_1 = __webpack_require__(/*! ../core/ViewComponent */ "./src/core/ViewComponent.ts");
+// CSS
+__webpack_require__(/*! ../_style/style-sheets/authentication-forgot-password.scss */ "./src/_style/style-sheets/authentication-forgot-password.scss");
+var ViewEnterTypes_1 = __webpack_require__(/*! ../core/ViewEnterTypes */ "./src/core/ViewEnterTypes.ts");
+var ViewExitTypes_1 = __webpack_require__(/*! ../core/ViewExitTypes */ "./src/core/ViewExitTypes.ts");
+var AuthenticationNotifications_1 = __webpack_require__(/*! ./AuthenticationNotifications */ "./src/authentication/AuthenticationNotifications.ts");
+// HTML
+var template = __webpack_require__(/*! ../_view-templates/authentication-forgot-password.html */ "./src/_view-templates/authentication-forgot-password.html");
+var AuthenticationForgotPassword = /** @class */ (function (_super) {
+    __extends(AuthenticationForgotPassword, _super);
+    function AuthenticationForgotPassword(view, container) {
+        var _this = _super.call(this, view, container) || this;
+        console.info("Login view component initialized.");
+        _this.container.innerHTML = template;
+        _this.title = document.getElementById("");
+        _this.subTitle = document.getElementById("");
+        _this.emailInputLabel = document.getElementById("");
+        _this.emailInput = document.getElementById("input-email-forgot-password");
+        _this.emailInputError = document.getElementById("");
+        _this.tryLoggingInBtn = document.getElementById("try-logging-in");
+        _this.tryLoggingInBtnListener = _this.tryLoggingInBtnListener.bind(_this);
+        _this.enterScene();
+        return _this;
+    }
+    AuthenticationForgotPassword.prototype.registerEventListeners = function () {
+        this.tryLoggingInBtn.addEventListener("click", this.tryLoggingInBtnListener);
+    };
+    AuthenticationForgotPassword.prototype.unregisterEventListeners = function () {
+        this.tryLoggingInBtn.addEventListener("click", this.tryLoggingInBtnListener);
+    };
+    AuthenticationForgotPassword.prototype.tryLoggingInBtnListener = function (e) {
+        this.sendSignal(AuthenticationNotifications_1.AuthenticationNotifications.TRY_LOGGING_IN);
+    };
+    AuthenticationForgotPassword.prototype.enterScene = function (enterType) {
+        if (enterType === ViewEnterTypes_1.ViewEnterTypes.SWITCH_COMPONENT) {
+            this.container.style.display = "block";
+            console.log("Authentication forgot password view component enter scene");
+        }
+        else {
+            this.registerEventListeners();
+        }
+    };
+    AuthenticationForgotPassword.prototype.exitScene = function (exitType) {
+        console.info("Exit being called in authentication forgot password view component");
+        if (exitType === ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT) {
+            this.container.style.display = "none";
+        }
+        else {
+            _super.prototype.exitScene.call(this, exitType);
+            this.unregisterEventListeners();
+            this.view.componentExited(this.name);
+        }
+    };
+    return AuthenticationForgotPassword;
+}(ViewComponent_1.ViewComponent));
+exports.AuthenticationForgotPassword = AuthenticationForgotPassword;
+
 
 /***/ }),
 
@@ -782,32 +1072,160 @@ exports.__esModule = true;
 var ViewComponent_1 = __webpack_require__(/*! ../core/ViewComponent */ "./src/core/ViewComponent.ts");
 // CSS
 __webpack_require__(/*! ../_style/style-sheets/authentication-log-in.scss */ "./src/_style/style-sheets/authentication-log-in.scss");
+var ViewExitTypes_1 = __webpack_require__(/*! ../core/ViewExitTypes */ "./src/core/ViewExitTypes.ts");
+var ViewEnterTypes_1 = __webpack_require__(/*! ../core/ViewEnterTypes */ "./src/core/ViewEnterTypes.ts");
+var AuthenticationNotifications_1 = __webpack_require__(/*! ./AuthenticationNotifications */ "./src/authentication/AuthenticationNotifications.ts");
 // HTML
 var template = __webpack_require__(/*! ../_view-templates/authentication-log-in.html */ "./src/_view-templates/authentication-log-in.html");
 var AuthenticationLogin = /** @class */ (function (_super) {
     __extends(AuthenticationLogin, _super);
     function AuthenticationLogin(view, container) {
         var _this = _super.call(this, view, container) || this;
+        console.info("Login view component initialized.");
         _this.container.innerHTML = template;
+        _this.title = document.getElementById("");
+        _this.subTitle = document.getElementById("");
+        _this.emailInputLabel = document.getElementById("");
+        _this.emailInput = document.getElementById("");
+        _this.emailInputError = document.getElementById("");
+        _this.passwordInputLabel = document.getElementById("");
+        _this.passwordInput = document.getElementById("");
+        _this.passwordInputError = document.getElementById("");
+        _this.forgotPassBtn = document.getElementById("forgot-password");
+        _this.forgotPassBtnListener = _this.forgotPassBtnListener.bind(_this);
         _this.enterScene();
         return _this;
     }
     AuthenticationLogin.prototype.registerEventListeners = function () {
+        this.forgotPassBtn.addEventListener("click", this.forgotPassBtnListener);
     };
     AuthenticationLogin.prototype.unregisterEventListeners = function () {
+        this.forgotPassBtn.removeEventListener("click", this.forgotPassBtnListener);
     };
-    AuthenticationLogin.prototype.enterScene = function () {
-        this.registerEventListeners();
+    AuthenticationLogin.prototype.forgotPassBtnListener = function (e) {
+        this.sendSignal(AuthenticationNotifications_1.AuthenticationNotifications.FORGOT_PASSWORD);
+    };
+    AuthenticationLogin.prototype.enterScene = function (enterType) {
+        if (enterType === ViewEnterTypes_1.ViewEnterTypes.SWITCH_COMPONENT) {
+            this.container.style.display = "block";
+            console.log("Authentication login view component enter scene");
+        }
+        else {
+            this.registerEventListeners();
+        }
     };
     AuthenticationLogin.prototype.exitScene = function (exitType) {
-        _super.prototype.exitScene.call(this, exitType);
-        this.unregisterEventListeners();
         console.info("Exit being called in authentication login view component");
-        this.view.componentExited(this.name);
+        if (exitType === ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT) {
+            this.container.style.display = "none";
+        }
+        else {
+            _super.prototype.exitScene.call(this, exitType);
+            this.unregisterEventListeners();
+            this.view.componentExited(this.name);
+        }
     };
     return AuthenticationLogin;
 }(ViewComponent_1.ViewComponent));
 exports.AuthenticationLogin = AuthenticationLogin;
+
+
+/***/ }),
+
+/***/ "./src/authentication/AuthenticationNotifications.ts":
+/*!***********************************************************!*\
+  !*** ./src/authentication/AuthenticationNotifications.ts ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+exports.__esModule = true;
+var AuthenticationNotifications = /** @class */ (function () {
+    function AuthenticationNotifications() {
+    }
+    AuthenticationNotifications.FORGOT_PASSWORD = "FORGOT_PASSWORD";
+    AuthenticationNotifications.TRY_LOGGING_IN = "TRY_LOGGING_IN";
+    return AuthenticationNotifications;
+}());
+exports.AuthenticationNotifications = AuthenticationNotifications;
+
+
+/***/ }),
+
+/***/ "./src/authentication/AuthenticationSignUp.ts":
+/*!****************************************************!*\
+  !*** ./src/authentication/AuthenticationSignUp.ts ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+exports.__esModule = true;
+var ViewComponent_1 = __webpack_require__(/*! ../core/ViewComponent */ "./src/core/ViewComponent.ts");
+// CSS
+__webpack_require__(/*! ../_style/style-sheets/authentication-sign-up.scss */ "./src/_style/style-sheets/authentication-sign-up.scss");
+var ViewExitTypes_1 = __webpack_require__(/*! ../core/ViewExitTypes */ "./src/core/ViewExitTypes.ts");
+var ViewEnterTypes_1 = __webpack_require__(/*! ../core/ViewEnterTypes */ "./src/core/ViewEnterTypes.ts");
+// HTML
+var template = __webpack_require__(/*! ../_view-templates/authentication-sign-up.html */ "./src/_view-templates/authentication-sign-up.html");
+var AuthenticationSignUp = /** @class */ (function (_super) {
+    __extends(AuthenticationSignUp, _super);
+    function AuthenticationSignUp(view, container) {
+        var _this = _super.call(this, view, container) || this;
+        _this.container.innerHTML = template;
+        _this.title = document.getElementById("");
+        _this.subTitle = document.getElementById("");
+        _this.nameInputLabel = document.getElementById("");
+        _this.nameInput = document.getElementById("");
+        _this.nameInputError = document.getElementById("");
+        _this.emailInputLabel = document.getElementById("");
+        _this.emailInput = document.getElementById("");
+        _this.emailInputError = document.getElementById("");
+        _this.passwordInputLabel = document.getElementById("");
+        _this.passwordInput = document.getElementById("");
+        _this.passwordInputError = document.getElementById("");
+        return _this;
+    }
+    AuthenticationSignUp.prototype.registerEventListeners = function () {
+    };
+    AuthenticationSignUp.prototype.unregisterEventListeners = function () {
+    };
+    AuthenticationSignUp.prototype.enterScene = function (enterType) {
+        if (enterType === ViewEnterTypes_1.ViewEnterTypes.SWITCH_COMPONENT) {
+            this.container.style.display = "block";
+            console.log("Authentication login view component enter scene");
+        }
+        else {
+            this.registerEventListeners();
+        }
+    };
+    AuthenticationSignUp.prototype.exitScene = function (exitType) {
+        console.info("Exit being called in authentication login view component");
+        if (exitType === ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT) {
+            this.container.style.display = "none";
+        }
+        else {
+            _super.prototype.exitScene.call(this, exitType);
+            this.unregisterEventListeners();
+            this.view.componentExited(this.name);
+        }
+    };
+    return AuthenticationSignUp;
+}(ViewComponent_1.ViewComponent));
+exports.AuthenticationSignUp = AuthenticationSignUp;
 
 
 /***/ }),
@@ -837,6 +1255,12 @@ var View_1 = __webpack_require__(/*! ../core/View */ "./src/core/View.ts");
 var AuthenticationLogin_1 = __webpack_require__(/*! ./AuthenticationLogin */ "./src/authentication/AuthenticationLogin.ts");
 // CSS
 __webpack_require__(/*! ../_style/style-sheets/authentication-view.scss */ "./src/_style/style-sheets/authentication-view.scss");
+var AuthenticationSignUp_1 = __webpack_require__(/*! ./AuthenticationSignUp */ "./src/authentication/AuthenticationSignUp.ts");
+var AuthenticationForgotPassword_1 = __webpack_require__(/*! ./AuthenticationForgotPassword */ "./src/authentication/AuthenticationForgotPassword.ts");
+var HeaderNotifications_1 = __webpack_require__(/*! ../header/HeaderNotifications */ "./src/header/HeaderNotifications.ts");
+var AuthenticationNotifications_1 = __webpack_require__(/*! ./AuthenticationNotifications */ "./src/authentication/AuthenticationNotifications.ts");
+var ViewExitTypes_1 = __webpack_require__(/*! ../core/ViewExitTypes */ "./src/core/ViewExitTypes.ts");
+var ViewEnterTypes_1 = __webpack_require__(/*! ../core/ViewEnterTypes */ "./src/core/ViewEnterTypes.ts");
 // HTML
 var authenticationViewTemplate = __webpack_require__(/*! ../_view-templates/authentication-view.html */ "./src/_view-templates/authentication-view.html");
 var AuthenticationView = /** @class */ (function (_super) {
@@ -849,7 +1273,10 @@ var AuthenticationView = /** @class */ (function (_super) {
         _this.container.innerHTML = authenticationViewTemplate;
         _this.authenticationLoginContainer = document.getElementById("authentication-log-in-container");
         _this.authenticationSignUpContainer = document.getElementById("authentication-sign-up-container");
+        _this.authenticationForgotPasswordContainer = document.getElementById("authentication-forgot-password-container");
         _this.authenticationLogin = new AuthenticationLogin_1.AuthenticationLogin(_this, _this.authenticationLoginContainer);
+        _this.authenticationSignUp = new AuthenticationSignUp_1.AuthenticationSignUp(_this, _this.authenticationSignUpContainer);
+        _this.authenticationForgotPassword = new AuthenticationForgotPassword_1.AuthenticationForgotPassword(_this, _this.authenticationForgotPasswordContainer);
         _this.enterScene();
         return _this;
     }
@@ -859,13 +1286,28 @@ var AuthenticationView = /** @class */ (function (_super) {
         this.exitCallback = callback;
         this.authenticationLogin.exitScene(exitType);
         this.authenticationSignUp.exitScene(exitType);
+        this.authenticationForgotPassword.exitScene(exitType);
     };
     AuthenticationView.prototype.listNotificationInterests = function () {
         var notifications = _super.prototype.listNotificationInterests.call(this);
+        notifications.push(HeaderNotifications_1.HeaderNotifications.SIGN_UP);
+        notifications.push(HeaderNotifications_1.HeaderNotifications.LOG_IN);
+        notifications.push(AuthenticationNotifications_1.AuthenticationNotifications.FORGOT_PASSWORD);
         return notifications;
     };
     AuthenticationView.prototype.handleNotification = function (notification) {
+        console.log("Notification received in " + this.NAME + ": " + notification.name);
         switch (notification.name) {
+            case HeaderNotifications_1.HeaderNotifications.SIGN_UP:
+                this.authenticationLogin.exitScene(ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT);
+                this.authenticationForgotPassword.exitScene(ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT);
+                this.authenticationSignUp.enterScene(ViewEnterTypes_1.ViewEnterTypes.SWITCH_COMPONENT);
+                break;
+            case HeaderNotifications_1.HeaderNotifications.LOG_IN:
+                this.authenticationSignUp.exitScene(ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT);
+                this.authenticationForgotPassword.exitScene(ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT);
+                this.authenticationLogin.enterScene(ViewEnterTypes_1.ViewEnterTypes.SWITCH_COMPONENT);
+                break;
             default:
                 break;
         }
@@ -873,6 +1315,16 @@ var AuthenticationView = /** @class */ (function (_super) {
     AuthenticationView.prototype.handleSignal = function (signal) {
         console.log("Signal received in " + this.NAME + ": " + signal.name);
         switch (signal.name) {
+            case AuthenticationNotifications_1.AuthenticationNotifications.FORGOT_PASSWORD:
+                this.authenticationLogin.exitScene(ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT);
+                this.authenticationSignUp.exitScene(ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT);
+                this.authenticationForgotPassword.enterScene(ViewEnterTypes_1.ViewEnterTypes.SWITCH_COMPONENT);
+                break;
+            case AuthenticationNotifications_1.AuthenticationNotifications.TRY_LOGGING_IN:
+                this.authenticationSignUp.exitScene(ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT);
+                this.authenticationForgotPassword.exitScene(ViewExitTypes_1.ViewExitTypes.SWITCH_COMPONENT);
+                this.authenticationLogin.enterScene(ViewEnterTypes_1.ViewEnterTypes.SWITCH_COMPONENT);
+                break;
             default:
                 break;
         }
@@ -1205,7 +1657,7 @@ var ViewComponent = /** @class */ (function () {
     ViewComponent.prototype.sendSignal = function (name, data, sender) {
         this.view.handleSignal({ name: name, data: data, sender: sender });
     };
-    ViewComponent.prototype.enterScene = function () {
+    ViewComponent.prototype.enterScene = function (enterType) {
     };
     ViewComponent.prototype.exitScene = function (exitType) {
         if (this.connection)
@@ -1214,6 +1666,29 @@ var ViewComponent = /** @class */ (function () {
     return ViewComponent;
 }());
 exports.ViewComponent = ViewComponent;
+
+
+/***/ }),
+
+/***/ "./src/core/ViewEnterTypes.ts":
+/*!************************************!*\
+  !*** ./src/core/ViewEnterTypes.ts ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+exports.__esModule = true;
+var ViewEnterTypes = /** @class */ (function () {
+    function ViewEnterTypes() {
+    }
+    ViewEnterTypes.DEFAULT = "DEFAULT";
+    ViewEnterTypes.SWITCH = "SWITCH";
+    ViewEnterTypes.SWITCH_COMPONENT = "SWITCH_COMPONENT";
+    return ViewEnterTypes;
+}());
+exports.ViewEnterTypes = ViewEnterTypes;
 
 
 /***/ }),
@@ -1233,6 +1708,7 @@ var ViewExitTypes = /** @class */ (function () {
     }
     ViewExitTypes.DEFAULT = "DEFAULT";
     ViewExitTypes.SWITCH = "SWITCH";
+    ViewExitTypes.SWITCH_COMPONENT = "SWITCH_COMPONENT";
     return ViewExitTypes;
 }());
 exports.ViewExitTypes = ViewExitTypes;
@@ -1326,6 +1802,7 @@ exports.__esModule = true;
 var ViewComponent_1 = __webpack_require__(/*! ../core/ViewComponent */ "./src/core/ViewComponent.ts");
 // CSS
 __webpack_require__(/*! ../_style/style-sheets/header-component.scss */ "./src/_style/style-sheets/header-component.scss");
+var HeaderNotifications_1 = __webpack_require__(/*! ./HeaderNotifications */ "./src/header/HeaderNotifications.ts");
 // HTML
 var template = __webpack_require__(/*! ../_view-templates/header-component.html */ "./src/_view-templates/header-component.html");
 var HeaderComponent = /** @class */ (function (_super) {
@@ -1333,12 +1810,32 @@ var HeaderComponent = /** @class */ (function (_super) {
     function HeaderComponent(view, container) {
         var _this = _super.call(this, view, container) || this;
         _this.container.innerHTML = template;
+        _this.authViewComponentActive = "LOGIN";
+        _this.actionBtn = document.getElementById("header-button");
+        _this.authMessage = document.getElementById("auth-message");
+        _this.actionBtnClickListener = _this.actionBtnClickListener.bind(_this);
         _this.enterScene();
         return _this;
     }
     HeaderComponent.prototype.registerEventListeners = function () {
+        this.actionBtn.addEventListener("click", this.actionBtnClickListener);
     };
     HeaderComponent.prototype.unregisterEventListeners = function () {
+        this.actionBtn.removeEventListener("click", this.actionBtnClickListener);
+    };
+    HeaderComponent.prototype.actionBtnClickListener = function (e) {
+        if (this.authViewComponentActive === "LOGIN") {
+            this.sendSignal(HeaderNotifications_1.HeaderNotifications.SIGN_UP);
+            this.actionBtn.innerHTML = "Log In";
+            this.authMessage.innerHTML = "Already have an account?";
+            this.authViewComponentActive = "SIGNUP";
+        }
+        else {
+            this.sendSignal(HeaderNotifications_1.HeaderNotifications.LOG_IN);
+            this.actionBtn.innerHTML = "Sign Up";
+            this.authMessage.innerHTML = "Don't have an account?";
+            this.authViewComponentActive = "LOGIN";
+        }
     };
     HeaderComponent.prototype.enterScene = function () {
         this.registerEventListeners();
@@ -1352,6 +1849,28 @@ var HeaderComponent = /** @class */ (function (_super) {
     return HeaderComponent;
 }(ViewComponent_1.ViewComponent));
 exports.HeaderComponent = HeaderComponent;
+
+
+/***/ }),
+
+/***/ "./src/header/HeaderNotifications.ts":
+/*!*******************************************!*\
+  !*** ./src/header/HeaderNotifications.ts ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+exports.__esModule = true;
+var HeaderNotifications = /** @class */ (function () {
+    function HeaderNotifications() {
+    }
+    HeaderNotifications.SIGN_UP = "SIGN_UP";
+    HeaderNotifications.LOG_IN = "LOG_IN";
+    return HeaderNotifications;
+}());
+exports.HeaderNotifications = HeaderNotifications;
 
 
 /***/ }),
@@ -1381,12 +1900,13 @@ var SystemConstants_1 = __webpack_require__(/*! ../core/SystemConstants */ "./sr
 var HeaderComponent_1 = __webpack_require__(/*! ./HeaderComponent */ "./src/header/HeaderComponent.ts");
 // CSS
 __webpack_require__(/*! ../_style/style-sheets/header-view.scss */ "./src/_style/style-sheets/header-view.scss");
+var HeaderNotifications_1 = __webpack_require__(/*! ./HeaderNotifications */ "./src/header/HeaderNotifications.ts");
 // HTML
 var headerViewTemplate = __webpack_require__(/*! ../_view-templates/header-view.html */ "./src/_view-templates/header-view.html");
 var HeaderView = /** @class */ (function (_super) {
     __extends(HeaderView, _super);
     function HeaderView() {
-        var _this = _super.call(this, "AuthenticationView") || this;
+        var _this = _super.call(this, "HeaderView") || this;
         _this.container = document.createElement("div");
         _this.container.id = "header-view-container";
         document.getElementById(SystemConstants_1.SystemConstants.HEADING_CONTAINER).appendChild(_this.container);
@@ -1415,6 +1935,12 @@ var HeaderView = /** @class */ (function (_super) {
     HeaderView.prototype.handleSignal = function (signal) {
         console.log("Signal received in " + this.NAME + ": " + signal.name);
         switch (signal.name) {
+            case HeaderNotifications_1.HeaderNotifications.SIGN_UP:
+                this.sendNotification(HeaderNotifications_1.HeaderNotifications.SIGN_UP);
+                break;
+            case HeaderNotifications_1.HeaderNotifications.LOG_IN:
+                this.sendNotification(HeaderNotifications_1.HeaderNotifications.LOG_IN);
+                break;
             default:
                 break;
         }

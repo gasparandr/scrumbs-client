@@ -11,7 +11,9 @@ import {AuthenticationLogin} from "./AuthenticationLogin";
 // CSS
 import "../_style/style-sheets/authentication-view.scss";
 import {AuthenticationSignUp} from "./AuthenticationSignUp";
+import {AuthenticationForgotPassword} from "./AuthenticationForgotPassword";
 import {HeaderNotifications} from "../header/HeaderNotifications";
+import {AuthenticationNotifications} from "./AuthenticationNotifications";
 import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 
@@ -42,13 +44,14 @@ export class AuthenticationView extends View {
 
         this.container.innerHTML = authenticationViewTemplate;
 
-        this.authenticationLoginContainer   = document.getElementById( "authentication-log-in-container" );
-        this.authenticationSignUpContainer  = document.getElementById( "authentication-sign-up-container" );
+        this.authenticationLoginContainer           = document.getElementById( "authentication-log-in-container" );
+        this.authenticationSignUpContainer          = document.getElementById( "authentication-sign-up-container" );
+        this.authenticationForgotPasswordContainer  = document.getElementById( "authentication-forgot-password-container" );
 
 
         this.authenticationLogin            = new AuthenticationLogin( this, this.authenticationLoginContainer );
         this.authenticationSignUp           = new AuthenticationSignUp( this, this.authenticationSignUpContainer );
-
+        this.authenticationForgotPassword   = new AuthenticationForgotPassword( this, this.authenticationForgotPasswordContainer );
 
 
         this.enterScene();
@@ -63,7 +66,7 @@ export class AuthenticationView extends View {
 
 
 
-    public exitScene(exitType: string, callback: Function): void {
+    public exitScene( exitType: string, callback: Function ): void {
 
         this.exitCallback = callback;
 
@@ -79,6 +82,7 @@ export class AuthenticationView extends View {
 
         notifications.push( HeaderNotifications.SIGN_UP );
         notifications.push( HeaderNotifications.LOG_IN );
+        notifications.push( AuthenticationNotifications.FORGOT_PASSWORD );
 
         return notifications;
     }
@@ -93,6 +97,7 @@ export class AuthenticationView extends View {
             case HeaderNotifications.SIGN_UP :
 
                 this.authenticationLogin.exitScene( ViewExitTypes.SWITCH_COMPONENT );
+                this.authenticationForgotPassword.exitScene( ViewExitTypes.SWITCH_COMPONENT );
                 this.authenticationSignUp.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
 
 
@@ -101,10 +106,12 @@ export class AuthenticationView extends View {
             case HeaderNotifications.LOG_IN :
 
                 this.authenticationSignUp.exitScene( ViewExitTypes.SWITCH_COMPONENT );
+                this.authenticationForgotPassword.exitScene( ViewExitTypes.SWITCH_COMPONENT );
                 this.authenticationLogin.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
 
 
                 break;
+                
 
             default :
                 break;
@@ -119,7 +126,24 @@ export class AuthenticationView extends View {
 
         switch ( signal.name ) {
 
+            case AuthenticationNotifications.FORGOT_PASSWORD :
 
+                this.authenticationLogin.exitScene( ViewExitTypes.SWITCH_COMPONENT );
+                this.authenticationSignUp.exitScene( ViewExitTypes.SWITCH_COMPONENT );
+                this.authenticationForgotPassword.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
+
+
+                break;
+
+
+            case AuthenticationNotifications.TRY_LOGGING_IN :
+
+                this.authenticationSignUp.exitScene( ViewExitTypes.SWITCH_COMPONENT );
+                this.authenticationForgotPassword.exitScene( ViewExitTypes.SWITCH_COMPONENT );
+                this.authenticationLogin.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
+
+
+                break;
 
 
             default:

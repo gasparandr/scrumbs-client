@@ -10,11 +10,6 @@
 
 #authentication-view-container {
 
-    width: 370px;
-    height: 100%;
-    margin: 0 auto;
-    padding-top: 57px;
-
     h1, h2 {
         text-align: center;
         margin: 0 auto;
@@ -22,8 +17,8 @@
 
     h1 {
         font-size: 1.85em;
-        line-height: 2em;
         font-weight: bold;
+        margin-bottom: 12px;
     }
 
     h2 {
@@ -122,6 +117,14 @@
             }
 
         }
+
+    }
+
+
+
+    @media screen and ( max-width: 480px ) {
+
+        .primary-button { width: 100%; }
 
     }
 

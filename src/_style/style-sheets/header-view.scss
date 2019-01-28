@@ -8,7 +8,7 @@
 #header-view-container {
 
     background: $tertiary-color;
-    height: 80px;
+    height: 70px;
     padding-left: 30px;
     padding-right: 37px;
     position: relative;
@@ -18,8 +18,7 @@
         display: inline-block;
         width: 120px;
         height: 30px;
-        margin-top: 18px;
-        background: url( "../img/icons/scrumbs-logo-colored.svg" ) no-repeat center / contain;
+        margin-top: 16px;
         position: relative;
     }
 
@@ -31,8 +30,20 @@
     }
 
     #header-button {
-        width: 165px;
-        margin-left: 35px;
+        width: 152px;
+        margin-left: 30px;
+    }
+
+
+    @media screen and ( max-width: 560px ) {
+
+        padding-left: 15px;
+        padding-right: 15px;
+
+        .button-group { right: 15px; }
+
+        #auth-message { display: none; }
+
     }
 
 }
