@@ -14,6 +14,7 @@ import {AuthenticationSignUp} from "./AuthenticationSignUp";
 import {HeaderNotifications} from "../header/HeaderNotifications";
 import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
+import {AuthenticationSignals} from "./AuthenticationSignals";
 
 // HTML
 const authenticationViewTemplate = require( "../_view-templates/authentication-view.html" );
@@ -93,16 +94,12 @@ export class AuthenticationView extends View {
             case HeaderNotifications.SIGN_UP :
 
                 this.authenticationLogin.exitScene( ViewExitTypes.SWITCH_COMPONENT );
-                this.authenticationSignUp.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
-
-
+                
                 break;
 
             case HeaderNotifications.LOG_IN :
 
                 this.authenticationSignUp.exitScene( ViewExitTypes.SWITCH_COMPONENT );
-                this.authenticationLogin.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
-
 
                 break;
 
@@ -119,8 +116,17 @@ export class AuthenticationView extends View {
 
         switch ( signal.name ) {
 
+            case AuthenticationSignals.SWITCH_TO_SIGNUP :
 
+                this.authenticationSignUp.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
 
+                break;
+
+            case AuthenticationSignals.SWITCH_TO_LOGIN :
+
+                this.authenticationLogin.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
+
+                break;
 
             default:
                 break;
