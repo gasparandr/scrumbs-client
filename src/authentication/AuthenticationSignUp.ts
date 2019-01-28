@@ -1,13 +1,19 @@
 
 
-import {View} from "../core/View";
 import {ViewComponent} from "../core/ViewComponent";
+import {View} from "../core/View";
+
+
+import TweenLite = gsap.TweenLite;
+import Power1 = gsap.Power1;
+import Back = gsap.Back;
 
 
 // CSS
 import "../_style/style-sheets/authentication-sign-up.scss";
 import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
+import {AuthenticationSignals} from "./AuthenticationSignals";
 
 
 // HTML
@@ -82,8 +88,14 @@ export class AuthenticationSignUp extends ViewComponent {
     public enterScene(enterType: string): void {
 
         if ( enterType === ViewEnterTypes.SWITCH_COMPONENT ) {
-            this.container.style.display = "block";
             console.log( "Authentication login view component enter scene" );
+
+            this.container.style.display = "block";
+
+            TweenLite.to( this.container, 0.8, { opacity: 1 } );
+
+            TweenLite.to( this.container, 0.5, { marginTop: 0,  ease: Back.easeOut.config( 0.35 ) } );
+
         } else {
             this.registerEventListeners();
         }
@@ -98,7 +110,12 @@ export class AuthenticationSignUp extends ViewComponent {
 
         if ( exitType === ViewExitTypes.SWITCH_COMPONENT ) {
 
-            this.container.style.display = "none";
+            TweenLite.to( this.container, 0.4, { marginTop: 70 } );
+
+            TweenLite.to( this.container, 0.4, { opacity: 0, ease: Power1.easeOut, onComplete: () => {
+                this.container.style.display = "none";
+                this.sendSignal( AuthenticationSignals.SWITCH_TO_LOGIN );
+            }});
 
         } else {
             super.exitScene( exitType );
