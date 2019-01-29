@@ -94,7 +94,7 @@ export class AuthenticationSignUp extends ViewComponent {
 
             TweenLite.to( this.container, 0.8, { opacity: 1 } );
 
-            TweenLite.to( this.container, 0.5, { marginTop: 0,  ease: Back.easeOut.config( 0.35 ) } );
+            TweenLite.to( this.container, 0.5, { paddingTop: 60,  ease: Back.easeOut.config( 0.35 ) } );
 
         } else {
             this.registerEventListeners();
@@ -110,7 +110,7 @@ export class AuthenticationSignUp extends ViewComponent {
 
         if ( exitType === ViewExitTypes.SWITCH_COMPONENT ) {
 
-            TweenLite.to( this.container, 0.4, { marginTop: 70 } );
+            TweenLite.to( this.container, 0.4, { paddingTop: 130 } );
 
             TweenLite.to( this.container, 0.4, { opacity: 0, ease: Power1.easeOut, onComplete: () => {
                 this.container.style.display = "none";
