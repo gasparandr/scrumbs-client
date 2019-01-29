@@ -1,20 +1,20 @@
 
 
-import {ViewComponent} from "../core/ViewComponent";
+import {AuthenticationNotifications} from "../authentication/AuthenticationNotifications";
+import {HeaderNotifications} from "./HeaderNotifications";
+import {SystemConstants} from "../core/SystemConstants";
+import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {INotification} from "../core/INotification";
+import {ViewExitTypes} from "../core/ViewExitTypes";
+import {ViewComponent} from "../core/ViewComponent";
+import {HeaderComponent} from "./HeaderComponent";
 import {ISignal} from "../core/ISignal";
 import {View} from "../core/View";
 
 
-
-import {SystemConstants} from "../core/SystemConstants";
-import {HeaderComponent} from "./HeaderComponent";
-
-
-
 // CSS
 import "../_style/style-sheets/header-view.scss";
-import {HeaderNotifications} from "./HeaderNotifications";
+
 
 // HTML
 const headerViewTemplate = require( "../_view-templates/header-view.html" );
@@ -71,6 +71,9 @@ export class HeaderView extends View {
     public listNotificationInterests(): string[] {
         let notifications = super.listNotificationInterests();
 
+        notifications.push( AuthenticationNotifications.EXIT_HEADER );
+        notifications.push( AuthenticationNotifications.ENTER_HEADER );
+
         return notifications;
     }
 
@@ -80,7 +83,17 @@ export class HeaderView extends View {
 
         switch ( notification.name ) {
 
+            case AuthenticationNotifications.EXIT_HEADER :
 
+                this.header.exitScene( ViewExitTypes.HIDE_COMPONENT );
+
+                break;
+
+            case AuthenticationNotifications.ENTER_HEADER :
+
+                this.header.enterScene( ViewEnterTypes.REVEAL_COMPONENT );
+
+                break;
 
             default :
                 break;

@@ -1,5 +1,7 @@
 
-
+import {AuthenticationSignals} from "./AuthenticationSignals";
+import {ViewEnterTypes} from "../core/ViewEnterTypes";
+import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {View} from "../core/View";
 
@@ -11,10 +13,7 @@ import Back = gsap.Back;
 
 // CSS
 import "../_style/style-sheets/authentication-log-in.scss";
-import {ViewExitTypes} from "../core/ViewExitTypes";
-import {ViewEnterTypes} from "../core/ViewEnterTypes";
-import {AuthenticationNotifications} from "./AuthenticationNotifications";
-import {AuthenticationSignals} from "./AuthenticationSignals";
+
 
 
 
@@ -88,15 +87,15 @@ export class AuthenticationLogin extends ViewComponent {
 
     
     private forgotPassBtnListener( e: any ) {
-        this.sendSignal( AuthenticationNotifications.FORGOT_PASSWORD );
+        this.exitScene( ViewExitTypes.SWITCH_COMPONENT, AuthenticationSignals.SWITCH_LOGIN_TO_FORGOT_PASSWORD );
     }
 
 
 
     public enterScene(enterType?: string): void {
+        console.info( "Enter being called in authentication login view component" );
 
         if ( enterType === ViewEnterTypes.SWITCH_COMPONENT ) {
-            console.log( "Authentication login view component enter scene" );
 
             this.container.style.display = "block";
 
@@ -112,22 +111,20 @@ export class AuthenticationLogin extends ViewComponent {
 
 
 
-    public exitScene( exitType: string ): void {
-
+    public exitScene( exitType: string, signal?: string ): void {
         console.info( "Exit being called in authentication login view component" );
 
 
         if ( exitType === ViewExitTypes.SWITCH_COMPONENT ) {
-
 
             TweenLite.to( this.container, 0.4, { paddingTop: 130 } );
 
             TweenLite.to( this.container, 0.4, { opacity: 0, ease: Power1.easeOut, onComplete: () => {
                 this.container.style.display = "none";
 
-                this.sendSignal( AuthenticationSignals.SWITCH_TO_SIGNUP );
-            }});
+                if ( signal ) this.sendSignal( signal );
 
+            }});
 
 
         } else {

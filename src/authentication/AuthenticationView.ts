@@ -1,25 +1,30 @@
 
 
+import {AuthenticationForgotPassword} from "./AuthenticationForgotPassword";
+import {AuthenticationNotifications} from "./AuthenticationNotifications";
+import {HeaderNotifications} from "../header/HeaderNotifications";
+import {AuthenticationSignals} from "./AuthenticationSignals";
+import {AuthenticationSignUp} from "./AuthenticationSignUp";
+import {AuthenticationLogin} from "./AuthenticationLogin";
 import {SystemConstants} from "../core/SystemConstants";
+import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {INotification} from "../core/INotification";
+import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ISignal} from "../core/ISignal";
 import {View} from "../core/View";
-import {AuthenticationLogin} from "./AuthenticationLogin";
 
 
 // CSS
 import "../_style/style-sheets/authentication-view.scss";
-import {AuthenticationSignUp} from "./AuthenticationSignUp";
-import {AuthenticationForgotPassword} from "./AuthenticationForgotPassword";
-import {HeaderNotifications} from "../header/HeaderNotifications";
-import {AuthenticationNotifications} from "./AuthenticationNotifications";
-import {ViewExitTypes} from "../core/ViewExitTypes";
-import {ViewEnterTypes} from "../core/ViewEnterTypes";
-import {AuthenticationSignals} from "./AuthenticationSignals";
+
 
 // HTML
 const authenticationViewTemplate = require( "../_view-templates/authentication-view.html" );
+
+
+
+
 
 
 export class AuthenticationView extends View {
@@ -83,7 +88,6 @@ export class AuthenticationView extends View {
 
         notifications.push( HeaderNotifications.SIGN_UP );
         notifications.push( HeaderNotifications.LOG_IN );
-        notifications.push( AuthenticationNotifications.FORGOT_PASSWORD );
 
         return notifications;
     }
@@ -97,17 +101,13 @@ export class AuthenticationView extends View {
 
             case HeaderNotifications.SIGN_UP :
 
-                this.authenticationLogin.exitScene( ViewExitTypes.SWITCH_COMPONENT );
-                // this.authenticationForgotPassword.exitScene( ViewExitTypes.SWITCH_COMPONENT );
-                // this.authenticationSignUp.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
+                this.authenticationLogin.exitScene( ViewExitTypes.SWITCH_COMPONENT, AuthenticationSignals.SWITCH_LOGIN_TO_SIGNUP );
 
                 break;
 
             case HeaderNotifications.LOG_IN :
 
-                this.authenticationSignUp.exitScene( ViewExitTypes.SWITCH_COMPONENT );
-                // this.authenticationForgotPassword.exitScene( ViewExitTypes.SWITCH_COMPONENT );
-                // this.authenticationLogin.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
+                this.authenticationSignUp.exitScene( ViewExitTypes.SWITCH_COMPONENT, AuthenticationSignals.SWITCH_SIGNUP_TO_LOGIN );
 
                 break;
                 
@@ -125,32 +125,30 @@ export class AuthenticationView extends View {
 
         switch ( signal.name ) {
 
-            // case AuthenticationNotifications.FORGOT_PASSWORD :
-
-            //     this.authenticationLogin.exitScene( ViewExitTypes.SWITCH_COMPONENT );
-            //     this.authenticationSignUp.exitScene( ViewExitTypes.SWITCH_COMPONENT );
-            //     this.authenticationForgotPassword.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
-
-
-            //     break;
-
-
-            // case AuthenticationNotifications.TRY_LOGGING_IN :
-
-            //     this.authenticationSignUp.exitScene( ViewExitTypes.SWITCH_COMPONENT );
-            //     this.authenticationForgotPassword.exitScene( ViewExitTypes.SWITCH_COMPONENT );
-            //     this.authenticationLogin.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
-
-
-            //     break;
-
-            case AuthenticationSignals.SWITCH_TO_SIGNUP :
+            case AuthenticationSignals.SWITCH_LOGIN_TO_SIGNUP :
 
                 this.authenticationSignUp.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
 
                 break;
 
-            case AuthenticationSignals.SWITCH_TO_LOGIN :
+            case AuthenticationSignals.SWITCH_SIGNUP_TO_LOGIN :
+
+                this.authenticationLogin.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
+
+                break;
+
+
+            case AuthenticationSignals.SWITCH_LOGIN_TO_FORGOT_PASSWORD :
+
+                this.sendNotification( AuthenticationNotifications.EXIT_HEADER );
+
+                this.authenticationForgotPassword.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
+
+                break;
+
+            case AuthenticationSignals.SWITCH_FORGOT_PASSWORD_TO_LOGIN :
+
+                this.sendNotification( AuthenticationNotifications.ENTER_HEADER );
 
                 this.authenticationLogin.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
 
@@ -159,7 +157,6 @@ export class AuthenticationView extends View {
             default:
                 break;
         }
-
     }
 
 }

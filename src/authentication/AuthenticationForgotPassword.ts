@@ -1,14 +1,16 @@
 
 
-import {View} from "../core/View";
+import {ViewEnterTypes} from "../core/ViewEnterTypes";
+import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewComponent} from "../core/ViewComponent";
+import {View} from "../core/View";
+
+import TweenLite = gsap.TweenLite;
 
 
 // CSS
 import "../_style/style-sheets/authentication-forgot-password.scss";
-import {ViewEnterTypes} from "../core/ViewEnterTypes";
-import {ViewExitTypes} from "../core/ViewExitTypes";
-import {AuthenticationNotifications} from "./AuthenticationNotifications";
+import {AuthenticationSignals} from "./AuthenticationSignals";
 
 
 // HTML
@@ -73,16 +75,20 @@ export class AuthenticationForgotPassword extends ViewComponent {
 
 
     private tryLoggingInBtnListener( e: any ) {
-        this.sendSignal( AuthenticationNotifications.TRY_LOGGING_IN );
+        this.exitScene( ViewEnterTypes.SWITCH_COMPONENT, AuthenticationSignals.SWITCH_FORGOT_PASSWORD_TO_LOGIN );
     }
 
 
 
     public enterScene( enterType?: string ): void {
+        console.info( "Authentication forgot password view component enter scene" );
 
         if ( enterType === ViewEnterTypes.SWITCH_COMPONENT ) {
+
             this.container.style.display = "block";
-            console.log( "Authentication forgot password view component enter scene" );
+
+            TweenLite.to( this.container, 0.8, { opacity: 1 } );
+
         } else {
             this.registerEventListeners();
         }
@@ -91,13 +97,19 @@ export class AuthenticationForgotPassword extends ViewComponent {
 
 
 
-    public exitScene( exitType: string ): void {
-
+    public exitScene( exitType: string, signal?: string ): void {
         console.info( "Exit being called in authentication forgot password view component" );
 
         if ( exitType === ViewExitTypes.SWITCH_COMPONENT ) {
 
-            this.container.style.display = "none";
+
+            TweenLite.to( this.container, 0.6, { opacity: 0, onComplete: () => {
+                this.container.style.display = "none";
+                if ( signal ) this.sendSignal( signal );
+            }});
+
+
+
 
         } else {
             super.exitScene( exitType );

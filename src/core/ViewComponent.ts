@@ -36,7 +36,7 @@ export class ViewComponent implements IViewComponent {
 
 
 
-    public exitScene(exitType: string): void {
+    public exitScene(exitType: string, signal?: string ): void {
         if ( this.connection ) this.connection.unregister();
     }
 }
