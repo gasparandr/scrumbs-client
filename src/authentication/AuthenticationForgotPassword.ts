@@ -1,5 +1,5 @@
 
-
+import {AuthenticationSignals} from "./AuthenticationSignals";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewComponent} from "../core/ViewComponent";
@@ -10,7 +10,6 @@ import TweenLite = gsap.TweenLite;
 
 // CSS
 import "../_style/style-sheets/authentication-forgot-password.scss";
-import {AuthenticationSignals} from "./AuthenticationSignals";
 
 
 // HTML
@@ -102,13 +101,10 @@ export class AuthenticationForgotPassword extends ViewComponent {
 
         if ( exitType === ViewExitTypes.SWITCH_COMPONENT ) {
 
-
             TweenLite.to( this.container, 0.6, { opacity: 0, onComplete: () => {
                 this.container.style.display = "none";
                 if ( signal ) this.sendSignal( signal );
             }});
-
-
 
 
         } else {
