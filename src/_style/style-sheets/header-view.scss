@@ -11,8 +11,12 @@
     height: 70px;
     padding-left: 30px;
     padding-right: 37px;
-    position: relative;
     z-index: 1000;
+
+    #header-component-container {
+        height: 100%;
+        position: relative;
+    }
 
     #logo {
         display: inline-block;
@@ -22,11 +26,70 @@
         position: relative;
     }
 
-    .button-group {
+    #header-navigation {
+
         position: absolute;
-        right: 37px;
+        @include center();
+        font-weight: 900;
+        color: $text-tertiary-color;
+        display: none;
+
+        li {
+            display: inline-block;
+            padding: 10px;
+
+            &:not( :last-child ) { margin-right: 15px; }
+
+            &.active {
+                color: $text-primary-color;
+                cursor: default;
+            }
+        }
+
+    }
+
+    .button-group, #profile-wrapper {
+        position: absolute;
+        right: 0;
         @include center( "vertical" );
-        height: 50px;
+        
+    }
+
+    .button-group { height: 50px }
+
+    #profile-wrapper {
+        height: 45px;
+        display: none;
+    }
+
+    #profile-avatar {
+        display: block;
+        width: 45px;
+        height: 100%;
+        margin-right: 30px;
+        border: 1px solid $text-tertiary-color;
+        border-radius: 50%;
+        background: gold;
+    }
+
+    #profile-dropdown-button {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        @include center( "vertical" );
+        right: 0;
+        background: gold;
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            @include center();
+            width: 13px;
+            height: 8px;
+            background: black;
+        }
+
     }
 
     #header-button {
@@ -35,12 +98,11 @@
     }
 
 
+    
     @media screen and ( max-width: 560px ) {
 
         padding-left: 15px;
         padding-right: 15px;
-
-        .button-group { right: 15px; }
 
         #auth-message { display: none; }
 

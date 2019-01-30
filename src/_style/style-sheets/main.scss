@@ -65,15 +65,17 @@ body {
     height: calc( 100% - 95px );
     @include center( "horizontal" );
     bottom: 0;
+    transition: all 0.3s ease-in-out;
 }
 
 #content-container {
 
     height: 100%;
     background-color: $tertiary-color;
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px;
     box-shadow: 0 2px 20px 0 $quinary-color;
     position: relative;
+    top: 5px;
 
     &::before {
         content: "";
@@ -191,7 +193,7 @@ input, textarea {
         font-size: 0.86em;
         line-height: 23px;
         padding-left: 28px;
-        background-color: white;
+        transition: all 0.2s linear;
 
         &::before {
             content: "";
@@ -203,19 +205,36 @@ input, textarea {
             height: 20px;
             border: 1px solid $quinary-color;
             border-radius: 3px;
+            transition: all 0.2s linear;
         }
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 4px;
+            left: 7px;
+            width: 6px;
+            height: 10px;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            border-color: $text-primary-color;
+            transform: rotate( 45deg );
+            opacity: 0;
+            transition: all 0.2s linear;
+        }
+
     }
 
-    input:checked + label::after {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: grey;
-        @include center( "vertical" );
-        left: 6px;
-        border-radius: 3px;
+    input:checked + label {
+        
+        color: $text-primary-color;
+
+        &::before { border: 1px solid $text-primary-color; }
+
+        &::after { opacity: 1; }
+
+
     }
 
 }
@@ -235,7 +254,7 @@ input, textarea {
     text-align: center;
     font-size: 0.97em;
     height: 50px;
-    line-height: 51px;
+    line-height: 50px;
     box-shadow: 0 12px 8px -9px lighten( $secondary-color, 17% );
     background: $tertiary-color;
     background: -moz-linear-gradient( left,    $primary-color 0%, $secondary-color 100% );
