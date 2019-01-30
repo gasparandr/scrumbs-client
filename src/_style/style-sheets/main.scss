@@ -65,7 +65,7 @@ body {
     height: calc( 100% - 95px );
     @include center( "horizontal" );
     bottom: 0;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 #content-container {

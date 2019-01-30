@@ -1,5 +1,6 @@
 
 import {AuthenticationSignals} from "./AuthenticationSignals";
+import {SystemConstants} from "../core/SystemConstants";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewComponent} from "../core/ViewComponent";
@@ -86,6 +87,8 @@ export class AuthenticationForgotPassword extends ViewComponent {
 
             this.container.style.display = "block";
 
+            document.body.classList.add( "forgot-password-state" );
+
             TweenLite.to( this.container, 0.8, { opacity: 1 } );
 
         } else {
@@ -101,8 +104,29 @@ export class AuthenticationForgotPassword extends ViewComponent {
 
         if ( exitType === ViewExitTypes.SWITCH_COMPONENT ) {
 
+            const mainWrapper   = document.getElementById( SystemConstants.MAIN_WRAPPER );
+            const mainContainer = document.getElementById( SystemConstants.MAIN_CONTAINER );
+
+            const wrapperStyle = getComputedStyle( mainWrapper );
+
+            const wrapperTop = parseInt( wrapperStyle.top );
+            const wrapperHeight = parseInt( wrapperStyle.height );
+
+            const bottom = ( wrapperTop + wrapperHeight ) + "px";
+
+            mainWrapper.style.bottom    = bottom;
+            mainContainer.style.bottom  = bottom;
+
+
+            TweenLite.to( mainWrapper, 0.1, { bottom: 0 } );
+            TweenLite.to( mainContainer, 0.1, { bottom: 0 } );
+
+            document.body.classList.remove( "forgot-password-state" );
+
             TweenLite.to( this.container, 0.6, { opacity: 0, onComplete: () => {
                 this.container.style.display = "none";
+                mainWrapper.removeAttribute( "style" );
+                mainContainer.removeAttribute( "style" );
                 if ( signal ) this.sendSignal( signal );
             }});
 
