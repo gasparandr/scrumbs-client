@@ -112,7 +112,7 @@ export class AuthenticationForgotPassword extends ViewComponent {
             const wrapperTop = parseInt( wrapperStyle.top );
             const wrapperHeight = parseInt( wrapperStyle.height );
 
-            const bottom = ( wrapperTop + wrapperHeight ) + "px";
+            const bottom = ( window.innerHeight - ( wrapperTop + wrapperHeight )  ) + "px";
 
             mainWrapper.style.bottom    = bottom;
             mainContainer.style.bottom  = bottom;
