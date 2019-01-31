@@ -55,14 +55,14 @@ export class ScrumNotes extends ViewComponent {
 
 
     public enterScene(enterType?: string): void {
-        console.info( "Enter being called in view component" );
+        console.info( "Enter being called in scrum notes view component" );
         this.registerEventListeners();
     }
 
 
 
     public exitScene(exitType?: string): void {
-        console.info( "Exit being called in view component" );
+        console.info( "Exit being called in scrum notes view component" );
 
         super.exitScene( exitType );
         this.unregisterEventListeners();

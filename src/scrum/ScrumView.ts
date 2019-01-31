@@ -1,17 +1,22 @@
 
 
-
+import {ScrumWelcomeScreen} from "./ScrumWelcomeScreen";
 import {SystemConstants} from "../core/SystemConstants";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
-import {ViewComponent} from "../core/ViewComponent";
-import {INotification} from "../core/INotification";
 import {ViewExitTypes} from "../core/ViewExitTypes";
+import {INotification} from "../core/INotification";
+import {ScrumManageTeams} from "./ScrumManageTeams";
+import {ViewComponent} from "../core/ViewComponent";
+import {ScrumCreateTeam} from "./ScrumCreateTeam";
+import {ScrumTeams} from "./ScrumTeams";
+import {ScrumNotes} from "./ScrumNotes";
 import {ISignal} from "../core/ISignal";
 import {View} from "../core/View";
 
 
 // CSS
 import "../_style/style-sheets/scrum-view.scss";
+
 
 
 // HTML
@@ -23,9 +28,17 @@ const authenticationViewTemplate = require( "../_view-templates/scrum-view.html"
 
 
 export class ScrumView extends View {
-    private viewComponent: ViewComponent;
+    private teams: ViewComponent;
+    private notes: ViewComponent;
+    private welcomeScreen: ViewComponent;
+    private createTeam: ViewComponent;
+    private manageTeams: ViewComponent;
 
-    private viewComponentContainer: HTMLElement;
+    private teamsContainer: HTMLElement;
+    private notesContainer: HTMLElement;
+    private welcomeScreentContainer: HTMLElement;
+    private createTeamContainer: HTMLElement;
+    private mangeTeamsContainer: HTMLElement;
 
 
 
@@ -35,15 +48,23 @@ export class ScrumView extends View {
         super( "AuthenticationView" );
 
         this.container = document.createElement( "div" );
-        this.container.id = "template-view-container"; // ADD CUSTOM NAME
+        this.container.id = "scrum-view-container"; // ADD CUSTOM NAME
 
         document.getElementById( SystemConstants.MAIN_CONTAINER ).appendChild( this.container );
 
-        this.container.innerHTML                = authenticationViewTemplate;
+        this.container.innerHTML        = authenticationViewTemplate;
 
-        this.viewComponentContainer             = document.getElementById( "container" ); // SPECIFY CONTAINER ID
+        this.teamsContainer             = document.getElementById( "scrum-teams-container" );
+        this.notesContainer             = document.getElementById( "scrum-notes-container" );
+        this.welcomeScreentContainer    = document.getElementById( "scrum-welcome-screen-container" );
+        this.createTeamContainer        = document.getElementById( "scrum-create-team-container" );
+        this.mangeTeamsContainer        = document.getElementById( "scrum-manage-teams-container" );
 
-        // this.viewComponent                      = new ViewComponentName( this, this.viewComponentContainer );
+        this.teams                      = new ScrumTeams( this, this.teamsContainer );
+        this.notes                      = new ScrumNotes( this, this.notesContainer );
+        this.welcomeScreen              = new ScrumWelcomeScreen( this, this.welcomeScreentContainer );
+        this.createTeam                 = new ScrumCreateTeam( this, this.createTeamContainer );
+        this.manageTeams                = new ScrumManageTeams( this, this.mangeTeamsContainer );
 
 
 
@@ -63,7 +84,11 @@ export class ScrumView extends View {
 
         this.exitCallback = callback;
 
-        this.viewComponent.exitScene( exitType ); // EXIT THE COMPONENT
+        this.teams.exitScene( exitType );
+        this.notes.exitScene( exitType );
+        this.welcomeScreen.exitScene( exitType );
+        this.createTeam.exitScene( exitType );
+        this.manageTeams.exitScene( exitType );
     }
 
 
