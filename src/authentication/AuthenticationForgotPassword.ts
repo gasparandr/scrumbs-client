@@ -107,10 +107,10 @@ export class AuthenticationForgotPassword extends ViewComponent {
             const mainWrapper   = document.getElementById( SystemConstants.MAIN_WRAPPER );
             const mainContainer = document.getElementById( SystemConstants.MAIN_CONTAINER );
 
-            const wrapperStyle = getComputedStyle( mainWrapper );
+            const wrapperStyle      = getComputedStyle( mainWrapper );
 
-            const wrapperTop = parseInt( wrapperStyle.top );
-            const wrapperHeight = parseInt( wrapperStyle.height );
+            const wrapperTop        = parseInt( wrapperStyle.top );
+            const wrapperHeight     = parseInt( wrapperStyle.height );
 
             const bottom = ( window.innerHeight - ( wrapperTop + wrapperHeight )  ) + "px";
 
