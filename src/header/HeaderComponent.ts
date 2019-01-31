@@ -1,6 +1,8 @@
 
-
+import {HeaderNotifications} from "./HeaderNotifications";
+import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
+import {ViewExitTypes} from "../core/ViewExitTypes";
 import {View} from "../core/View";
 
 
@@ -12,9 +14,6 @@ import Back = gsap.Back;
 
 // CSS
 import "../_style/style-sheets/header-component.scss";
-import {HeaderNotifications} from "./HeaderNotifications";
-import {ViewExitTypes} from "../core/ViewExitTypes";
-import {ViewEnterTypes} from "../core/ViewEnterTypes";
 
 
 // HTML
