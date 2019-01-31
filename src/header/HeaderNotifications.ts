@@ -1,7 +1,7 @@
 
 
 export class HeaderNotifications {
-    public static readonly SIGN_UP: string = "SIGN_UP";
-    public static readonly LOG_IN: string = "LOG_IN";
+    public static readonly SWITCH_TO_SIGNUP: string     = "SWITCH_TO_SIGNUP";
+    public static readonly SWITCH_TO_LOGIN: string      = "SWITCH_TO_LOGIN";
 
 }

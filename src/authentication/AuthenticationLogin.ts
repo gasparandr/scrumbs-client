@@ -68,7 +68,8 @@ export class AuthenticationLogin extends ViewComponent {
         this.loginBtn               = document.getElementById( "authentication-login-btn" ) as HTMLButtonElement;
 
 
-        this.forgotPassBtnListener  = this.forgotPassBtnListener.bind( this );
+        this.forgotPassBtnListener      = this.forgotPassBtnListener.bind( this );
+        this.loginBtnListener           = this.loginBtnListener.bind( this );
 
 
 
@@ -79,18 +80,26 @@ export class AuthenticationLogin extends ViewComponent {
 
     private registerEventListeners(): void {
         this.forgotPassBtn.addEventListener( "click", this.forgotPassBtnListener );
+        this.loginBtn.addEventListener( "click", this.loginBtnListener );
     }
 
 
 
     private unregisterEventListeners(): void {
         this.forgotPassBtn.removeEventListener( "click", this.forgotPassBtnListener );
+        this.loginBtn.removeEventListener( "click", this.loginBtnListener );
     }
 
 
     
-    private forgotPassBtnListener( e: any ) {
+    private forgotPassBtnListener(e: any) {
         this.exitScene( ViewExitTypes.SWITCH_COMPONENT, AuthenticationSignals.SWITCH_LOGIN_TO_FORGOT_PASSWORD );
+    }
+
+
+
+    private loginBtnListener(e:any) {
+        this.sendSignal( AuthenticationSignals.LOGIN );
     }
 
 

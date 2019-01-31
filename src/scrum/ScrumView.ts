@@ -48,7 +48,7 @@ export class ScrumView extends View {
         super( "AuthenticationView" );
 
         this.container = document.createElement( "div" );
-        this.container.id = "scrum-view-container"; // ADD CUSTOM NAME
+        this.container.id = "scrum-view-container";
 
         document.getElementById( SystemConstants.MAIN_CONTAINER ).appendChild( this.container );
 

@@ -86,8 +86,8 @@ export class AuthenticationView extends View {
     public listNotificationInterests(): string[] {
         let notifications = super.listNotificationInterests();
 
-        notifications.push( HeaderNotifications.SIGN_UP );
-        notifications.push( HeaderNotifications.LOG_IN );
+        notifications.push( HeaderNotifications.SWITCH_TO_SIGNUP );
+        notifications.push( HeaderNotifications.SWITCH_TO_LOGIN );
 
         return notifications;
     }
@@ -99,13 +99,13 @@ export class AuthenticationView extends View {
 
         switch ( notification.name ) {
 
-            case HeaderNotifications.SIGN_UP :
+            case HeaderNotifications.SWITCH_TO_SIGNUP :
 
                 this.authenticationLogin.exitScene( ViewExitTypes.SWITCH_COMPONENT, AuthenticationSignals.SWITCH_LOGIN_TO_SIGNUP );
 
                 break;
 
-            case HeaderNotifications.LOG_IN :
+            case HeaderNotifications.SWITCH_TO_LOGIN :
 
                 this.authenticationSignUp.exitScene( ViewExitTypes.SWITCH_COMPONENT, AuthenticationSignals.SWITCH_SIGNUP_TO_LOGIN );
 
@@ -151,6 +151,21 @@ export class AuthenticationView extends View {
                 this.sendNotification( AuthenticationNotifications.ENTER_HEADER );
 
                 this.authenticationLogin.enterScene( ViewEnterTypes.SWITCH_COMPONENT );
+
+                break;
+
+
+            case AuthenticationSignals.LOGIN :
+
+                this.sendNotification( AuthenticationNotifications.LOGIN );
+
+                break;
+
+
+            case AuthenticationSignals.SIGN_UP :
+
+                this.sendNotification( AuthenticationNotifications.SIGN_UP );
+
 
                 break;
 

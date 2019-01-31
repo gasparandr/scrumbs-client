@@ -8,12 +8,14 @@ import {INotification} from "../core/INotification";
 import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {HeaderComponent} from "./HeaderComponent";
+import {HeaderSignals} from "./HeaderSignals";
 import {ISignal} from "../core/ISignal";
 import {View} from "../core/View";
 
 
 // CSS
 import "../_style/style-sheets/header-view.scss";
+
 
 
 // HTML
@@ -71,6 +73,8 @@ export class HeaderView extends View {
     public listNotificationInterests(): string[] {
         let notifications = super.listNotificationInterests();
 
+        notifications.push( AuthenticationNotifications.LOGIN );
+        notifications.push( AuthenticationNotifications.SIGN_UP );
         notifications.push( AuthenticationNotifications.EXIT_HEADER );
         notifications.push( AuthenticationNotifications.ENTER_HEADER );
 
@@ -82,6 +86,16 @@ export class HeaderView extends View {
     public handleNotification(notification: INotification): void {
 
         switch ( notification.name ) {
+
+            case AuthenticationNotifications.LOGIN :
+
+
+                break;
+
+            case AuthenticationNotifications.SIGN_UP :
+
+
+                break;
 
             case AuthenticationNotifications.EXIT_HEADER :
 
@@ -108,15 +122,15 @@ export class HeaderView extends View {
 
         switch ( signal.name ) {
 
-            case HeaderNotifications.SIGN_UP :
+            case HeaderSignals.SWITCH_TO_SIGNUP :
 
-                this.sendNotification( HeaderNotifications.SIGN_UP );
+                this.sendNotification( HeaderNotifications.SWITCH_TO_SIGNUP );
 
                 break;
 
-            case HeaderNotifications.LOG_IN :
+            case HeaderSignals.SWITCH_TO_LOGIN :
 
-                this.sendNotification( HeaderNotifications.LOG_IN );
+                this.sendNotification( HeaderNotifications.SWITCH_TO_LOGIN );
 
                 break;
 

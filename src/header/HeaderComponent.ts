@@ -1,10 +1,10 @@
 
-import {HeaderNotifications} from "./HeaderNotifications";
+
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {ViewExitTypes} from "../core/ViewExitTypes";
+import {HeaderSignals} from "./HeaderSignals";
 import {View} from "../core/View";
-
 
 import TweenLite = gsap.TweenLite;
 import Power0 = gsap.Power0;
@@ -14,6 +14,7 @@ import Back = gsap.Back;
 
 // CSS
 import "../_style/style-sheets/header-component.scss";
+
 
 
 // HTML
@@ -65,13 +66,13 @@ export class HeaderComponent extends ViewComponent {
     private actionBtnClickListener(e: any): void {
 
         if ( this.authViewComponentActive === "LOGIN" ) {
-            this.sendSignal( HeaderNotifications.SIGN_UP );
+            this.sendSignal( HeaderSignals.SWITCH_TO_SIGNUP );
 
             this.actionBtn.innerHTML        = "Log In";
             this.authMessage.innerHTML      = "Already have an account?";
             this.authViewComponentActive    = "SIGNUP";
         } else {
-            this.sendSignal( HeaderNotifications.LOG_IN );
+            this.sendSignal( HeaderSignals.SWITCH_TO_LOGIN );
 
             this.actionBtn.innerHTML        = "Sign Up";
             this.authMessage.innerHTML      = "Don't have an account?";
