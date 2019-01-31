@@ -39,6 +39,8 @@ export class AuthenticationLogin extends ViewComponent {
     private passwordInputError: HTMLSpanElement;
 
     private forgotPassBtn: HTMLParagraphElement;
+    private loginBtn: HTMLButtonElement;
+
 
 
 
@@ -51,18 +53,19 @@ export class AuthenticationLogin extends ViewComponent {
 
         this.container.innerHTML = template;
 
-        this.title                  = document.getElementById( "" ) as HTMLHeadingElement;
-        this.subTitle               = document.getElementById( "" ) as HTMLHeadingElement;
+        this.title                  = document.getElementById( "authentication-login-title" ) as HTMLHeadingElement;
+        this.subTitle               = document.getElementById( "authentication-login-subtitle" ) as HTMLHeadingElement;
 
-        this.emailInputLabel        = document.getElementById( "" ) as HTMLLabelElement;
-        this.emailInput             = document.getElementById( "" ) as HTMLInputElement;
-        this.emailInputError        = document.getElementById( "" ) as HTMLSpanElement;
+        this.emailInputLabel        = document.getElementById( "authentication-login-email-input-label" ) as HTMLLabelElement;
+        this.emailInput             = document.getElementById( "authentication-login-email-input" ) as HTMLInputElement;
+        this.emailInputError        = document.getElementById( "authentication-login-email-input-error" ) as HTMLSpanElement;
 
-        this.passwordInputLabel     = document.getElementById( "" ) as HTMLLabelElement;
-        this.passwordInput          = document.getElementById( "" ) as HTMLInputElement;
-        this.passwordInputError     = document.getElementById( "" ) as HTMLSpanElement;
+        this.passwordInputLabel     = document.getElementById( "authentication-login-password-input-label" ) as HTMLLabelElement;
+        this.passwordInput          = document.getElementById( "authentication-login-password-input" ) as HTMLInputElement;
+        this.passwordInputError     = document.getElementById( "authentication-login-password-input-error" ) as HTMLSpanElement;
 
-        this.forgotPassBtn          = document.getElementById( "forgot-password" ) as HTMLParagraphElement;
+        this.forgotPassBtn          = document.getElementById( "authentication-login-forgot-password" ) as HTMLParagraphElement;
+        this.loginBtn               = document.getElementById( "authentication-login-btn" ) as HTMLButtonElement;
 
 
         this.forgotPassBtnListener  = this.forgotPassBtnListener.bind( this );
@@ -95,18 +98,33 @@ export class AuthenticationLogin extends ViewComponent {
     public enterScene(enterType?: string): void {
         console.info( "Enter being called in authentication login view component" );
 
-        if ( enterType === ViewEnterTypes.SWITCH_COMPONENT ) {
 
-            this.container.style.display = "block";
+        switch ( enterType ) {
 
-            TweenLite.to( this.container, 0.8, { opacity: 1 } );
+            case ViewEnterTypes.SWITCH_COMPONENT :
 
-            TweenLite.to( this.container, 0.5, { paddingTop: 60,  ease: Back.easeOut.config( 0.35 ) } );
+                this.container.style.display = "block";
 
-        } else {
-            this.registerEventListeners();
+                TweenLite.to( this.container, 0.8, { opacity: 1 } );
+                TweenLite.to( this.container, 0.5, { paddingTop: 60,  ease: Back.easeOut.config( 0.35 ) } );
+
+                break;
+
+
+            case ViewEnterTypes.REVEAL_COMPONENT :
+
+                this.container.style.display = "block";
+
+                TweenLite.to( this.container, 0.8, { opacity: 1 } );
+                TweenLite.to( this.container, 0.5, { paddingTop: 60,  ease: Back.easeOut.config( 0.35 ) } );
+
+                break;
+
+
+            default :
+                this.registerEventListeners();
+                break;
         }
-
     }
 
 
@@ -115,24 +133,39 @@ export class AuthenticationLogin extends ViewComponent {
         console.info( "Exit being called in authentication login view component" );
 
 
-        if ( exitType === ViewExitTypes.SWITCH_COMPONENT ) {
 
-            TweenLite.to( this.container, 0.4, { paddingTop: 130 } );
+        switch ( exitType ) {
 
-            TweenLite.to( this.container, 0.4, { opacity: 0, ease: Power1.easeOut, onComplete: () => {
-                this.container.style.display = "none";
+            case ViewExitTypes.SWITCH_COMPONENT :
 
-                if ( signal ) this.sendSignal( signal );
+                TweenLite.to( this.container, 0.4, { paddingTop: 130 } );
+                TweenLite.to( this.container, 0.4, { opacity: 0, ease: Power1.easeOut, onComplete: () => {
+                    this.container.style.display = "none";
 
-            }});
+                    if ( signal ) this.sendSignal( signal );
+
+                }});
+
+                break;
 
 
-        } else {
-            super.exitScene( exitType );
-            this.unregisterEventListeners();
-            this.view.componentExited( this.name );
+            case ViewExitTypes.HIDE_COMPONENT :
 
+                TweenLite.to( this.container, 0.4, { paddingTop: 130, delay: 0.3 } );
+                TweenLite.to( this.container, 0.4, { opacity: 0, ease: Power1.easeOut, onComplete: () => {
+                    this.container.style.display = "none";
+                }});
+
+                break;
+
+
+            default :
+
+                super.exitScene( exitType );
+                this.unregisterEventListeners();
+                this.view.componentExited( this.name );
+
+                break;
         }
-
     }
 }
