@@ -3,4 +3,19 @@
 #scrum-view-container {
   width: 100%;
   height: 100%;
+
+  #scrum-teams-container {
+    width: 23%;
+    height: 100%;
+  }
+
+  #scrum-create-team-container {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
 }

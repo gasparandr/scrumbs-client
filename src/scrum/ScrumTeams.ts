@@ -13,7 +13,8 @@ import Back = gsap.Back;
 
 
 // CSS
-import "../_style/style-sheets/scrum-teams.scss"; // INSERT NAME
+import "../_style/style-sheets/scrum-teams.scss";
+import {ScrumSignals} from "./ScrumSignals"; // INSERT NAME
 
 
 // HTML
@@ -25,9 +26,8 @@ const template = require( "../_view-templates/scrum-teams.html" ); // INSERT NAM
 
 
 export class ScrumTeams extends ViewComponent {
-
-
-
+    private createTeamBtn: HTMLButtonElement;
+    private teamSettingsBtn: HTMLButtonElement;
 
 
     constructor(view: View, container: HTMLElement) {
@@ -35,7 +35,11 @@ export class ScrumTeams extends ViewComponent {
 
         this.container.innerHTML = template;
 
+        this.createTeamBtn      = document.getElementById( "scrum-create-team-btn" ) as HTMLButtonElement;
+        this.teamSettingsBtn    = document.getElementById( "scrum-team-settings-btn" ) as HTMLButtonElement;
 
+
+        this.createTeamBtnListener = this.createTeamBtnListener.bind( this );
 
         this.enterScene();
     }
@@ -43,13 +47,20 @@ export class ScrumTeams extends ViewComponent {
 
 
     private registerEventListeners(): void {
-
+        this.createTeamBtn.addEventListener( "click", this.createTeamBtnListener );
     }
 
 
 
     private unregisterEventListeners(): void {
+        this.createTeamBtn.removeEventListener( "click", this.createTeamBtnListener );
 
+    }
+
+
+
+    private createTeamBtnListener(e: any) {
+        this.sendSignal( ScrumSignals.CREATE_TEAM );
     }
 
 

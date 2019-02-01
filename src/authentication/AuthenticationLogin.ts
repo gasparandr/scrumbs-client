@@ -15,8 +15,6 @@ import Back = gsap.Back;
 import "../_style/style-sheets/authentication-log-in.scss";
 
 
-
-
 // HTML
 const template = require( "../_view-templates/authentication-log-in.html" );
 

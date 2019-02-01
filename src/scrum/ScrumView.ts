@@ -16,6 +16,7 @@ import {View} from "../core/View";
 
 // CSS
 import "../_style/style-sheets/scrum-view.scss";
+import {ScrumSignals} from "./ScrumSignals";
 
 
 
@@ -121,6 +122,11 @@ export class ScrumView extends View {
 
         switch ( signal.name ) {
 
+            case ScrumSignals.CREATE_TEAM :
+
+                this.createTeam.enterScene( ViewEnterTypes.REVEAL_COMPONENT );
+
+                break;
 
             default:
                 break;
