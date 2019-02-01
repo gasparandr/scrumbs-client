@@ -45,7 +45,7 @@ export class ScrumView extends View {
 
 
     constructor() {
-        super( "AuthenticationView" );
+        super( "ScrumView" );
 
         this.container = document.createElement( "div" );
         this.container.id = "scrum-view-container";

@@ -32,7 +32,7 @@ export class BlockersView extends View {
 
 
     constructor() {
-        super( "AuthenticationView" );
+        super( "BlockersView" );
 
         this.container = document.createElement( "div" );
         this.container.id = "template-view-container"; // ADD CUSTOM NAME
