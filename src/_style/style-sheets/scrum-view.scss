@@ -7,6 +7,14 @@
   #scrum-teams-container {
     width: 23%;
     height: 100%;
+    float: left;
+  }
+
+
+  #scrum-welcome-screen-container {
+    width: 77%;
+    height: 100%;
+    float: right;
   }
 
   #scrum-create-team-container {
