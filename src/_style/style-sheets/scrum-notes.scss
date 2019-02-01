@@ -1,0 +1,80 @@
+
+
+
+#scrum-notes {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  #scrum-notes-header {
+    height: 100px;
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding: 15px;
+
+    #scrum-notes-member-name {
+      line-height: 50px;
+      font-size: 30px;
+    }
+
+
+    #scrum-notes-member-options {
+      float: right;
+      font-size: 30px;
+      top: 15px;
+      position: absolute;
+      right: 15px;
+      cursor: pointer;
+    }
+  }
+
+  #scrum-notes-note-container {
+    width: 100%;
+    max-height: calc(100% - 140px);
+    overflow: auto;
+    padding: 0 15px;
+
+    .scrum-note {
+      padding: 15px;
+      background-color: #f0f4f5;
+      position: relative;
+      margin: 10px 0;
+
+      .scrum-note-checkmark {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+
+      }
+    }
+
+  }
+
+  #scrum-notes-footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    margin-bottom: 25px;
+
+
+    #scrum-note-input {
+      width: 100%;
+      height: 100px;
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 2px;
+    }
+
+    #scrum-notes-blocker-checkbox-container {
+      position: absolute;
+      top: 45px;
+      right: 45px;
+
+      #scrum-notes-blocker-checkbox {
+        -webkit-appearance: checkbox;
+      }
+    }
+
+  }
+
+}

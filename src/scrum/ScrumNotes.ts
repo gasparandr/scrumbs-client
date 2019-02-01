@@ -56,7 +56,20 @@ export class ScrumNotes extends ViewComponent {
 
     public enterScene(enterType?: string): void {
         console.info( "Enter being called in scrum notes view component" );
-        this.registerEventListeners();
+
+        switch ( enterType ) {
+
+            case ViewEnterTypes.REVEAL_COMPONENT :
+
+                this.container.style.display = "block";
+
+                break;
+
+
+            default :
+                this.registerEventListeners();
+                break;
+        }
     }
 
 

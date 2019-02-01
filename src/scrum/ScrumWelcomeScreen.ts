@@ -14,6 +14,7 @@ import Back = gsap.Back;
 
 // CSS
 import "../_style/style-sheets/scrum-welcome-screen.scss";
+import {ScrumSignals} from "./ScrumSignals";
 
 
 // HTML
@@ -25,7 +26,7 @@ const template = require( "../_view-templates/scrum-welcome-screen.html" );
 
 
 export class ScrumWelcomeScreen extends ViewComponent {
-
+    private tempClick: HTMLElement;
 
 
 
@@ -35,6 +36,7 @@ export class ScrumWelcomeScreen extends ViewComponent {
 
         this.container.innerHTML = template;
 
+        this.tempClick = document.getElementById( "scrum-welcome-screen-profile" );
 
 
         this.enterScene();
@@ -43,7 +45,7 @@ export class ScrumWelcomeScreen extends ViewComponent {
 
 
     private registerEventListeners(): void {
-
+        this.tempClick.addEventListener( "click", () => this.exitScene( ViewExitTypes.SWITCH_COMPONENT, ScrumSignals.SWITCH_WELCOME_SCREEN_TO_NOTES ) );
     }
 
 
@@ -56,16 +58,35 @@ export class ScrumWelcomeScreen extends ViewComponent {
 
     public enterScene(enterType?: string): void {
         console.info( "Enter being called in scrum welcome screen view component" );
-        this.registerEventListeners();
+
+        switch ( enterType ) {
+
+            default :
+                this.registerEventListeners();
+                break;
+        }
     }
 
 
 
-    public exitScene(exitType?: string): void {
+    public exitScene(exitType?: string, signal?: string): void {
         console.info( "Exit being called in scrum welcome screen view component" );
 
-        super.exitScene( exitType );
-        this.unregisterEventListeners();
-        this.view.componentExited( this.name );
+        switch ( exitType ) {
+
+            case ViewExitTypes.SWITCH_COMPONENT :
+
+                this.container.style.display = "none";
+
+                if ( signal ) this.sendSignal( signal );
+
+                break;
+
+            default :
+                super.exitScene( exitType );
+                this.unregisterEventListeners();
+                this.view.componentExited( this.name );
+                break;
+        }
     }
 }
