@@ -36,7 +36,7 @@ export class ScrumView extends View {
 
     private teamsContainer: HTMLElement;
     private notesContainer: HTMLElement;
-    private welcomeScreentContainer: HTMLElement;
+    private welcomeScreenContainer: HTMLElement;
     private createTeamContainer: HTMLElement;
     private mangeTeamsContainer: HTMLElement;
 
@@ -56,13 +56,13 @@ export class ScrumView extends View {
 
         this.teamsContainer             = document.getElementById( "scrum-teams-container" );
         this.notesContainer             = document.getElementById( "scrum-notes-container" );
-        this.welcomeScreentContainer    = document.getElementById( "scrum-welcome-screen-container" );
+        this.welcomeScreenContainer     = document.getElementById( "scrum-welcome-screen-container" );
         this.createTeamContainer        = document.getElementById( "scrum-create-team-container" );
         this.mangeTeamsContainer        = document.getElementById( "scrum-manage-teams-container" );
 
         this.teams                      = new ScrumTeams( this, this.teamsContainer );
         this.notes                      = new ScrumNotes( this, this.notesContainer );
-        this.welcomeScreen              = new ScrumWelcomeScreen( this, this.welcomeScreentContainer );
+        this.welcomeScreen              = new ScrumWelcomeScreen( this, this.welcomeScreenContainer );
         this.createTeam                 = new ScrumCreateTeam( this, this.createTeamContainer );
         this.manageTeams                = new ScrumManageTeams( this, this.mangeTeamsContainer );
 
