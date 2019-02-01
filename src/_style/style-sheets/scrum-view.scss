@@ -10,11 +10,18 @@
     float: left;
   }
 
-
   #scrum-welcome-screen-container {
     width: 77%;
     height: 100%;
     float: right;
+  }
+
+  #scrum-notes-container {
+    display: none;
+    width: 77%;
+    height: 100%;
+    float: right;
+    background-color: #d3d3d3;
   }
 
   #scrum-create-team-container {
