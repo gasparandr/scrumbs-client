@@ -168,9 +168,14 @@ export class AuthenticationLogin extends ViewComponent {
 
             default :
 
-                super.exitScene( exitType );
-                this.unregisterEventListeners();
-                this.view.componentExited( this.name );
+                TweenLite.to( this.container, 0.4, { paddingTop: 130 } );
+                TweenLite.to( this.container, 0.4, { opacity: 0, ease: Power1.easeOut, onComplete: () => {
+
+                    super.exitScene( exitType );
+                    this.unregisterEventListeners();
+                    this.view.componentExited( this.name );
+
+                }});
 
                 break;
         }
