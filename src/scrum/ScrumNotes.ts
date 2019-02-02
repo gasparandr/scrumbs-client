@@ -13,11 +13,11 @@ import Back = gsap.Back;
 
 
 // CSS
-import "../_style/style-sheets/scrum-notes.scss"; // INSERT NAME
+import "../_style/style-sheets/scrum/component/scrum-notes.scss"; // INSERT NAME
 
 
 // HTML
-const template = require( "../_view-templates/scrum-notes.html" ); // INSERT NAME
+const template = require( "../_view-templates/scrum/component/scrum-notes.html" ); // INSERT NAME
 
 
 

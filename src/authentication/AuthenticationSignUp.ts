@@ -12,12 +12,12 @@ import Back = gsap.Back;
 
 
 // CSS
-import "../_style/style-sheets/authentication-sign-up.scss";
+import "../_style/style-sheets/authentication/component/authentication-sign-up.scss";
 
 
 
 // HTML
-const template = require( "../_view-templates/authentication-sign-up.html" );
+const template = require( "../_view-templates/authentication/component/authentication-sign-up.html" );
 
 
 

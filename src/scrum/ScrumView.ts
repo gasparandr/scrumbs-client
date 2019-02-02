@@ -15,13 +15,13 @@ import {View} from "../core/View";
 
 
 // CSS
-import "../_style/style-sheets/scrum-view.scss";
+import "../_style/style-sheets/scrum/view/scrum-view.scss";
 import {ScrumSignals} from "./ScrumSignals";
 
 
 
 // HTML
-const authenticationViewTemplate = require( "../_view-templates/scrum-view.html" );
+const authenticationViewTemplate = require( "../_view-templates/scrum/view/scrum-view.html" );
 
 
 

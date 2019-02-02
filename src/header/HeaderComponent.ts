@@ -13,12 +13,12 @@ import Back = gsap.Back;
 
 
 // CSS
-import "../_style/style-sheets/header-component.scss";
+import "../_style/style-sheets/header/component/header-component.scss";
 
 
 
 // HTML
-const template = require( "../_view-templates/header-component.html" );
+const template = require( "../_view-templates/header/component/header-component.html" );
 
 
 

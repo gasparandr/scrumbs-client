@@ -16,11 +16,12 @@ import {View} from "../core/View";
 
 
 // CSS
-import "../_style/style-sheets/authentication-view.scss";
+import "../_style/style-sheets/authentication/view/authentication-view.scss";
+import "../_style/style-sheets/authentication/common/authentication-common.scss";
 
 
 // HTML
-const authenticationViewTemplate = require( "../_view-templates/authentication-view.html" );
+const authenticationViewTemplate = require( "../_view-templates/authentication/view/authentication-view.html" );
 
 
 

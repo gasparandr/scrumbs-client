@@ -1,7 +1,7 @@
 
-@import "mixins";
-@import "color-variables";
-@import "style-fonts";
+@import "../../mixins.scss";
+@import "../../color-variables";
+@import "../../style-fonts.scss";
 
 
 
@@ -35,7 +35,7 @@
 
         .input-#{$type} ~ .input-icon {
 
-            background-image: url( "../img/icons/icon-#{$type}.svg" );
+            background-image: url( "../../../img/icons/icon-#{$type}.svg" );
 
             @if $type == "email" {
                 width: 16px;
@@ -101,17 +101,17 @@
 
                 &:nth-child( 1 ) {
                     left: 0;
-                    &::after { background-image: url( "../img/icons/google-icon.svg" ); }
+                    &::after { background-image: url( "../../../img/icons/google-icon.svg" ); }
                 }
 
                 &:nth-child( 2 ) {
                     @include center( "horizontal" );
-                    &::after { background-image: url( "../img/icons/twitter-icon.svg" ); }
+                    &::after { background-image: url( "../../../img/icons/twitter-icon.svg" ); }
                 }
 
                 &:nth-child( 3 ) {
                     right: 0;
-                    &::after { background-image: url( "../img/icons/linked-in-icon.svg" ); }
+                    &::after { background-image: url( "../../../img/icons/linked-in-icon.svg" ); }
                 }
 
             }

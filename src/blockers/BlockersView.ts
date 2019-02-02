@@ -11,11 +11,11 @@ import {View} from "../core/View";
 
 
 // CSS
-import "../_style/style-sheets/blockers-view.scss";
+import "../_style/style-sheets/blockers/view/blockers-view.scss";
 
 
 // HTML
-const authenticationViewTemplate = require( "../_view-templates/blockers-view.html" );
+const authenticationViewTemplate = require( "../_view-templates/blockers/view/blockers-view.html" );
 
 
 

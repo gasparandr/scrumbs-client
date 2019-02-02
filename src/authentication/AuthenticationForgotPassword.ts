@@ -10,11 +10,11 @@ import TweenLite = gsap.TweenLite;
 
 
 // CSS
-import "../_style/style-sheets/authentication-forgot-password.scss";
+import "../_style/style-sheets/authentication/component/authentication-forgot-password.scss";
 
 
 // HTML
-const template = require( "../_view-templates/authentication-forgot-password.html" );
+const template = require( "../_view-templates/authentication/component/authentication-forgot-password.html" );
 
 
 

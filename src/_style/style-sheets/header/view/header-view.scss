@@ -1,0 +1,22 @@
+@import "../../mixins";
+@import "../../color-variables";
+
+
+
+#header-view-container {
+
+    background: $tertiary-color;
+    height: 70px;
+    padding-left: 30px;
+    padding-right: 37px;
+    z-index: 1000;
+
+
+    @media screen and ( max-width: 560px ) {
+
+        padding-left: 15px;
+        padding-right: 15px;
+
+    }
+
+}

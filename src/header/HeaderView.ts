@@ -14,12 +14,12 @@ import {View} from "../core/View";
 
 
 // CSS
-import "../_style/style-sheets/header-view.scss";
+import "../_style/style-sheets/header/view/header-view.scss";
 
 
 
 // HTML
-const headerViewTemplate = require( "../_view-templates/header-view.html" );
+const headerViewTemplate = require( "../_view-templates/header/view/header-view.html" );
 
 
 

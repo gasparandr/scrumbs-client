@@ -13,11 +13,11 @@ import Back = gsap.Back;
 
 
 // CSS
-import "../_style/style-sheets/scrum-manage-teams.scss"; // INSERT NAME
+import "../_style/style-sheets/scrum/component/scrum-manage-teams.scss"; // INSERT NAME
 
 
 // HTML
-const template = require( "../_view-templates/scrum-manage-teams.html" ); // INSERT NAME
+const template = require( "../_view-templates/scrum/component/scrum-manage-teams.html" ); // INSERT NAME
 
 
 

@@ -13,12 +13,12 @@ import Back = gsap.Back;
 
 
 // CSS
-import "../_style/style-sheets/scrum-welcome-screen.scss";
+import "../_style/style-sheets/scrum/component/scrum-welcome-screen.scss";
 import {ScrumSignals} from "./ScrumSignals";
 
 
 // HTML
-const template = require( "../_view-templates/scrum-welcome-screen.html" );
+const template = require( "../_view-templates/scrum/component/scrum-welcome-screen.html" );
 
 
 
