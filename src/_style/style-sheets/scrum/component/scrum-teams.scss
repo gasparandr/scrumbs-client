@@ -57,9 +57,9 @@
 	
 				.scrum-team-name {
 					height: 100%;
-					margin-left: 20px;
-					line-height: 50px;
-					padding-left: 16px;
+					margin-left: 17px;
+					line-height: 45px;
+					padding-left: 15px;
 					position: relative;
 
 					&::before {
@@ -67,7 +67,7 @@
 						position: absolute;
 						display: block;
 						left: 0;
-						top: 23px;
+						top: 20px;
 						width: 10px;
 						height: 6px;
 						background: url( "../../../img/icons/icon-dropdown.svg" ) no-repeat center / contain;

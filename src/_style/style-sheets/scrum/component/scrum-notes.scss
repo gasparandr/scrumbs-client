@@ -1,79 +1,201 @@
 
+@import "../../mixins";
+@import "../../color-variables";
+
 
 #scrum-notes {
-  position: relative;
-  width: 100%;
-  height: 100%;
 
-  #scrum-notes-header {
-    height: 100px;
-    width: 100%;
-    border-bottom: 1px solid black;
-    padding: 15px;
+	height: 100%;
+	position: relative;
 
-    #scrum-notes-member-name {
-      line-height: 50px;
-      font-size: 30px;
-    }
+	#scrum-notes-header {
+		height: 80px;
+		border-bottom: 1px solid $quinary-color;
+		position: relative;
 
+		#scrum-notes-member-name {
+			@include center( "vertical" );
+			left: 20px;
+			font-size: 1.43em;
+		}
 
-    #scrum-notes-member-options {
-      float: right;
-      font-size: 30px;
-      top: 15px;
-      position: absolute;
-      right: 15px;
-      cursor: pointer;
-    }
-  }
+		#scrum-notes-member-options {
+			display: block;
+			@include center( "vertical" );
+			right: 25px;
+			width: 30px;
+			height: 30px;
+			background: url( "../../../img/icons/icon-options.svg" ) no-repeat right center / 20px 4px;
+		}
+	}
 
-  #scrum-notes-note-container {
-    width: 100%;
-    max-height: calc(100% - 140px);
-    overflow: auto;
-    padding: 0 15px;
+	#scrum-notes-note-container {
+		height: calc( 100% - 170px );
+		padding: 0 20px;
+		overflow: auto;
 
-    .scrum-note {
-      padding: 15px;
-      background-color: #f0f4f5;
-      position: relative;
-      margin: 10px 0;
+		.scrum-note-date {
+			margin: 15px 0;
+			text-align: center;
+			position: relative;
 
-      .scrum-note-checkmark {
-        position: absolute;
-        width: 15px;
-        height: 15px;
+			&::before {
+				content: "";
+				position: relative;
+				top: 12px;
+				display: block;
+				width: 100%;
+				height: 1px;
+				background-color: $denary-color;
+			}
+			
 
-      }
-    }
+			span {
+				display: inline-block;
+				padding: 0 12px;
+				line-height: 21px;
+				font-size: 0.86em;
+				color: $text-tertiary-color;
+				background-color: $tertiary-color;
+				border-radius: 20px;
+				border: 1px solid $denary-color;
+				position: relative;
+			}
+		}
 
-  }
+		.scrum-note {
+			margin: 5px 0;
+			position: relative;
+			
+			.scrum-note-text {
+				display: inline-block;
+				font-size: 1.1em;
+				line-height: 22px;
+				padding: 20px 25px;
+				background-color: $nonary-color;
+				border-radius: 3px;
+				position: relative;
+			}
 
-  #scrum-notes-footer {
-    bottom: 0;
-    position: absolute;
-    width: 100%;
-    margin-bottom: 25px;
+			.scrum-note-options {
+				position: absolute;
+				top: 15px;
+				right: 25px;
+				width: 30px;
+				height: 30px;
+				background: url( "../../../img/icons/icon-options.svg" ) no-repeat right center / 20px 4px;
+				display: none;
+			}
 
+			.scrum-note-checkmark {
+				position: absolute;
+				top: 17px;
+				right: 20px;
+				width: 24px;
+				height: 24px;
+				border-radius: 50%;
+				box-shadow: inset 0 0 0 2px $quinary-color;
+				display: none;
+				
+				&::after {
+					content: "";
+					display: none;
+					width: 100%;
+					height: 100%;
+					background: url( "../../../img/icons/icon-checked.svg" ) no-repeat center / contain;
+				}
 
-    #scrum-note-input {
-      width: 100%;
-      height: 100px;
-      padding: 20px;
-      border: 1px solid black;
-      border-radius: 2px;
-    }
+			}
 
-    #scrum-notes-blocker-checkbox-container {
-      position: absolute;
-      top: 45px;
-      right: 45px;
+			&.blocker {
 
-      #scrum-notes-blocker-checkbox {
-        -webkit-appearance: checkbox;
-      }
-    }
+				.scrum-note-text {
+					background-color: transparent;
+					padding-left: 40px;
+					padding-right: 60px;
 
-  }
+					&::before {
+						content: "";
+						display: block;
+						width: 22px;
+						height: 11px;
+						left: 9px;
+						@include center( "vertical" );
+						background: url( "../../../img/icons/icon-blocker.png" ) no-repeat center / contain;
+					}
+
+				}
+
+				.scrum-note-options { right: 60px; }
+
+				.scrum-note-checkmark { display: block; }
+
+				&:hover .scrum-note-text { padding-right: 100px; }
+
+				&.solved {
+
+					.scrum-note-text {
+						color: $text-secondary-color;
+						text-decoration: line-through;
+					}
+
+					.scrum-note-checkmark {
+						display: block;
+
+						&::after { display: block; }
+					}
+
+				}
+
+			}
+			
+			&:hover {
+
+				.scrum-note-text {
+					width: 100%;
+					padding-right: 70px;
+					background-color: $denary-color;
+				}
+
+				.scrum-note-options { display: block; }
+
+				&:not( .solved ) .scrum-note-checkmark { box-shadow: inset 0 0 0 2px darken( $quinary-color, 10% ); }
+
+			}
+
+		}
+
+  	}
+
+	#scrum-notes-footer {
+		
+		@include center( "horizontal" );
+		bottom: 20px;
+		width: calc( 100% - 40px );
+		
+
+		#scrum-note-input {
+			display: block;
+			width: 100%;
+			padding: 0 120px 0 25px;
+			line-height: 70px;
+			font-size: 1.15em;
+			border-radius: 3px;
+			box-shadow: inset 0 0 0 2px $quinary-color;
+			transition: box-shadow 0.2s linear;
+
+			&:focus { box-shadow: inset 0 0 0 2px $accent-color; }
+
+		}
+
+		#scrum-notes-blocker-checkbox-container {
+			@include center( "vertical" );
+			right: 30px;
+
+			label { padding-left: 24px; }
+
+		}
+
+	}
 
 }
