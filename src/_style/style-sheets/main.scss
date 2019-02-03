@@ -74,7 +74,6 @@ body {
     background-color: $tertiary-color;
     border-radius: 5px;
     box-shadow: 0 2px 20px 0 $quinary-color;
-    overflow: hidden;
     position: relative;
     top: 5px;
 
@@ -257,7 +256,7 @@ input, textarea {
     height: 50px;
     line-height: 50px;
     box-shadow: 0 12px 8px -9px lighten( $secondary-color, 17% );
-    background: $tertiary-color;
+    background: $primary-color;
     background: -moz-linear-gradient( left,    $primary-color 0%, $secondary-color 100% );
     background: -webkit-linear-gradient( left, $primary-color 0%, $secondary-color 100% );
     background: linear-gradient( to right,     $primary-color 0%, $secondary-color 100% );

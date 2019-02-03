@@ -49,11 +49,11 @@
             
         }
     
-        .button-group { height: 50px }
+        .button-group { height: 50px; display: none; }
     
         #profile-wrapper {
             height: 45px;
-            display: none;
+            // display: none;
         }
     
         #profile-avatar {
@@ -63,7 +63,10 @@
             margin-right: 30px;
             border: 1px solid $text-tertiary-color;
             border-radius: 50%;
-            background: gold;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 50%;
+            background-image: url( "../../../img/icons/icon-user.svg" );
         }
     
         #profile-dropdown-button {
@@ -72,7 +75,6 @@
             height: 20px;
             @include center( "vertical" );
             right: 0;
-            background: gold;
     
             &::after {
                 content: "";
@@ -81,7 +83,7 @@
                 @include center();
                 width: 13px;
                 height: 8px;
-                background: black;
+                background: url( "../../../img/icons/icon-dropdown-accent.svg" ) no-repeat center / contain;
             }
     
         }
