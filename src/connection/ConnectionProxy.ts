@@ -1,6 +1,5 @@
 
-
-import {HTTPMethods} from "../core/HTTPMethods";
+import {ILoginModel} from "./models/ILoginModel";
 import {Proxy} from "../core/Proxy";
 import {UserVO} from "./UserVO";
 
@@ -18,6 +17,57 @@ export class ConnectionProxy extends Proxy {
         super( proxyName, SERVICE_URL );
     }
 
+
+
+    public login(data: ILoginModel, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "POST",
+            "/api/v1/authentication/login",
+            data,
+            (response: any ) => {
+
+                ConnectionProxy.token           = response.tokenData.token;
+                ConnectionProxy.tokenExpires    = response.tokenData.expires;
+
+                const {  firstName, lastName } = response.userData;
+
+                ConnectionProxy.setVO( new UserVO(
+                    firstName,
+                    lastName
+                ));
+
+                success( response );
+            },
+            failure
+        )
+    }
+
+
+
+    public signUp(data: ILoginModel, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "POST",
+            "/api/v1/authentication/sign-up",
+            data,
+            (response: any) => {
+
+                ConnectionProxy.token           = response.tokenData.token;
+                ConnectionProxy.tokenExpires    = response.tokenData.expires;
+
+                const {  firstName, lastName } = response.userData;
+
+                ConnectionProxy.setVO( new UserVO(
+                    firstName,
+                    lastName
+                ));
+
+                success( response );
+            },
+            failure
+        )
+    }
 
 
 

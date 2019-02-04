@@ -1,11 +1,12 @@
 
-
-
-
-
 import {CoreEntity} from "./CoreEntity";
 import {IProxy} from "./IProxy";
 import {IProxyVO} from "./IProxyVO";
+
+
+
+
+
 
 export class Proxy extends CoreEntity implements IProxy {
     protected address: string;
@@ -30,7 +31,7 @@ export class Proxy extends CoreEntity implements IProxy {
 
 
 
-    protected setVO(vo: IProxyVO): void {
+    protected static setVO(vo: IProxyVO): void {
         Proxy.VO = vo;
     }
 

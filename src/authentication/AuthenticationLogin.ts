@@ -1,10 +1,11 @@
 
 import {AuthenticationSignals} from "./AuthenticationSignals";
+import {ValidationHelper} from "../helpers/ValidationHelper";
+import {LoginModel} from "../connection/models/LoginModel";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {View} from "../core/View";
-
 
 import TweenLite = gsap.TweenLite;
 import Power1 = gsap.Power1;
@@ -66,9 +67,10 @@ export class AuthenticationLogin extends ViewComponent {
         this.loginBtn               = document.getElementById( "authentication-login-btn" ) as HTMLButtonElement;
 
 
+        this.emailInputListener         = this.emailInputListener.bind( this );
+        this.passwordInputListener      = this.passwordInputListener.bind( this );
         this.forgotPassBtnListener      = this.forgotPassBtnListener.bind( this );
         this.loginBtnListener           = this.loginBtnListener.bind( this );
-
 
 
         this.enterScene();
@@ -77,6 +79,8 @@ export class AuthenticationLogin extends ViewComponent {
 
 
     private registerEventListeners(): void {
+        this.emailInput.addEventListener( "focus", this.emailInputListener );
+        this.passwordInput.addEventListener( "focus", this.passwordInputListener );
         this.forgotPassBtn.addEventListener( "click", this.forgotPassBtnListener );
         this.loginBtn.addEventListener( "click", this.loginBtnListener );
     }
@@ -84,12 +88,26 @@ export class AuthenticationLogin extends ViewComponent {
 
 
     private unregisterEventListeners(): void {
+        this.emailInput.removeEventListener( "focus", this.emailInputListener );
+        this.passwordInput.removeEventListener( "focus", this.passwordInputListener );
         this.forgotPassBtn.removeEventListener( "click", this.forgotPassBtnListener );
         this.loginBtn.removeEventListener( "click", this.loginBtnListener );
     }
 
 
-    
+
+    private emailInputListener(e: any) {
+        this.emailInputError.style.display = "none";
+    }
+
+
+
+    private passwordInputListener(e: any) {
+        this.passwordInputError.style.display = "none";
+    }
+
+
+
     private forgotPassBtnListener(e: any) {
         this.exitScene( ViewExitTypes.SWITCH_COMPONENT, AuthenticationSignals.SWITCH_LOGIN_TO_FORGOT_PASSWORD );
     }
@@ -97,7 +115,19 @@ export class AuthenticationLogin extends ViewComponent {
 
 
     private loginBtnListener(e:any) {
-        this.sendSignal( AuthenticationSignals.LOGIN );
+        if ( ! this.validateInputs() ) return;
+
+        const email     = this.emailInput.value;
+        const password  = this.passwordInput.value;
+
+        const loginModel = new LoginModel( email, password );
+
+        this.connection.login(
+            loginModel,
+            () => this.sendSignal( AuthenticationSignals.LOGIN ),
+            (err: string) => console.error( err )
+        )
+
     }
 
 
@@ -179,5 +209,18 @@ export class AuthenticationLogin extends ViewComponent {
 
                 break;
         }
+    }
+
+
+
+    private validateInputs(): boolean {
+        const email: string             = this.emailInput.value;
+        const isEmailValid: boolean     = ValidationHelper.validateEmail( email );
+        const password: string          = this.passwordInput.value;
+
+        if ( ! isEmailValid ) this.emailInputError.style.display    = "block";
+        if ( ! password ) this.passwordInputError.style.display     = "block";
+
+        return isEmailValid && password !== "";
     }
 }

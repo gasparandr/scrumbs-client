@@ -39,7 +39,7 @@ module.exports = {
     ],
     plugins: [
         new webpack.DefinePlugin({
-            "SERVICE_URL": JSON.stringify("http://68.183.72.89:3000/api/v1")
+            "SERVICE_URL": JSON.stringify("http://68.183.72.89:3000")
         })
     ]
 
