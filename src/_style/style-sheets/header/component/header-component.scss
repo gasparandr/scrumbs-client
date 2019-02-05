@@ -42,7 +42,7 @@
     
         }
     
-        .button-group, #profile-wrapper {
+        .button-group, #header-profile-wrapper {
             position: absolute;
             right: 0;
             @include center( "vertical" );
@@ -51,7 +51,7 @@
     
         .button-group { height: 50px; }
     
-        #profile-wrapper {
+        #header-profile-wrapper {
             height: 45px;
             display: none;
         }
@@ -88,7 +88,7 @@
     
         }
     
-        #header-button {
+        #header-auth-button {
             width: 152px;
             margin-left: 30px;
         }
@@ -99,7 +99,7 @@
 
         @media screen and ( max-width: 560px ) {
     
-            #auth-message { display: none; }
+            #header-auth-message { display: none; }
     
         }
 

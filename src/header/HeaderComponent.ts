@@ -14,6 +14,7 @@ import Back = gsap.Back;
 
 // CSS
 import "../_style/style-sheets/header/component/header-component.scss";
+import {HeaderConstants} from "./HeaderConstants";
 
 
 
@@ -32,6 +33,10 @@ export class HeaderComponent extends ViewComponent {
 
     private authViewComponentActive: string;
 
+    private navigation: HTMLUListElement;
+    private profile: HTMLUListElement;
+    private authenticationFragment: HTMLElement;
+
 
     constructor(view: View, container: HTMLElement) {
         super( view, container );
@@ -40,8 +45,12 @@ export class HeaderComponent extends ViewComponent {
 
         this.authViewComponentActive = "LOGIN";
 
-        this.actionBtn      = document.getElementById( "header-button" ) as HTMLButtonElement;
-        this.authMessage    = document.getElementById( "auth-message" ) as HTMLSpanElement;
+        this.actionBtn      = document.getElementById( "header-auth-button" ) as HTMLButtonElement;
+        this.authMessage    = document.getElementById( "header-auth-message" ) as HTMLSpanElement;
+
+        this.navigation                 = document.getElementById( "header-navigation" ) as HTMLUListElement;
+        this.profile                    = document.getElementById( "header-profile-wrapper" ) as HTMLUListElement;
+        this.authenticationFragment     = document.getElementById( "header-authentication-fragment" ) as HTMLElement;
 
 
         this.actionBtnClickListener = this.actionBtnClickListener.bind( this );
@@ -61,6 +70,7 @@ export class HeaderComponent extends ViewComponent {
     private unregisterEventListeners(): void {
         this.actionBtn.removeEventListener( "click", this.actionBtnClickListener );
     }
+
 
 
     private actionBtnClickListener(e: any): void {
@@ -115,5 +125,30 @@ export class HeaderComponent extends ViewComponent {
 
         }
 
+    }
+
+
+
+    public switchState(toState: string): void {
+
+        switch ( toState ) {
+
+            case HeaderConstants.HEADER_APP_STATE :
+
+                this.authenticationFragment.style.display   = "none";
+                this.navigation.style.display               = "block";
+                this.profile.style.display                  = "block";
+
+                break;
+
+            case HeaderConstants.HEADER_AUTH_STATE :
+
+
+                break;
+
+
+            default :
+                break;
+        }
     }
 }

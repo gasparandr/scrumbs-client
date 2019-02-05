@@ -8,6 +8,7 @@ import {INotification} from "../core/INotification";
 import {ViewExitTypes} from "../core/ViewExitTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {HeaderComponent} from "./HeaderComponent";
+import {HeaderConstants} from "./HeaderConstants";
 import {HeaderSignals} from "./HeaderSignals";
 import {ISignal} from "../core/ISignal";
 import {View} from "../core/View";
@@ -88,12 +89,9 @@ export class HeaderView extends View {
         switch ( notification.name ) {
 
             case AuthenticationNotifications.LOGIN :
-
-
-                break;
-
             case AuthenticationNotifications.SIGN_UP :
 
+                ( this.header as HeaderComponent ).switchState( HeaderConstants.HEADER_APP_STATE );
 
                 break;
 
