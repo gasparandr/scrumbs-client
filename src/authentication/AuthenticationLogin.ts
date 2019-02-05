@@ -218,8 +218,8 @@ export class AuthenticationLogin extends ViewComponent {
         const isEmailValid: boolean     = ValidationHelper.validateEmail( email );
         const password: string          = this.passwordInput.value;
 
-        if ( ! isEmailValid ) this.emailInputError.style.display    = "block";
-        if ( ! password ) this.passwordInputError.style.display     = "block";
+        if ( ! isEmailValid )   this.emailInputError.style.display          = "block";
+        if ( ! password )       this.passwordInputError.style.display       = "block";
 
         return isEmailValid && password !== "";
     }

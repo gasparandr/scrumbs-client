@@ -30,11 +30,11 @@ export class ConnectionProxy extends Proxy {
                 ConnectionProxy.token           = response.tokenData.token;
                 ConnectionProxy.tokenExpires    = response.tokenData.expires;
 
-                const {  firstName, lastName } = response.userData;
+                const {  name, email } = response.userData;
 
                 ConnectionProxy.setVO( new UserVO(
-                    firstName,
-                    lastName
+                    name,
+                    email
                 ));
 
                 success( response );
@@ -56,11 +56,11 @@ export class ConnectionProxy extends Proxy {
                 ConnectionProxy.token           = response.tokenData.token;
                 ConnectionProxy.tokenExpires    = response.tokenData.expires;
 
-                const {  firstName, lastName } = response.userData;
+                const {  name, email } = response.userData;
 
                 ConnectionProxy.setVO( new UserVO(
-                    firstName,
-                    lastName
+                    name,
+                    email
                 ));
 
                 success( response );

@@ -4,12 +4,12 @@
 import {IProxyVO} from "../core/IProxyVO";
 
 export class UserVO implements IProxyVO {
-    public firstName: string;
-    public lastName: string;
+    public name: string;
+    public email: string;
 
-    constructor(firstName: string, lastName: string) {
-        this.firstName  = firstName;
-        this.lastName   = lastName;
+    constructor(name: string, email: string) {
+        this.name   = name;
+        this.email  = email;
     }
 
 }

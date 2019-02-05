@@ -2,8 +2,7 @@
 
 
 export interface ISignUpModel {
-    firstName: string,
-    lastName: string,
+    name: string,
     email: string,
     password: string
 }

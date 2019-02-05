@@ -13,6 +13,9 @@ import Back = gsap.Back;
 
 // CSS
 import "../_style/style-sheets/authentication/component/authentication-sign-up.scss";
+import {ValidationHelper} from "../helpers/ValidationHelper";
+import {SignUpModel} from "../connection/models/SignUpModel";
+import {AuthenticationSignals} from "./AuthenticationSignals";
 
 
 
@@ -41,7 +44,7 @@ export class AuthenticationSignUp extends ViewComponent {
     private passwordInput: HTMLInputElement;
     private passwordInputError: HTMLSpanElement;
 
-
+    private signUpBtn: HTMLButtonElement;
 
 
 
@@ -50,42 +53,90 @@ export class AuthenticationSignUp extends ViewComponent {
 
         this.container.innerHTML = template;
 
-        this.title                  = document.getElementById( "" ) as HTMLHeadingElement;
-        this.subTitle               = document.getElementById( "" ) as HTMLHeadingElement;
+        this.title                  = document.getElementById( "authentication-sign-up-title" ) as HTMLHeadingElement;
+        this.subTitle               = document.getElementById( "authentication-sign-up-subtitle" ) as HTMLHeadingElement;
 
-        this.nameInputLabel         = document.getElementById( "" ) as HTMLLabelElement;
-        this.nameInput              = document.getElementById( "" ) as HTMLInputElement;
-        this.nameInputError         = document.getElementById( "" ) as HTMLSpanElement;
+        this.nameInputLabel         = document.getElementById( "authentication-sign-up-name-label" ) as HTMLLabelElement;
+        this.nameInput              = document.getElementById( "authentication-sign-up-name-input" ) as HTMLInputElement;
+        this.nameInputError         = document.getElementById( "authentication-sign-up-name-input-error" ) as HTMLSpanElement;
 
-        this.emailInputLabel        = document.getElementById( "" ) as HTMLLabelElement;
-        this.emailInput             = document.getElementById( "" ) as HTMLInputElement;
-        this.emailInputError        = document.getElementById( "" ) as HTMLSpanElement;
+        this.emailInputLabel        = document.getElementById( "authentication-sign-up-email-label" ) as HTMLLabelElement;
+        this.emailInput             = document.getElementById( "authentication-sign-up-email-input" ) as HTMLInputElement;
+        this.emailInputError        = document.getElementById( "authentication-sign-up-email-input-error" ) as HTMLSpanElement;
 
-        this.passwordInputLabel     = document.getElementById( "" ) as HTMLLabelElement;
-        this.passwordInput          = document.getElementById( "" ) as HTMLInputElement;
-        this.passwordInputError     = document.getElementById( "" ) as HTMLSpanElement;
+        this.passwordInputLabel     = document.getElementById( "authentication-sign-up-email-input-label" ) as HTMLLabelElement;
+        this.passwordInput          = document.getElementById( "authentication-sign-up-password-input" ) as HTMLInputElement;
+        this.passwordInputError     = document.getElementById( "authentication-sign-up-password-input-error" ) as HTMLSpanElement;
 
+        this.signUpBtn              = document.getElementById( "authentication-sign-up-btn" ) as HTMLButtonElement;
+
+
+        this.nameInputListener          = this.nameInputListener.bind( this );
+        this.emailInputListener         = this.emailInputListener.bind( this );
+        this.passwordInputListener      = this.passwordInputListener.bind( this );
+        this.signUpBtnListener          = this.signUpBtnListener.bind( this );
+
+        this.enterScene();
 
     }
 
 
 
     private registerEventListeners(): void {
-
-
+        this.nameInput.addEventListener( "focus", this.nameInputListener );
+        this.emailInput.addEventListener( "focus", this.emailInputListener );
+        this.passwordInput.addEventListener( "focus", this.passwordInputListener );
+        this.signUpBtn.addEventListener( "click", this.signUpBtnListener );
     }
 
 
 
     private unregisterEventListeners(): void {
-
-
-
+        this.nameInput.removeEventListener( "focus", this.nameInputListener );
+        this.emailInput.removeEventListener( "focus", this.emailInputListener );
+        this.passwordInput.removeEventListener( "focus", this.passwordInputListener );
+        this.signUpBtn.removeEventListener( "click", this.signUpBtnListener );
     }
 
 
 
-    public enterScene(enterType: string): void {
+    private nameInputListener(e: any) {
+        this.nameInputError.style.display = "none";
+    }
+
+
+
+    private emailInputListener(e: any) {
+        this.emailInputError.style.display = "none";
+    }
+
+
+
+    private passwordInputListener(e: any) {
+        this.passwordInputError.style.display = "none";
+    }
+
+
+
+    private signUpBtnListener(e: any) {
+        if ( ! this.validateInputs() ) return;
+
+        const name = this.nameInput.value;
+        const email = this.emailInput.value;
+        const password = this.passwordInput.value;
+
+        const signUpModel = new SignUpModel( name, email, password );
+
+        this.connection.signUp(
+            signUpModel,
+            () => this.sendSignal( AuthenticationSignals.SIGN_UP ),
+            (err: string) => console.error( err )
+        )
+
+    }
+
+
+    public enterScene(enterType?: string): void {
         console.info( "Enter being called in authentication sign up view component" );
 
         if ( enterType === ViewEnterTypes.SWITCH_COMPONENT ) {
@@ -122,7 +173,21 @@ export class AuthenticationSignUp extends ViewComponent {
             this.view.componentExited( this.name );
 
         }
-
-
     }
+
+
+
+    private validateInputs(): boolean {
+        const name: string              = this.nameInput.value;
+        const email: string             = this.emailInput.value;
+        const isEmailValid: boolean     = ValidationHelper.validateEmail( email );
+        const password: string          = this.passwordInput.value;
+
+        if ( ! name )           this.nameInputError.style.display           = "block";
+        if ( ! isEmailValid )   this.emailInputError.style.display          = "block";
+        if ( ! password )       this.passwordInputError.style.display       = "block";
+
+        return isEmailValid && password !== "" && name !== "";
+    }
+
 }

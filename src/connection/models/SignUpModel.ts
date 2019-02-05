@@ -7,14 +7,12 @@ import {ISignUpModel} from "./ISignUpModel";
 
 
 export class SignUpModel implements ISignUpModel {
-    public firstName: string;
-    public lastName: string;
+    public name: string;
     public email: string;
     public password: string;
 
-    constructor(firstName: string, lastName: string, email: string, password: string) {
-        this.firstName  = firstName;
-        this.lastName   = lastName;
+    constructor(name: string, email: string, password: string) {
+        this.name       = name;
         this.email      = email;
         this.password   = password;
     }
