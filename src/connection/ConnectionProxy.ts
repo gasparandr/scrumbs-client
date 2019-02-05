@@ -27,8 +27,7 @@ export class ConnectionProxy extends Proxy {
             data,
             (response: any ) => {
 
-                ConnectionProxy.token           = response.tokenData.token;
-                ConnectionProxy.tokenExpires    = response.tokenData.expires;
+                this.setToken( response.tokenData );
 
                 const {  name, email } = response.userData;
 
@@ -53,8 +52,7 @@ export class ConnectionProxy extends Proxy {
             data,
             (response: any) => {
 
-                ConnectionProxy.token           = response.tokenData.token;
-                ConnectionProxy.tokenExpires    = response.tokenData.expires;
+                this.setToken( response.tokenData );
 
                 const {  name, email } = response.userData;
 
@@ -67,6 +65,19 @@ export class ConnectionProxy extends Proxy {
             },
             failure
         )
+    }
+
+
+
+    public getTeams(success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "GET",
+            "/api/v1/teams",
+            null,
+            success,
+            failure
+        );
     }
 
 

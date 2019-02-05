@@ -39,6 +39,8 @@ export class ScrumTeams extends ViewComponent {
         this.teamSettingsBtn    = document.getElementById( "scrum-team-settings-btn" ) as HTMLButtonElement;
 
 
+        this.populate();
+
         this.createTeamBtnListener = this.createTeamBtnListener.bind( this );
 
         this.enterScene();
@@ -78,5 +80,14 @@ export class ScrumTeams extends ViewComponent {
         super.exitScene( exitType );
         this.unregisterEventListeners();
         this.view.componentExited( this.name );
+    }
+
+
+
+    public populate(): void {
+        this.connection.getTeams(
+            (response: any ) => console.log( response ),
+            (err: string) => console.error( err )
+        )
     }
 }
