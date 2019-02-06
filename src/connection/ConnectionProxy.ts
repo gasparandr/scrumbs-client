@@ -1,5 +1,6 @@
 
 import {ICreateMemberModel} from "./models/ICreateMemberModel";
+import {ICreateTeamModel} from "./models/ICreateTeamModel";
 import {ILoginModel} from "./models/ILoginModel";
 import {Proxy} from "../core/Proxy";
 import {UserVO} from "./UserVO";
@@ -79,6 +80,19 @@ export class ConnectionProxy extends Proxy {
             success,
             failure
         );
+    }
+
+
+
+    public createTeam(data: ICreateTeamModel, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "POST",
+            "/api/v1/teams",
+            data,
+            success,
+            failure
+        )
     }
 
 
