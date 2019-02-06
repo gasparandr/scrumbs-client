@@ -17,17 +17,18 @@
 		width: 77%;
 		height: 100%;
 		float: right;
-		display: none;
+		//display: none;
 	}
 
 	#scrum-notes-container {
-		display: none;
+		//display: none;
 		width: 77%;
 		height: 100%;
 		float: right;
 	}
 
 	#scrum-create-team-container, #scrum-manage-teams-container {
+		display: none;
 		position: absolute;
 		height: 100%;
 		width: 100%;

@@ -82,4 +82,30 @@ export class ConnectionProxy extends Proxy {
 
 
 
+    public getMembers(success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "GET",
+            "/api/v1/members",
+            null,
+            success,
+            failure
+        );
+    }
+
+
+
+    public getMembersOfTeam(teamId: string, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "GET",
+            `/api/v1/members/${ teamId }`,
+            null,
+            success,
+            failure
+        );
+    }
+
+
+
 }
