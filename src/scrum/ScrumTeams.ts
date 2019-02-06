@@ -176,6 +176,7 @@ export class ScrumTeams extends ViewComponent {
     }
 
 
+
     private addMember(memberData: any, membersContainer: HTMLElement, prepend?: boolean): void {
         let member           = document.createElement( "li" );
         member.id            = memberData._id;

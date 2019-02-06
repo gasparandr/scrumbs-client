@@ -36,7 +36,7 @@
     margin-top: 40px;
   }
 
-  #input-create-team-name {
+  #create-team-name-input {
 
     display: block;
     width: 100%;
@@ -64,7 +64,7 @@
 
     & > p { color: $text-tertiary-color; }
 
-    #create-team-save-member-button {
+    #create-team-add-member-button {
       position: absolute;
       bottom: 0;
       right: 15px;
