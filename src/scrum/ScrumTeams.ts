@@ -15,6 +15,7 @@ import Back = gsap.Back;
 
 // CSS
 import "../_style/style-sheets/scrum/component/scrum-teams.scss";
+import {CreateMemberModel} from "../connection/models/CreateMemberModel";
 
 
 // HTML
@@ -163,19 +164,19 @@ export class ScrumTeams extends ViewComponent {
 
 
 
-    private populateMembers(teamId: string, members: any[]) {
+    private populateMembers(teamId: string, members: any[]): void {
 
         const membersContainer = document.getElementById( teamId );
 
-        for ( let member of members ) {
-            this.addMember( member, membersContainer );
+        for ( let i = members.length - 1; i >= 0; i-- ) {
+            this.addMember( members[i], membersContainer );
         }
 
         membersContainer.parentElement.classList.add( "active" );
     }
 
 
-    private addMember(memberData: any, membersContainer: HTMLElement, prepend?: boolean) {
+    private addMember(memberData: any, membersContainer: HTMLElement, prepend?: boolean): void {
         let member           = document.createElement( "li" );
         member.id            = memberData._id;
         member.className     = "scrum-team-member pointer noselect";
@@ -189,7 +190,31 @@ export class ScrumTeams extends ViewComponent {
     }
 
 
-    private addToggleListenerToHeader(header: HTMLElement, teamContainer: HTMLElement) {
+
+    private createMember(name: string, team: string): void {
+        if ( ! name ) return;
+
+        console.log( name );
+
+        const createMemberModel = new CreateMemberModel( name, team );
+
+        this.connection.createMember(
+            createMemberModel,
+            (response: any) => {
+                console.log( response );
+                const { member }        = response;
+                const membersContainer  = document.getElementById( team );
+
+                this.addMember( member, membersContainer, true );
+
+            },
+            (err: string) => console.error( err )
+        )
+    }
+
+
+
+    private addToggleListenerToHeader(header: HTMLElement, teamContainer: HTMLElement): void {
         header.addEventListener( "click", (e: any) => {
             if ( e.target.classList.contains( "scrum-create-member-btn" ) ) return;
 
@@ -210,14 +235,29 @@ export class ScrumTeams extends ViewComponent {
 
 
 
-    private addClickListenerToAddMemberBtn(button: HTMLButtonElement, membersContainer: HTMLElement) {
+    private addClickListenerToAddMemberBtn(button: HTMLButtonElement, membersContainer: HTMLElement): void {
         button.addEventListener( "click", (e: any) => {
             const input = document.createElement( "input" );
             membersContainer.insertBefore( input, membersContainer.firstChild );
             input.placeholder = "Type member name";
             input.focus();
 
-            input.addEventListener( "blur", () => input.parentNode.removeChild( input ) );
+            input.addEventListener( "blur", () => {
+                if ( input.value ) this.createMember( input.value, membersContainer.id );
+                input.parentNode.removeChild( input );
+            });
+
+            input.addEventListener( "keydown", (e: any) => {
+                const key = e.which || e.keyCode;
+
+                if ( key === 27 ) { // ESC
+                    input.blur();
+                } else if ( key === 13 ) { // ENTER
+                    this.createMember( input.value, membersContainer.id );
+                    input.value = "";
+                    input.blur();
+                }
+            })
         });
     }
 }
