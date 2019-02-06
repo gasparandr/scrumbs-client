@@ -238,10 +238,23 @@ export class ScrumTeams extends ViewComponent {
 
     private addClickListenerToAddMemberBtn(button: HTMLButtonElement, membersContainer: HTMLElement): void {
         button.addEventListener( "click", (e: any) => {
+
+            /** If the input is already there, abort */
+
+            if ( membersContainer.firstChild.nodeName === "INPUT" ) return;
+
+            /** If the container is not expanded, expand it now */
+
+            if ( ! membersContainer.parentElement.classList.contains( "active" ) ) membersContainer.parentElement.classList.add( "active" );
+
+            /** Create the input, insert it and focus */
+
             const input = document.createElement( "input" );
             membersContainer.insertBefore( input, membersContainer.firstChild );
             input.placeholder = "Type member name";
             input.focus();
+
+            /** Register the event listeners for the input */
 
             input.addEventListener( "blur", () => {
                 if ( input.value ) this.createMember( input.value, membersContainer.id );
