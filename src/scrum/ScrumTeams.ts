@@ -183,11 +183,20 @@ export class ScrumTeams extends ViewComponent {
 
     private addToggleListenerToHeader(header: HTMLElement, teamContainer: HTMLElement) {
         header.addEventListener( "click", (e: any) => {
+            if ( e.target.classList.contains( "scrum-create-member-btn" ) ) return;
 
-            if ( ! e.target.classList.contains( "scrum-create-member-btn" ) ) {
+            if ( header.nextElementSibling.hasChildNodes() ) {
+
                 teamContainer.classList.toggle( "active" );
-            }
 
+            } else {
+
+                this.connection.getMembersOfTeam(
+                    header.nextElementSibling.id,
+                    (response: any) => this.populateMembers( header.nextElementSibling.id, response.members ),
+                    (err: string) => console.error( err )
+                )
+            }
         });
     }
 }
