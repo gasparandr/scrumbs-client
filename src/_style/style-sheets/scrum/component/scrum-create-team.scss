@@ -2,6 +2,7 @@
 @import "../../mixins";
 @import "../../color-variables";
 
+
 /** ============================= CREATE TEAM COMPONENT ============================= */
 
 #create-team-container {
@@ -11,24 +12,7 @@
   padding-top: 40px;
   position: relative;
 
-  #create-team-exit-button {
-    display: block;
-    position: absolute;
-    right: 36px;
-    width: 35px;
-    height: 45px;
-
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      @include center();
-      width: 22px;
-      height: 35px;
-      background: url( "../../../img/icons/icon-close.svg" ) no-repeat center / contain;
-    }
-
-  }
+  #create-team-exit-button { right: 36px; }
 
   .create-team-inner-container {
     width: 565px;
@@ -56,7 +40,6 @@
 
     display: block;
     width: 100%;
-
     border: none;
     border-radius: 3px;
     box-shadow: inset 0 0 0 2px $quinary-color;
@@ -82,35 +65,9 @@
     & > p { color: $text-tertiary-color; }
 
     #create-team-save-member-button {
-
       position: absolute;
       bottom: 0;
       right: 15px;
-      width: 150px;
-      height: 45px;
-      border: 1px solid $quaternary-color;
-      border-radius: 3px;
-      transition: all 0.2s linear;
-
-      &:hover { border: 1px solid $quinary-color; }
-
-      p {
-        width: 100%;
-        @include center();
-        padding-left: 40px;
-
-        &::before {
-          content: "";
-          display: block;
-          position: absolute;
-          width: 12px;
-          height: 12px;
-          background: url( "../../../img/icons/icon-add-accent.svg" ) no-repeat center / contain;
-          @include center( "vertical" );
-          left: 20px;
-        }
-      }
-
     }
 
   }

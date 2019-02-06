@@ -270,6 +270,56 @@ input, textarea {
 }
 
 
+.add-button {
+
+    position: relative;
+    width: 150px;
+    height: 45px;
+    border: 1px solid $denary-color;
+    border-radius: 3px;
+    transition: border 0.2s linear;
+
+    &:hover { border: 1px solid $quinary-color; }
+
+    p {
+      @include center();
+      padding-left: 25px;
+      white-space: nowrap;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        background: url( "../img/icons/icon-add-accent.svg" ) no-repeat center / contain;
+        @include center( "vertical" );
+      }
+    }
+
+  }
+
+
+.exit-overlay-button {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 45px;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      @include center();
+      width: 22px;
+      height: 35px;
+      background: url( "../img/icons/icon-close.svg" ) no-repeat center / contain;
+    }
+
+}
+
+
 
 
 @media screen and ( max-width: 560px ) {
