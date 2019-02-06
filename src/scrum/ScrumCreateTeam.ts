@@ -157,7 +157,6 @@ export class ScrumCreateTeam extends ViewComponent {
     public enterScene(enterType?: string): void {
         console.info( "Enter being called in scrum create team view component" );
 
-
         switch ( enterType ) {
 
             case ViewEnterTypes.REVEAL_COMPONENT :
@@ -180,7 +179,6 @@ export class ScrumCreateTeam extends ViewComponent {
 
     public exitScene(exitType?: string): void {
         console.info( "Exit being called in scrum create team view component" );
-
 
         switch ( exitType ) {
 

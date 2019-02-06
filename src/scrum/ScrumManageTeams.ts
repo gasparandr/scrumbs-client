@@ -13,11 +13,11 @@ import Back = gsap.Back;
 
 
 // CSS
-import "../_style/style-sheets/scrum/component/scrum-manage-teams.scss"; // INSERT NAME
+import "../_style/style-sheets/scrum/component/scrum-manage-teams.scss";
 
 
 // HTML
-const template = require( "../_view-templates/scrum/component/scrum-manage-teams.html" ); // INSERT NAME
+const template = require( "../_view-templates/scrum/component/scrum-manage-teams.html" );
 
 
 
@@ -56,7 +56,20 @@ export class ScrumManageTeams extends ViewComponent {
 
     public enterScene(enterType?: string): void {
         console.info( "Enter being called in scrum manage teams view component" );
-        this.registerEventListeners();
+
+        switch ( enterType ) {
+
+            case ViewEnterTypes.REVEAL_COMPONENT :
+
+                this.container.style.display = "block";
+
+                break;
+
+
+            default :
+                this.registerEventListeners();
+                break;
+        }
     }
 
 
@@ -64,8 +77,19 @@ export class ScrumManageTeams extends ViewComponent {
     public exitScene(exitType?: string): void {
         console.info( "Exit being called in scrum manage teams view component" );
 
-        super.exitScene( exitType );
-        this.unregisterEventListeners();
-        this.view.componentExited( this.name );
+        switch ( exitType ) {
+
+            case ViewExitTypes.HIDE_COMPONENT :
+
+                this.container.style.display = "none";
+
+                break;
+
+            default :
+                super.exitScene( exitType );
+                this.unregisterEventListeners();
+                this.view.componentExited( this.name );
+                break;
+        }
     }
 }

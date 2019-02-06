@@ -128,6 +128,12 @@ export class ScrumView extends View {
 
                 break;
 
+            case ScrumSignals.TEAM_SETTINGS :
+
+                this.manageTeams.enterScene( ViewEnterTypes.REVEAL_COMPONENT );
+
+                break;
+
             case ScrumSignals.SWITCH_WELCOME_SCREEN_TO_NOTES :
 
                 this.notes.enterScene( ViewEnterTypes.REVEAL_COMPONENT );

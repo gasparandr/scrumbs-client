@@ -47,7 +47,8 @@ export class ScrumTeams extends ViewComponent {
 
         this.populate();
 
-        this.createTeamBtnListener = this.createTeamBtnListener.bind( this );
+        this.createTeamBtnListener      = this.createTeamBtnListener.bind( this );
+        this.teamSettingsButtonListener = this.teamSettingsButtonListener.bind( this );
 
         this.enterScene();
     }
@@ -56,12 +57,14 @@ export class ScrumTeams extends ViewComponent {
 
     private registerEventListeners(): void {
         this.createTeamBtn.addEventListener( "click", this.createTeamBtnListener );
+        this.teamSettingsBtn.addEventListener( "click", this.teamSettingsButtonListener );
     }
 
 
 
     private unregisterEventListeners(): void {
         this.createTeamBtn.removeEventListener( "click", this.createTeamBtnListener );
+        this.teamSettingsBtn.removeEventListener( "click", this.teamSettingsButtonListener );
 
     }
 
@@ -69,6 +72,12 @@ export class ScrumTeams extends ViewComponent {
 
     private createTeamBtnListener(e: any) {
         this.sendSignal( ScrumSignals.CREATE_TEAM );
+    }
+
+
+
+    private teamSettingsButtonListener(e: any) {
+        this.sendSignal( ScrumSignals.TEAM_SETTINGS );
     }
 
 
