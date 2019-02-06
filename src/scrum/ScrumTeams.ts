@@ -155,6 +155,8 @@ export class ScrumTeams extends ViewComponent {
                 this.teamsContainer.appendChild( teamContainer );
             }
 
+            this.addToggleListenerToHeader( header, teamContainer );
+
         }
     }
 
@@ -175,5 +177,17 @@ export class ScrumTeams extends ViewComponent {
         }
 
         membersContainer.parentElement.classList.add( "active" );
+    }
+
+
+
+    private addToggleListenerToHeader(header: HTMLElement, teamContainer: HTMLElement) {
+        header.addEventListener( "click", (e: any) => {
+
+            if ( ! e.target.classList.contains( "scrum-create-member-btn" ) ) {
+                teamContainer.classList.toggle( "active" );
+            }
+
+        });
     }
 }
