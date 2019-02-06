@@ -156,6 +156,7 @@ export class ScrumTeams extends ViewComponent {
             }
 
             this.addToggleListenerToHeader( header, teamContainer );
+            this.addClickListenerToAddMemberBtn( button, membersContainer );
 
         }
     }
@@ -167,18 +168,25 @@ export class ScrumTeams extends ViewComponent {
         const membersContainer = document.getElementById( teamId );
 
         for ( let member of members ) {
-
-            let m           = document.createElement( "li" );
-            m.id            = member._id;
-            m.className     = "scrum-team-member pointer noselect";
-            m.innerHTML     = member.name;
-
-            membersContainer.appendChild( m );
+            this.addMember( member, membersContainer );
         }
 
         membersContainer.parentElement.classList.add( "active" );
     }
 
+
+    private addMember(memberData: any, membersContainer: HTMLElement, prepend?: boolean) {
+        let member           = document.createElement( "li" );
+        member.id            = memberData._id;
+        member.className     = "scrum-team-member pointer noselect";
+        member.innerHTML     = memberData.name;
+
+        if ( ! prepend ) {
+            membersContainer.appendChild( member );
+        } else {
+            membersContainer.insertBefore( member, membersContainer.firstChild );
+        }
+    }
 
 
     private addToggleListenerToHeader(header: HTMLElement, teamContainer: HTMLElement) {
@@ -197,6 +205,19 @@ export class ScrumTeams extends ViewComponent {
                     (err: string) => console.error( err )
                 )
             }
+        });
+    }
+
+
+
+    private addClickListenerToAddMemberBtn(button: HTMLButtonElement, membersContainer: HTMLElement) {
+        button.addEventListener( "click", (e: any) => {
+            const input = document.createElement( "input" );
+            membersContainer.insertBefore( input, membersContainer.firstChild );
+            input.placeholder = "Type member name";
+            input.focus();
+
+            input.addEventListener( "blur", () => input.parentNode.removeChild( input ) );
         });
     }
 }
