@@ -52,10 +52,6 @@ export class Proxy extends CoreEntity implements IProxy {
 
     protected httpRequest(method: string, endpoint: string, data: any, success: Function, failure: Function): XMLHttpRequest {
 
-        console.info( "making request" );
-        console.info( "auth token", Proxy.token );
-
-
         let xhr = new XMLHttpRequest();
 
         xhr.open( method, this.address + endpoint, true );
