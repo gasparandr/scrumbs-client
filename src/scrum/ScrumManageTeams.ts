@@ -25,17 +25,39 @@ const template = require( "../_view-templates/scrum/component/scrum-manage-teams
 
 
 export class ScrumManageTeams extends ViewComponent {
+    private saveBtn: HTMLButtonElement;
+    private cancelBtn: HTMLButtonElement;
+    private exitBtn: HTMLSpanElement;
 
+    private teamNameInput: HTMLInputElement;
+    private deleteTeamBtn: HTMLButtonElement;
 
+    private addMemberBtn: HTMLElement;
+    private memberContainer: HTMLUListElement;
 
-
+    private addTeamBtn: HTMLElement;
+    private teamContainer: HTMLUListElement;
 
     constructor(view: View, container: HTMLElement) {
         super( view, container );
 
         this.container.innerHTML = template;
 
+        this.saveBtn            = document.getElementById( "manage-teams-save-button" ) as HTMLButtonElement;
+        this.cancelBtn          = document.getElementById( "manage-teams-cancel-button" ) as HTMLButtonElement;
+        this.exitBtn            = document.getElementById( "manage-teams-exit-button" ) as HTMLSpanElement;
 
+        this.teamNameInput      = document.getElementById( "manage-teams-input-edit-team-name" ) as HTMLInputElement;
+        this.deleteTeamBtn      = document.getElementById( "manage-teams-delete-team-button" ) as HTMLButtonElement;
+
+        this.addMemberBtn       = document.getElementById( "manage-teams-add-member-button" ) as HTMLElement;
+        this.memberContainer    = document.getElementById( "manage-teams-member-container" ) as HTMLUListElement;
+
+        this.addTeamBtn         = document.getElementById( "manage-teams-add-team-button" ) as HTMLElement;
+        this.teamContainer      = document.getElementById( "manage-teams-team-container" ) as HTMLUListElement;
+
+
+        this.exitBtnHandler     = this.exitBtnHandler.bind( this );
 
         this.enterScene();
     }
@@ -43,13 +65,19 @@ export class ScrumManageTeams extends ViewComponent {
 
 
     private registerEventListeners(): void {
-
+        this.exitBtn.addEventListener( "click", this.exitBtnHandler );
     }
 
 
 
     private unregisterEventListeners(): void {
+        this.exitBtn.removeEventListener( "click", this.exitBtnHandler );
+    }
 
+
+
+    private exitBtnHandler(e: any) {
+        this.exitScene( ViewExitTypes.HIDE_COMPONENT );
     }
 
 
