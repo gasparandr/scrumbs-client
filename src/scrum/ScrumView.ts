@@ -140,6 +140,12 @@ export class ScrumView extends View {
 
                 break;
 
+            case ScrumSignals.LOAD_MEMBER_NOTES :
+
+                ( this.notes as ScrumNotes ).loadMemberNotes( signal.data );
+
+                break;
+
             default:
                 break;
         }

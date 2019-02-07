@@ -136,4 +136,15 @@ export class ConnectionProxy extends Proxy {
 
 
 
+    public getNotes(memberId: string, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "GET",
+            `/api/v1/notes/${ memberId }`,
+            null,
+            success,
+            failure
+        )
+    }
+
 }

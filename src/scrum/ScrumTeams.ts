@@ -192,6 +192,14 @@ export class ScrumTeams extends ViewComponent {
         member.className     = "scrum-team-member pointer noselect";
         member.innerHTML     = memberData.name;
 
+        member.addEventListener( "click", () => this.sendSignal(
+            ScrumSignals.LOAD_MEMBER_NOTES,
+            {
+                    id: memberData._id,
+                    name: memberData.name
+                }
+            ));
+
         if ( ! prepend ) {
             membersContainer.appendChild( member );
         } else {

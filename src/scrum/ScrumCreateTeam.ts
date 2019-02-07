@@ -74,6 +74,7 @@ export class ScrumCreateTeam extends ViewComponent {
     }
 
 
+
     private saveBtnHandler(e: any) {
         const name = this.teamNameInput.value;
 
@@ -118,6 +119,7 @@ export class ScrumCreateTeam extends ViewComponent {
         this.membersContainer.insertBefore( member, this.membersContainer.firstChild );
 
         member.addEventListener( "click", () => member.classList.toggle( "active" ) );
+
 
     }
 
