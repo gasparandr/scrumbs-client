@@ -41,7 +41,7 @@ export class ConnectionProxy extends Proxy {
                 success( response );
             },
             failure
-        )
+        );
     }
 
 
@@ -66,7 +66,7 @@ export class ConnectionProxy extends Proxy {
                 success( response );
             },
             failure
-        )
+        );
     }
 
 
@@ -92,7 +92,7 @@ export class ConnectionProxy extends Proxy {
             data,
             success,
             failure
-        )
+        );
     }
 
 
@@ -118,7 +118,7 @@ export class ConnectionProxy extends Proxy {
             data,
             success,
             failure
-        )
+        );
     }
 
 
@@ -144,7 +144,33 @@ export class ConnectionProxy extends Proxy {
             null,
             success,
             failure
-        )
+        );
+    }
+
+
+
+    public solveImpediment(impedimentId: string, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "PUT",
+            `/api/v1/notes/solve/${ impedimentId }`,
+            null,
+            success,
+            failure
+        );
+    }
+
+
+
+    public unsolveImpediment(impedimentId: string, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "PUT",
+            `/api/v1/notes/unsolve/${ impedimentId }`,
+            null,
+            success,
+            failure
+        );
     }
 
 }

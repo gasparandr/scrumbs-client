@@ -131,7 +131,17 @@ export class ScrumNotes extends ViewComponent {
         note.appendChild( noteOptions );
         note.appendChild( noteCheckmark );
 
-        noteCheckmark.addEventListener( "click", () => note.classList.toggle( "solved" ) );
+
+        noteCheckmark.addEventListener( "click", () => {
+
+            console.log( "click registered", note );
+
+            if ( note.classList.contains( "solved" ) ) {
+                this.unsolveImpediment( note );
+            } else {
+                this.solveImpediment( note );
+            }
+        });
 
         if ( prepend ) {
             this.noteContainer.insertBefore( note, this.noteContainer.firstChild );
@@ -202,14 +212,24 @@ export class ScrumNotes extends ViewComponent {
 
 
 
-    public solveImpediment(): void {
+    public solveImpediment(note: HTMLElement): void {
 
+        this.connection.solveImpediment(
+            note.id,
+            () => note.classList.add( "solved" ),
+            (err: string) => console.error( err )
+        );
     }
 
 
 
-    public unsolveImpediment(): void {
+    public unsolveImpediment(note: HTMLElement): void {
 
+        this.connection.unsolveImpediment(
+            note.id,
+            () => note.classList.remove( "solved" ),
+            (err: string) => console.error( err )
+        )
     }
 
 
