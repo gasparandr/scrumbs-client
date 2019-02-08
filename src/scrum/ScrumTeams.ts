@@ -282,10 +282,11 @@ export class ScrumTeams extends ViewComponent {
                 const key = e.which || e.keyCode;
 
                 if ( key === 27 ) { // ESC
+                    input.value = null;
                     input.blur();
                 } else if ( key === 13 ) { // ENTER
                     this.createMember( input.value, membersContainer.id );
-                    input.value = "";
+                    input.value = null;
                     input.blur();
                 }
             })
