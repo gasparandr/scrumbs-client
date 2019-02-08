@@ -107,7 +107,8 @@ export class ScrumNotes extends ViewComponent {
             this.blockerCheckbox.checked
         );
 
-        this.noteInput.value = null;
+        this.noteInput.value            = null;
+        this.blockerCheckbox.checked    = false;
 
         this.connection.createNote(
             createNoteModel,
