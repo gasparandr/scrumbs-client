@@ -1,5 +1,5 @@
 
-
+import {CreateNoteModel} from "../connection/models/CreateNoteModel";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {ViewExitTypes} from "../core/ViewExitTypes";
@@ -26,6 +26,7 @@ const template = require( "../_view-templates/scrum/component/scrum-notes.html" 
 
 export class ScrumNotes extends ViewComponent {
     private memberName: HTMLHeadingElement;
+    private memberId: string;
     private options: HTMLSpanElement;
 
     private noteContainer: HTMLUListElement;
@@ -49,19 +50,22 @@ export class ScrumNotes extends ViewComponent {
         this.blockerCheckbox    = document.getElementById( "scrum-notes-blocker-checkbox" ) as HTMLInputElement;
 
 
+        this.noteInputListener  = this.noteInputListener.bind( this );
+
+
         this.enterScene();
     }
 
 
 
     private registerEventListeners(): void {
-
+        this.noteInput.addEventListener( "keyup", this.noteInputListener );
     }
 
 
 
     private unregisterEventListeners(): void {
-
+        this.noteInput.removeEventListener( "keyup", this.noteInputListener );
     }
 
 
@@ -74,8 +78,9 @@ export class ScrumNotes extends ViewComponent {
             return;
         }
 
-        this.memberName.innerText = name;
-        this.noteContainer.innerHTML = "";
+        this.memberId                   = id;
+        this.memberName.innerText       = name;
+        this.noteContainer.innerHTML    = "";
 
         this.connection.getNotes(
             id,
@@ -85,6 +90,47 @@ export class ScrumNotes extends ViewComponent {
             },
             (err: any) => console.error( err )
         )
+    }
+
+
+
+    private noteInputListener(e: any) {
+        const key = e.which || e.keyCode;
+
+        this.checkForBlockerFlag();
+
+        if ( key !== 13 ) return; // If not ENTER, abort.
+
+        const createNoteModel = new CreateNoteModel(
+            this.memberId,
+            this.noteInput.value,
+            this.blockerCheckbox.checked
+        );
+
+        this.noteInput.value = null;
+
+        this.connection.createNote(
+            createNoteModel,
+            (response: any ) => {
+                const { note } = response;
+
+                console.log( response );
+
+                this.addNote( note );
+
+            },
+            (err: string) => console.error( err )
+        );
+    }
+
+
+
+    private checkForBlockerFlag() {
+
+        if ( this.noteInput.value.indexOf( "#blocker" ) !== -1 ) {
+            this.blockerCheckbox.checked = true;
+            this.noteInput.value = this.noteInput.value.replace( "#blocker", "" );
+        }
     }
 
 
@@ -134,8 +180,6 @@ export class ScrumNotes extends ViewComponent {
 
         noteCheckmark.addEventListener( "click", () => {
 
-            console.log( "click registered", note );
-
             if ( note.classList.contains( "solved" ) ) {
                 this.unsolveImpediment( note );
             } else {
@@ -148,6 +192,8 @@ export class ScrumNotes extends ViewComponent {
         } else {
             this.noteContainer.appendChild( note );
         }
+
+        this.noteContainer.scrollTo( 0, this.noteContainer.scrollHeight );
     }
 
 

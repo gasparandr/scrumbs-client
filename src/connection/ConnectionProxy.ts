@@ -4,6 +4,7 @@ import {ICreateTeamModel} from "./models/ICreateTeamModel";
 import {ILoginModel} from "./models/ILoginModel";
 import {Proxy} from "../core/Proxy";
 import {UserVO} from "./UserVO";
+import {ICreateNoteModel} from "./models/ICreateNoteModel";
 
 
 declare const SERVICE_URL: string;
@@ -145,6 +146,19 @@ export class ConnectionProxy extends Proxy {
             success,
             failure
         );
+    }
+
+
+
+    public createNote(data: ICreateNoteModel, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "POST",
+            "/api/v1/notes/",
+            data,
+            success,
+            failure
+        )
     }
 
 
