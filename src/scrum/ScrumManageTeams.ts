@@ -87,6 +87,40 @@ export class ScrumManageTeams extends ViewComponent {
 
     private populateTeams(): void {
 
+        this.connection.getTeams(
+            (response: any) => {
+                console.log( response );
+
+                const { teams } = response;
+
+                for ( let team of teams ) {
+                    this.addTeam( team );
+                }
+
+            },
+            (err: string) => console.error( err )
+        )
+    }
+
+
+
+    private addTeam(teamData: any, prepend?: boolean) {
+        let team        = document.createElement( "li" );
+        team.id         = `manage-teams-${ teamData._id }`;
+        team.className  = "manage-teams-team noselect pointer";
+
+        if ( prepend ) {
+            this.teamContainer.insertBefore( team, this.teamContainer.firstChild );
+        } else {
+            this.teamContainer.appendChild( team );
+        }
+    }
+
+
+
+
+    private populateMembers(): void {
+
     }
 
 
@@ -114,6 +148,9 @@ export class ScrumManageTeams extends ViewComponent {
             case ViewEnterTypes.REVEAL_COMPONENT :
 
                 this.container.style.display = "block";
+                this.populateTeams();
+                this.populateMembers();
+
 
                 break;
 
