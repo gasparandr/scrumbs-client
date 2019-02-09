@@ -12,6 +12,7 @@
 		height: 80px;
 		border-bottom: 1px solid $quinary-color;
 		position: relative;
+		z-index: 1;
 
 		#scrum-notes-member-name {
 			@include center( "vertical" );
@@ -19,13 +20,41 @@
 			font-size: 1.43em;
 		}
 
-		#scrum-notes-member-options {
-			display: block;
+		#scrum-notes-member-options-button {
 			@include center( "vertical" );
-			right: 25px;
-			width: 30px;
-			height: 30px;
-			background: url( "../../../img/icons/icon-options.svg" ) no-repeat right center / 20px 4px;
+			right: 20px;
+			width: 40px;
+			height: 25px;
+			border-radius: 3px;
+			background: url( "../../../img/icons/icon-options.svg" ) no-repeat center center / 20px 4px;
+
+			#scrum-notes-member-options-list {
+				position: absolute;
+				top: 30px;
+				right: 0;
+				border-radius: 3px;
+				background-color: $tertiary-color;
+				box-shadow: 0 5px 20px 0 $quinary-color;
+				font-size: 1.15em;
+				color: $text-secondary-color;
+				white-space: nowrap;
+				display: none;
+
+				li {
+					line-height: 45px;
+					padding: 0 20px 0 50px;
+					background: url( "../../../img/icons/icon-options.svg" ) no-repeat 20px center / 15px;
+
+					&:hover { background-color: $nonary-color; }
+				}
+
+			}
+
+			&.active {
+				background-color: $denary-color;
+
+				#scrum-notes-member-options-list { display: block; }
+			}
 		}
 	}
 
@@ -33,7 +62,7 @@
 		height: calc( 100% - 170px );
 		padding: 0 20px;
 		overflow: auto;
-		display: none;
+		// display: none;
 
 		.scrum-note-date {
 			margin: 15px 0;
@@ -201,8 +230,10 @@
 
 
 	#scrum-note-empty-state-container {
+
 		width: 370px;
 		margin: 55px auto 0;
+		display: none;
 
 		img {
 			display: block;

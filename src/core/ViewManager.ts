@@ -12,6 +12,7 @@ import {View} from "./View";
 
 // CSS
 import "../_style/style-sheets/main.scss";
+import { ImpedimentsView } from "../impediments/ImpedimentsView";
 
 
 
@@ -76,6 +77,8 @@ export class ViewManager extends CoreEntity {
             case AuthenticationNotifications.LOGIN :
 
                 this.switchView( ScrumView, null );
+
+                // this.switchView( ImpedimentsView, null );
 
                 break;
 
