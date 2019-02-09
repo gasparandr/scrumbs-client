@@ -42,7 +42,7 @@ export class ScrumNotes extends ViewComponent {
         this.container.innerHTML = template;
 
         this.memberName         = document.getElementById( "scrum-notes-member-name" ) as HTMLHeadingElement;
-        this.options            = document.getElementById( "scrum-notes-member-options" ) as HTMLSpanElement;
+        this.options            = document.getElementById( "scrum-notes-member-options-button" ) as HTMLDivElement;
 
         this.noteContainer      = document.getElementById( "scrum-notes-note-container" ) as HTMLUListElement;
 
