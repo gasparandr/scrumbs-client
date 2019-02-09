@@ -11,18 +11,18 @@ import {View} from "../core/View";
 
 
 // CSS
-import "../_style/style-sheets/blockers/view/blockers-view.scss";
+import "../_style/style-sheets/impediments/view/impediments-view.scss";
 
 
 // HTML
-const authenticationViewTemplate = require( "../_view-templates/blockers/view/blockers-view.html" );
+const authenticationViewTemplate = require( "../_view-templates/impediments/view/impediments-view.html" );
 
 
 
 
 
 
-export class BlockersView extends View {
+export class ImpedimentsView extends View {
     private viewComponent: ViewComponent;
 
     private viewComponentContainer: HTMLElement;
@@ -32,7 +32,7 @@ export class BlockersView extends View {
 
 
     constructor() {
-        super( "BlockersView" );
+        super( "ImpedimentsView" );
 
         this.container = document.createElement( "div" );
         this.container.id = "template-view-container"; // ADD CUSTOM NAME

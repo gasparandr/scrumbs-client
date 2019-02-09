@@ -32,7 +32,7 @@ export class ScrumNotes extends ViewComponent {
     private noteContainer: HTMLUListElement;
 
     private noteInput: HTMLInputElement;
-    private blockerCheckbox: HTMLInputElement;
+    private impedimentCheckbox: HTMLInputElement;
 
 
 
@@ -47,7 +47,7 @@ export class ScrumNotes extends ViewComponent {
         this.noteContainer      = document.getElementById( "scrum-notes-note-container" ) as HTMLUListElement;
 
         this.noteInput          = document.getElementById( "scrum-note-input" ) as HTMLInputElement;
-        this.blockerCheckbox    = document.getElementById( "scrum-notes-blocker-checkbox" ) as HTMLInputElement;
+        this.impedimentCheckbox    = document.getElementById( "scrum-notes-impediment-checkbox" ) as HTMLInputElement;
 
 
         this.noteInputListener  = this.noteInputListener.bind( this );
@@ -97,18 +97,18 @@ export class ScrumNotes extends ViewComponent {
     private noteInputListener(e: any) {
         const key = e.which || e.keyCode;
 
-        this.checkForBlockerFlag();
+        this.checkForImpedimentFlag();
 
         if ( key !== 13 ) return; // If not ENTER, abort.
 
         const createNoteModel = new CreateNoteModel(
             this.memberId,
             this.noteInput.value,
-            this.blockerCheckbox.checked
+            this.impedimentCheckbox.checked
         );
 
         this.noteInput.value            = null;
-        this.blockerCheckbox.checked    = false;
+        this.impedimentCheckbox.checked = false;
 
         this.connection.createNote(
             createNoteModel,
@@ -126,11 +126,11 @@ export class ScrumNotes extends ViewComponent {
 
 
 
-    private checkForBlockerFlag() {
+    private checkForImpedimentFlag() {
 
-        if ( this.noteInput.value.indexOf( "#blocker" ) !== -1 ) {
-            this.blockerCheckbox.checked = true;
-            this.noteInput.value = this.noteInput.value.replace( "#blocker", "" );
+        if ( this.noteInput.value.indexOf( "#impediment" ) !== -1 ) {
+            this.impedimentCheckbox.checked = true;
+            this.noteInput.value = this.noteInput.value.replace( "#impediment", "" );
         }
     }
 
@@ -161,7 +161,7 @@ export class ScrumNotes extends ViewComponent {
         note.id         = noteData._id;
         note.className  = "scrum-note pointer";
 
-        if ( noteData.isBlocker ) note.classList.add( "blocker" );
+        if ( noteData.isImpediment ) note.classList.add( "impediment" );
         if ( noteData.isSolved ) note.classList.add( "solved" );
 
         let noteText            = document.createElement( "p" );
