@@ -33,6 +33,7 @@
 		height: calc( 100% - 170px );
 		padding: 0 20px;
 		overflow: auto;
+		display: none;
 
 		.scrum-note-date {
 			margin: 15px 0;
@@ -177,7 +178,7 @@
 		#scrum-note-input {
 			display: block;
 			width: 100%;
-			padding: 0 120px 0 25px;
+			padding: 0 150px 0 25px;
 			line-height: 70px;
 			font-size: 1.15em;
 			border-radius: 3px;
@@ -195,6 +196,31 @@
 			label { padding-left: 24px; }
 
 		}
+
+	}
+
+
+	#scrum-note-empty-state-container {
+		width: 370px;
+		margin: 55px auto 0;
+
+		img {
+			display: block;
+			width: 226px;
+			height: 226px;
+			margin: 0 auto 30px;
+		}
+
+		h2, p { text-align: center; }
+
+		h2 {
+			margin-bottom: 20px;
+			font-size: 1.43em;
+		}
+
+		p { line-height: 22px; }
+
+
 
 	}
 
