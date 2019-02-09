@@ -9,12 +9,12 @@ import {ICreateNoteModel} from "./ICreateNoteModel";
 export class CreateNoteModel implements ICreateNoteModel {
     public member: string;
     public content: string;
-    public isBlocker: boolean;
+    public isImpediment: boolean;
 
-    constructor(member: string, content: string, isBlocker: boolean = false) {
+    constructor(member: string, content: string, isImpediment: boolean = false) {
         this.member     = member;
         this.content    = content;
-        this.isBlocker  = isBlocker;
+        this.isImpediment  = isImpediment;
     }
 
 }

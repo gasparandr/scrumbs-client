@@ -130,51 +130,11 @@
 		
 	}
 
-	// .scrum-team-container {
-
-	// 	height: 600px;
-
-	// 	.scrum-team-header {
-	// 		background-color: #4d7bff;
-
-	// 		.scrum-team-name {
-	// 		color: white;
-	// 		margin: 10px;
-	// 		float: left;
-	// 		}
-
-	// 		.scrum-create-member-btn {
-	// 		width: 30px;
-	// 		height: 30px;
-	// 		margin: 10px;
-	// 		float: right;
-	// 		background-color: #fff;
-	// 		}
-	// 	}
-
-	// 	.scrum-team-members {
-	// 		clear: both;
-	// 		border-bottom: 1px solid black;
-
-	// 		.scrum-team-member {
-	// 		height: 30px;
-	// 		color: white;
-	// 		padding-left: 15px;
-	// 		cursor: pointer;
-
-	// 		&:hover {
-	// 			background-color: #3cfff7;
-	// 		}
-	// 		}
-
-	// 	}
-	// }
-
 	.scrum-teams-footer {
 
 		position: absolute;
 		left: 0;
-		bottom: 0;
+		bottom: 5px;
 		width: 100%;
 		height: 60px;
 		

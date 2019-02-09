@@ -107,7 +107,7 @@
 
 			}
 
-			&.blocker {
+			&.impediment {
 
 				.scrum-note-text {
 					background-color: transparent;
@@ -121,7 +121,7 @@
 						height: 10px;
 						left: 9px;
 						@include center( "vertical" );
-						background: url( "../../../img/icons/icon-blocker.svg" ) no-repeat center / contain;
+						background: url( "../../../img/icons/icon-impediment.svg" ) no-repeat center / contain;
 					}
 
 				}
@@ -188,7 +188,7 @@
 
 		}
 
-		#scrum-notes-blocker-checkbox-container {
+		#scrum-notes-impediment-checkbox-container {
 			@include center( "vertical" );
 			right: 30px;
 

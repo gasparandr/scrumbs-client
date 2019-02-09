@@ -7,7 +7,7 @@ export class English {
     public static readonly AUTH_TITLE_LOGIN = "Welcome Back!";
     public static readonly AUTH_SUBTITLE_LOGIN = "Enter your email and password below and you'll be on your way.";
     public static readonly AUTH_TITLE_SIGN_UP = "Create your Account!";
-    public static readonly AUTH_SUBTITLE_SIGN_UP = "Scrumbs is a lightweight agile management tool, which allows you to effortlessly track the development process, and highlight blockers.";
+    public static readonly AUTH_SUBTITLE_SIGN_UP = "Scrumbs is a lightweight agile management tool, which allows you to effortlessly track the development process, and highlight impediments.";
     public static readonly AUTH_EMAIL_LABEL = "email";
     public static readonly AUTH_EMAIL_PLACEHOLDER = "Enter your email";
     public static readonly AUTH_PASSWORD_LABEL = "password";
