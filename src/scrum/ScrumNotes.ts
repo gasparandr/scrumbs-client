@@ -42,7 +42,7 @@ export class ScrumNotes extends ViewComponent {
         this.container.innerHTML = template;
 
         this.memberName         = document.getElementById( "scrum-notes-member-name" ) as HTMLHeadingElement;
-        this.options            = document.getElementById( "scrum-notes-member-options" ) as HTMLSpanElement;
+        this.options            = document.getElementById( "scrum-notes-member-options-button" ) as HTMLDivElement;
 
         this.noteContainer      = document.getElementById( "scrum-notes-note-container" ) as HTMLUListElement;
 
@@ -168,8 +168,8 @@ export class ScrumNotes extends ViewComponent {
         noteText.className      = "scrum-note-text";
         noteText.innerText      = noteData.content;
 
-        let noteOptions         = document.createElement( "span" );
-        noteOptions.className   = "scrum-note-options";
+        let noteOptions         = document.createElement( "div" );
+        noteOptions.className   = "scrum-note-options-button";
 
         let noteCheckmark       = document.createElement( "span" );
         noteCheckmark.className = "scrum-note-checkmark";
