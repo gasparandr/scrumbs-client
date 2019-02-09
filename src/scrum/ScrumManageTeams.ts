@@ -38,8 +38,12 @@ export class ScrumManageTeams extends ViewComponent {
     private addTeamBtn: HTMLElement;
     private teamContainer: HTMLUListElement;
 
+    private localPrefix: string;
+
     constructor(view: View, container: HTMLElement) {
         super( view, container );
+
+        this.localPrefix = "manage-teams-";
 
         this.container.innerHTML = template;
 
@@ -85,7 +89,7 @@ export class ScrumManageTeams extends ViewComponent {
 
 
 
-    private populateTeams(): void {
+    private populateTeams(resolve: Function): void {
 
         this.connection.getTeams(
             (response: any) => {
@@ -97,6 +101,61 @@ export class ScrumManageTeams extends ViewComponent {
                     this.addTeam( team );
                 }
 
+                resolve();
+
+            },
+            (err: string) => console.error( err )
+        );
+    }
+
+
+
+    private addTeam(teamData: any, prepend?: boolean) {
+
+        console.info( "addteam called ", teamData );
+
+        let team        = document.createElement( "li" );
+        team.id         = `${ this.localPrefix }${ teamData._id }`;
+        team.className  = "manage-teams-team noselect pointer";
+        team.innerText  = teamData.name;
+
+        if ( prepend ) {
+            this.teamContainer.insertBefore( team, this.teamContainer.firstChild );
+        } else {
+            this.teamContainer.appendChild( team );
+        }
+
+        team.addEventListener( "click", () => this.selectTeam( team ) );
+    }
+
+
+
+    private selectTeam(team: HTMLElement): void {
+        const teamElements = document.getElementsByClassName( "manage-teams-team" );
+
+        for ( let i = 0; i < teamElements.length; i++ ) {
+            teamElements[i].classList.remove( "active" );
+        }
+
+        team.classList.add( "active" );
+
+        this.loadTeamData( team.id );
+    }
+
+
+
+    private populateMembers(resolve: Function): void {
+
+        this.connection.getMembers(
+            (response: any) => {
+                console.log( response );
+                const { members } = response;
+
+                for ( let member of members ) {
+                    this.addMember( member );
+                }
+
+                resolve();
             },
             (err: string) => console.error( err )
         )
@@ -104,23 +163,72 @@ export class ScrumManageTeams extends ViewComponent {
 
 
 
-    private addTeam(teamData: any, prepend?: boolean) {
-        let team        = document.createElement( "li" );
-        team.id         = `manage-teams-${ teamData._id }`;
-        team.className  = "manage-teams-team noselect pointer";
+    private addMember(memberData: any): void {
+        let member          = document.createElement( "li" );
+        member.innerHTML    = memberData.name;
+        member.id           = `${ this.localPrefix }${ memberData._id }`;
+        let checkbox        = document.createElement( "span" );
+        checkbox.className  = "create-team-member-checkbox";
 
-        if ( prepend ) {
-            this.teamContainer.insertBefore( team, this.teamContainer.firstChild );
-        } else {
-            this.teamContainer.appendChild( team );
-        }
+        member.appendChild( checkbox );
+
+        this.memberContainer.insertBefore( member, this.memberContainer.firstChild );
+
+        member.addEventListener( "click", () => member.classList.toggle( "active" ) );
     }
 
 
 
+    private loadTeamData(id?: string): void {
 
-    private populateMembers(): void {
+        let team: Element;
+        let teamId: string;
 
+        if ( ! id ) {
+            /** If there is no id specified, we default to the first team in the list */
+            team = this.teamContainer.firstElementChild;
+            team.classList.add( "active" );
+        } else {
+            /** If we got the team id as an argument, we isolate the element and extract the id later  */
+            team = document.getElementById( id );
+        }
+
+        /** If there is no valid team, we return */
+        if ( ! team ) return;
+
+        /** Parse the real id, without the local prefix */
+        teamId = team.id.replace( this.localPrefix, "" );
+
+        /** Set the input value as the name of the team selected */
+        this.teamNameInput.value = team.innerHTML;
+
+        /** Remove the active member mark from the previous team */
+        this.clearActiveMembers();
+
+        /** Get the members of the team and mark them as active members of the team */
+        this.connection.getMembersOfTeam(
+            teamId,
+            (response: any) => {
+                console.log( response );
+
+                const { members } = response;
+
+                for ( let member of members ) {
+                    document.getElementById( `${ this.localPrefix }${ member._id }` ).classList.add( "active" );
+                }
+            },
+            (err: string) => console.error( err )
+        );
+    }
+
+
+
+    private clearActiveMembers(): void {
+        const members = this.memberContainer.children;
+
+        for ( let i = 0; i < members.length; i++ ) {
+            members[i].classList.remove( "active" );
+        }
     }
 
 
@@ -129,7 +237,6 @@ export class ScrumManageTeams extends ViewComponent {
         this.teamNameInput.value        = null;
         this.teamContainer.innerHTML    = null;
         this.memberContainer.innerHTML  = null;
-
     }
 
 
@@ -140,7 +247,7 @@ export class ScrumManageTeams extends ViewComponent {
 
 
 
-    public enterScene(enterType?: string): void {
+    public enterScene(enterType?: string) {
         console.info( "Enter being called in scrum manage teams view component" );
 
         switch ( enterType ) {
@@ -148,9 +255,14 @@ export class ScrumManageTeams extends ViewComponent {
             case ViewEnterTypes.REVEAL_COMPONENT :
 
                 this.container.style.display = "block";
-                this.populateTeams();
-                this.populateMembers();
 
+
+                Promise.all([
+                    new Promise<void>( (resolve, reject) => this.populateTeams( resolve ) ),
+                    new Promise<void>( (resolve, reject) => this.populateMembers( resolve ) )
+                ])
+                    .then( () => this.loadTeamData() )
+                    .catch( (err: string) => console.error( err ) );
 
                 break;
 
