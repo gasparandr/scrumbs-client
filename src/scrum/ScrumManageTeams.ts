@@ -57,7 +57,8 @@ export class ScrumManageTeams extends ViewComponent {
         this.teamContainer      = document.getElementById( "manage-teams-team-container" ) as HTMLUListElement;
 
 
-        this.exitBtnHandler     = this.exitBtnHandler.bind( this );
+        this.exitBtnHandler         = this.exitBtnHandler.bind( this );
+        this.cancelBtnHandler       = this.cancelBtnHandler.bind( this );
 
         this.enterScene();
     }
@@ -66,17 +67,40 @@ export class ScrumManageTeams extends ViewComponent {
 
     private registerEventListeners(): void {
         this.exitBtn.addEventListener( "click", this.exitBtnHandler );
+        this.cancelBtn.addEventListener( "click", this.exitBtnHandler );
     }
 
 
 
     private unregisterEventListeners(): void {
         this.exitBtn.removeEventListener( "click", this.exitBtnHandler );
+        this.cancelBtn.removeEventListener( "click", this.exitBtnHandler );
     }
 
 
 
     private exitBtnHandler(e: any) {
+        this.exitScene( ViewExitTypes.HIDE_COMPONENT );
+    }
+
+
+
+    private populateTeams(): void {
+
+    }
+
+
+
+    private resetView(): void {
+        this.teamNameInput.value        = null;
+        this.teamContainer.innerHTML    = null;
+        this.memberContainer.innerHTML  = null;
+
+    }
+
+
+
+    private cancelBtnHandler(e: any) {
         this.exitScene( ViewExitTypes.HIDE_COMPONENT );
     }
 
@@ -110,6 +134,7 @@ export class ScrumManageTeams extends ViewComponent {
             case ViewExitTypes.HIDE_COMPONENT :
 
                 this.container.style.display = "none";
+                this.resetView();
 
                 break;
 
