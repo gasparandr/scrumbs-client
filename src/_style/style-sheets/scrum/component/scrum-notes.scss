@@ -158,10 +158,32 @@
 						line-height: 45px;
 						padding: 0 20px 0 50px;
 						background-repeat: no-repeat;
-						background-position: 20px center;
-						background-size: 15px;
 	
 						&:hover { background-color: $nonary-color; }
+					}
+
+					.scrum-note-option-convert-to-note {
+						background-image: url( "../../../img/icons/icon-notes.svg" );
+						background-size: 13px 15px;
+						background-position: 21px center;
+					}
+
+					.scrum-note-option-convert-to-impediment {
+						background-image: url( "../../../img/icons/icon-impediment-grey.svg" );
+						background-size: 16px 8px;
+						background-position: 20px center;
+					}
+
+					.scrum-note-option-edit-note {
+						background-image: url( "../../../img/icons/icon-edit.svg" );
+						background-size: 15px;
+						background-position: 20px center;
+					}
+
+					.scrum-note-option-delete-note {
+						background-image: url( "../../../img/icons/icon-delete.svg" );
+						background-size: 12px 15px;
+						background-position: 21px center;
 					}
 
 					.scrum-note-option-convert-to-note { display: none; }
