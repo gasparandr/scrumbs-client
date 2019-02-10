@@ -1,6 +1,6 @@
 
 
-import {ICreateMemberModel} from "./ICreateMemberModel";
+import {ICreateMemberModel} from "./interfaces/ICreateMemberModel";
 
 
 

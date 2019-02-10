@@ -1,11 +1,12 @@
 
-import {IAddRemoveMemberModel} from "./models/IAddRemoveMemberModel";
-import {ICreateMemberModel} from "./models/ICreateMemberModel";
-import {ICreateNoteModel} from "./models/ICreateNoteModel";
-import {ICreateTeamModel} from "./models/ICreateTeamModel";
-import {ILoginModel} from "./models/ILoginModel";
+import {IAddRemoveMemberModel} from "./models/interfaces/IAddRemoveMemberModel";
+import {ICreateMemberModel} from "./models/interfaces/ICreateMemberModel";
+import {ICreateNoteModel} from "./models/interfaces/ICreateNoteModel";
+import {ICreateTeamModel} from "./models/interfaces/ICreateTeamModel";
+import {ILoginModel} from "./models/interfaces/ILoginModel";
 import {Proxy} from "../core/Proxy";
 import {UserVO} from "./UserVO";
+import {IUpdateTeamModel} from "./models/interfaces/IUpdateTeamModel";
 
 
 declare const SERVICE_URL: string;
@@ -90,6 +91,19 @@ export class ConnectionProxy extends Proxy {
 
         this.httpRequest(
             "POST",
+            "/api/v1/teams",
+            data,
+            success,
+            failure
+        );
+    }
+
+
+    
+    public updateTeam(data: IUpdateTeamModel, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "PUT",
             "/api/v1/teams",
             data,
             success,

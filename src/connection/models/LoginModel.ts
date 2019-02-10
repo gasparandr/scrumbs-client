@@ -1,6 +1,6 @@
 
 
-import {ILoginModel} from "./ILoginModel";
+import {ILoginModel} from "./interfaces/ILoginModel";
 
 
 

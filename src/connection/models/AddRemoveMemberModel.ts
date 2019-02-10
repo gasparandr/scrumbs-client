@@ -1,6 +1,6 @@
 
 
-import {IAddRemoveMemberModel} from "./IAddRemoveMemberModel";
+import {IAddRemoveMemberModel} from "./interfaces/IAddRemoveMemberModel";
 
 
 
