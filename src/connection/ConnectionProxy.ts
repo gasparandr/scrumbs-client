@@ -1,10 +1,11 @@
 
+import {IAddRemoveMemberModel} from "./models/IAddRemoveMemberModel";
 import {ICreateMemberModel} from "./models/ICreateMemberModel";
+import {ICreateNoteModel} from "./models/ICreateNoteModel";
 import {ICreateTeamModel} from "./models/ICreateTeamModel";
 import {ILoginModel} from "./models/ILoginModel";
 import {Proxy} from "../core/Proxy";
 import {UserVO} from "./UserVO";
-import {ICreateNoteModel} from "./models/ICreateNoteModel";
 
 
 declare const SERVICE_URL: string;
@@ -133,6 +134,32 @@ export class ConnectionProxy extends Proxy {
             success,
             failure
         );
+    }
+
+
+
+    public addMemberToTeam(data: IAddRemoveMemberModel, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "PUT",
+            "api/v1/members/add",
+            data,
+            success,
+            failure
+        )
+    }
+
+
+
+    public removeMemberFromTeam(data: IAddRemoveMemberModel, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "PUT",
+            "api/v1/members/remove",
+            data,
+            success,
+            failure
+        )
     }
 
 
