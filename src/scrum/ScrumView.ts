@@ -146,6 +146,12 @@ export class ScrumView extends View {
 
                 break;
 
+            case ScrumSignals.TEAM_UPDATED :
+
+                ( this.teams as ScrumTeams ).teamUpdated( signal.data );
+
+                break;
+
             default:
                 break;
         }

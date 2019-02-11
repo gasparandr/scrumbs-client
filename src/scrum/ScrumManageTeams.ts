@@ -3,8 +3,8 @@ import {UpdateTeamModel} from "../connection/models/UpdateTeamModel";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {ViewExitTypes} from "../core/ViewExitTypes";
+import {ScrumSignals} from "./ScrumSignals";
 import {View} from "../core/View";
-
 
 import TweenLite = gsap.TweenLite;
 import Power0 = gsap.Power0;
@@ -291,7 +291,9 @@ export class ScrumManageTeams extends ViewComponent {
 
         this.connection.updateTeam(
             updateTeamModel,
-            (response: any) => console.log( response ),
+            (response: any) => {
+                this.sendSignal( ScrumSignals.TEAM_UPDATED, response );
+            },
             (err: string) => console.error( err )
         );
     }

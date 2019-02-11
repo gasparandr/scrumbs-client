@@ -292,4 +292,26 @@ export class ScrumTeams extends ViewComponent {
             })
         });
     }
+
+
+
+    public teamUpdated(update: any): void {
+        console.log( update );
+
+        const { _id, name }                     = update.team;
+        const { added, removed }                = update.members;
+
+        const teamContainer                     = document.getElementById( _id );
+
+        teamContainer.previousElementSibling.firstElementChild.innerHTML = name;
+
+        for ( let member of removed ) {
+            const memberElement = document.getElementById( member );
+            memberElement.parentNode.removeChild( memberElement );
+        }
+
+        for ( let member of added ) {
+            this.addMember( member, teamContainer );
+        }
+    }
 }
