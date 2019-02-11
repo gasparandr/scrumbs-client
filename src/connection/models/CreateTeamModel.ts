@@ -1,6 +1,6 @@
 
 
-import {ICreateTeamModel} from "./ICreateTeamModel";
+import {ICreateTeamModel} from "./interfaces/ICreateTeamModel";
 
 
 

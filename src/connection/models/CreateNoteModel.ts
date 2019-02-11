@@ -1,6 +1,6 @@
 
 
-import {ICreateNoteModel} from "./ICreateNoteModel";
+import {ICreateNoteModel} from "./interfaces/ICreateNoteModel";
 
 
 

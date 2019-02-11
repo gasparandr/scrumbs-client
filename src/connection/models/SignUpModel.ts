@@ -1,6 +1,6 @@
 
 
-import {ISignUpModel} from "./ISignUpModel";
+import {ISignUpModel} from "./interfaces/ISignUpModel";
 
 
 

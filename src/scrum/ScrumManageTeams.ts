@@ -1,5 +1,5 @@
 
-
+import {UpdateTeamModel} from "../connection/models/UpdateTeamModel";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {ViewExitTypes} from "../core/ViewExitTypes";
@@ -40,6 +40,8 @@ export class ScrumManageTeams extends ViewComponent {
 
     private localPrefix: string;
 
+    private loadedTeamId: string;
+
     constructor(view: View, container: HTMLElement) {
         super( view, container );
 
@@ -63,6 +65,8 @@ export class ScrumManageTeams extends ViewComponent {
 
         this.exitBtnHandler         = this.exitBtnHandler.bind( this );
         this.cancelBtnHandler       = this.cancelBtnHandler.bind( this );
+        this.saveBtnHandler         = this.saveBtnHandler.bind( this );
+
 
         this.enterScene();
     }
@@ -72,6 +76,7 @@ export class ScrumManageTeams extends ViewComponent {
     private registerEventListeners(): void {
         this.exitBtn.addEventListener( "click", this.exitBtnHandler );
         this.cancelBtn.addEventListener( "click", this.exitBtnHandler );
+        this.saveBtn.addEventListener( "click", this.saveBtnHandler );
     }
 
 
@@ -79,6 +84,7 @@ export class ScrumManageTeams extends ViewComponent {
     private unregisterEventListeners(): void {
         this.exitBtn.removeEventListener( "click", this.exitBtnHandler );
         this.cancelBtn.removeEventListener( "click", this.exitBtnHandler );
+        this.saveBtn.removeEventListener( "click", this.saveBtnHandler );
     }
 
 
@@ -199,6 +205,9 @@ export class ScrumManageTeams extends ViewComponent {
         /** Parse the real id, without the local prefix */
         teamId = team.id.replace( this.localPrefix, "" );
 
+        /** We save the currently loaded team Id (will be used for further operations, e.g. updating the team on save) */
+        this.loadedTeamId = teamId;
+
         /** Set the input value as the name of the team selected */
         this.teamNameInput.value = team.innerHTML;
 
@@ -233,6 +242,21 @@ export class ScrumManageTeams extends ViewComponent {
 
 
 
+    private getActiveMemberIds(): string[] {
+        const members = this.memberContainer.children;
+        let memberIds  = [];
+
+        for ( let i = 0; i < members.length; i++ ) {
+            if ( members[i].classList.contains( "active" ) ) {
+                memberIds.push( members[i].id.replace( this.localPrefix, "" ) );
+            }
+        }
+
+        return memberIds;
+    }
+
+
+
     private resetView(): void {
         this.teamNameInput.value        = null;
         this.teamContainer.innerHTML    = null;
@@ -243,6 +267,33 @@ export class ScrumManageTeams extends ViewComponent {
 
     private cancelBtnHandler(e: any) {
         this.exitScene( ViewExitTypes.HIDE_COMPONENT );
+    }
+
+
+
+    private saveBtnHandler(e: any) {
+        const id        = this.loadedTeamId;
+        const name      = this.teamNameInput.value;
+        const members   = this.getActiveMemberIds();
+
+
+        if ( ! name ) {
+            console.error( "Team name is required when updating a team." );
+            return;
+        }
+
+        if ( ! id ) {
+            console.error( "Team id is required when updating a team." );
+            return;
+        }
+
+        const updateTeamModel = new UpdateTeamModel( id, name, members );
+
+        this.connection.updateTeam(
+            updateTeamModel,
+            (response: any) => console.log( response ),
+            (err: string) => console.error( err )
+        );
     }
 
 
