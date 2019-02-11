@@ -76,9 +76,9 @@ export class ViewManager extends CoreEntity {
 
             case AuthenticationNotifications.LOGIN :
 
-                this.switchView( ScrumView, null );
+                // this.switchView( ScrumView, null );
 
-                // this.switchView( ImpedimentsView, null );
+                this.switchView( ImpedimentsView, null );
 
                 break;
 

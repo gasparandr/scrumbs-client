@@ -15,7 +15,7 @@ import "../_style/style-sheets/impediments/view/impediments-view.scss";
 
 
 // HTML
-const authenticationViewTemplate = require( "../_view-templates/impediments/view/impediments-view.html" );
+const impedimentsViewTemplate = require( "../_view-templates/impediments/view/impediments-view.html" );
 
 
 
@@ -35,11 +35,11 @@ export class ImpedimentsView extends View {
         super( "ImpedimentsView" );
 
         this.container = document.createElement( "div" );
-        this.container.id = "template-view-container"; // ADD CUSTOM NAME
+        this.container.id = "impediments-view-container";
 
         document.getElementById( SystemConstants.MAIN_CONTAINER ).appendChild( this.container );
 
-        this.container.innerHTML                = authenticationViewTemplate;
+        this.container.innerHTML                = impedimentsViewTemplate;
 
         this.viewComponentContainer             = document.getElementById( "container" ); // SPECIFY CONTAINER ID
 
