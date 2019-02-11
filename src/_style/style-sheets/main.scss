@@ -147,6 +147,8 @@ input, textarea {
         &:focus { box-shadow: inset 0 0 0 1px $accent-color; }
     }
 
+    .input-password { padding-right: 50px; }
+
     .input-icon {
         position: absolute;
         left: 15px;
@@ -164,6 +166,22 @@ input, textarea {
 
     .input-container.error ~ .input-error {
         display: unset;
+    }
+
+    .password-toggle-button {
+        width: 20px;
+        height: 13px;
+        right: 20px;
+        @include center( "vertical" );
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url( "../img/icons/icon-eye.svg" );
+    }
+
+    .input-password[type=text] ~ .password-toggle-button {
+        height: 17px;
+        background-image: url( "../img/icons/icon-eye-crossed.svg" );
     }
 
 }
