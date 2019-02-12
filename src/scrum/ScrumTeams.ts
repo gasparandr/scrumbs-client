@@ -188,7 +188,7 @@ export class ScrumTeams extends ViewComponent {
 
     private addMember(memberData: any, membersContainer: HTMLElement, prepend?: boolean): void {
         let member           = document.createElement( "li" );
-        member.id            = memberData._id;
+        member.id            = `${ membersContainer.id }@${ memberData._id }`;
         member.className     = "scrum-team-member pointer noselect";
         member.innerHTML     = memberData.name;
 
@@ -306,8 +306,11 @@ export class ScrumTeams extends ViewComponent {
         teamContainer.previousElementSibling.firstElementChild.innerHTML = name;
 
         for ( let member of removed ) {
-            const memberElement = document.getElementById( member );
-            memberElement.parentNode.removeChild( memberElement );
+            const memberElement = document.getElementById( `${ _id }@${ member }` );
+
+            console.log( memberElement );
+
+            memberElement.parentElement.removeChild( memberElement );
         }
 
         for ( let member of added ) {
