@@ -132,6 +132,17 @@ export class HeaderView extends View {
 
                 break;
 
+            case HeaderSignals.SWITCH_TO_SCRUM_VIEW :
+
+                this.sendNotification( HeaderNotifications.SWITCH_TO_SCRUM_VIEW );
+
+                break;
+
+            case HeaderSignals.SWITCH_TO_IMPEDIMENTS_VIEW :
+
+                this.sendNotification( HeaderNotifications.SWITCH_TO_IMPEDIMENTS_VIEW );
+
+                break;
 
             default:
                 break;

@@ -2,6 +2,8 @@
 
 import {AuthenticationNotifications} from "../authentication/AuthenticationNotifications";
 import {AuthenticationView} from "../authentication/AuthenticationView";
+import {HeaderNotifications} from "../header/HeaderNotifications";
+import {ImpedimentsView} from "../impediments/ImpedimentsView";
 import {HeaderView} from "../header/HeaderView";
 import {INotification} from "./INotification";
 import {ViewExitTypes} from "./ViewExitTypes";
@@ -12,7 +14,7 @@ import {View} from "./View";
 
 // CSS
 import "../_style/style-sheets/main.scss";
-import { ImpedimentsView } from "../impediments/ImpedimentsView";
+
 
 
 
@@ -64,6 +66,8 @@ export class ViewManager extends CoreEntity {
 
         notifications.push( AuthenticationNotifications.LOGIN );
         notifications.push( AuthenticationNotifications.SIGN_UP );
+        notifications.push( HeaderNotifications.SWITCH_TO_SCRUM_VIEW );
+        notifications.push( HeaderNotifications.SWITCH_TO_IMPEDIMENTS_VIEW );
 
         return notifications;
     }
@@ -78,13 +82,23 @@ export class ViewManager extends CoreEntity {
 
                 this.switchView( ScrumView, null );
 
-                // this.switchView( ImpedimentsView, null );
-
                 break;
 
             case AuthenticationNotifications.SIGN_UP :
 
                 this.switchView( ScrumView, null );
+
+                break;
+
+            case HeaderNotifications.SWITCH_TO_SCRUM_VIEW :
+
+                this.switchView( ScrumView, null );
+
+                break;
+
+            case HeaderNotifications.SWITCH_TO_IMPEDIMENTS_VIEW :
+
+                this.switchView( ImpedimentsView, null );
 
                 break;
 

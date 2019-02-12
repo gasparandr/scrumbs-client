@@ -12,6 +12,7 @@ import {View} from "../core/View";
 
 // CSS
 import "../_style/style-sheets/impediments/view/impediments-view.scss";
+import {ImpedimentsHeader} from "./ImpedimentsHeader";
 
 
 // HTML
@@ -23,9 +24,9 @@ const impedimentsViewTemplate = require( "../_view-templates/impediments/view/im
 
 
 export class ImpedimentsView extends View {
-    private viewComponent: ViewComponent;
+    private impedimentsHeader: ViewComponent;
 
-    private viewComponentContainer: HTMLElement;
+    private impedimentsHeaderContainer: HTMLElement;
 
 
 
@@ -39,11 +40,11 @@ export class ImpedimentsView extends View {
 
         document.getElementById( SystemConstants.MAIN_CONTAINER ).appendChild( this.container );
 
-        this.container.innerHTML                = impedimentsViewTemplate;
+        this.container.innerHTML                    = impedimentsViewTemplate;
 
-        this.viewComponentContainer             = document.getElementById( "container" ); // SPECIFY CONTAINER ID
+        this.impedimentsHeaderContainer             = document.getElementById( "impediments-header-container" ); // SPECIFY CONTAINER ID
 
-        // this.viewComponent                      = new ViewComponentName( this, this.viewComponentContainer );
+        this.impedimentsHeader                      = new ImpedimentsHeader( this, this.impedimentsHeaderContainer );
 
 
 
@@ -63,7 +64,7 @@ export class ImpedimentsView extends View {
 
         this.exitCallback = callback;
 
-        this.viewComponent.exitScene( exitType ); // EXIT THE COMPONENT
+        this.impedimentsHeader.exitScene( exitType ); // EXIT THE COMPONENT
     }
 
 
