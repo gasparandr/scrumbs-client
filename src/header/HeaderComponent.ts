@@ -34,6 +34,9 @@ export class HeaderComponent extends ViewComponent {
     private authViewComponentActive: string;
 
     private navigation: HTMLUListElement;
+    private scrumBtn: HTMLLIElement;
+    private impedimentsBtn: HTMLLIElement;
+
     private profile: HTMLUListElement;
     private authenticationFragment: HTMLElement;
 
@@ -45,15 +48,21 @@ export class HeaderComponent extends ViewComponent {
 
         this.authViewComponentActive = "LOGIN";
 
-        this.actionBtn      = document.getElementById( "header-auth-button" ) as HTMLButtonElement;
-        this.authMessage    = document.getElementById( "header-auth-message" ) as HTMLSpanElement;
+        this.actionBtn                  = document.getElementById( "header-auth-button" ) as HTMLButtonElement;
+        this.authMessage                = document.getElementById( "header-auth-message" ) as HTMLSpanElement;
 
         this.navigation                 = document.getElementById( "header-navigation" ) as HTMLUListElement;
+        this.scrumBtn                   = document.getElementById( "scrum-page-button" ) as HTMLLIElement;
+        this.impedimentsBtn             = document.getElementById( "impediments-page-button" ) as HTMLLIElement;
+
+
         this.profile                    = document.getElementById( "header-profile-wrapper" ) as HTMLUListElement;
         this.authenticationFragment     = document.getElementById( "header-authentication-fragment" ) as HTMLElement;
 
 
-        this.actionBtnClickListener = this.actionBtnClickListener.bind( this );
+        this.actionBtnClickListener     = this.actionBtnClickListener.bind( this );
+        this.scrumBtnListener           = this.scrumBtnListener.bind( this );
+        this.impedimentsBtnListener     = this.impedimentsBtnListener.bind( this );
 
 
         this.enterScene();
@@ -63,12 +72,16 @@ export class HeaderComponent extends ViewComponent {
 
     private registerEventListeners(): void {
         this.actionBtn.addEventListener( "click", this.actionBtnClickListener );
+        this.scrumBtn.addEventListener( "click", this.scrumBtnListener );
+        this.impedimentsBtn.addEventListener( "click", this.impedimentsBtnListener );
     }
 
 
 
     private unregisterEventListeners(): void {
         this.actionBtn.removeEventListener( "click", this.actionBtnClickListener );
+        this.scrumBtn.removeEventListener( "click", this.scrumBtnListener );
+        this.impedimentsBtn.removeEventListener( "click", this.impedimentsBtnListener );
     }
 
 
@@ -89,6 +102,17 @@ export class HeaderComponent extends ViewComponent {
             this.authViewComponentActive    = "LOGIN";
         }
 
+    }
+
+
+
+    private scrumBtnListener(e: any): void {
+        this.sendSignal( HeaderSignals.SWITCH_TO_SCRUM_VIEW );
+    }
+
+
+    private impedimentsBtnListener(e: any): void {
+        this.sendSignal( HeaderSignals.SWITCH_TO_IMPEDIMENTS_VIEW );
     }
 
 

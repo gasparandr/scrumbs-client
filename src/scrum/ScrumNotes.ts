@@ -128,9 +128,9 @@ export class ScrumNotes extends ViewComponent {
 
     private checkForImpedimentFlag() {
 
-        if ( this.noteInput.value.indexOf( "#impediment" ) !== -1 ) {
+        if ( this.noteInput.value.indexOf( "#im" ) !== -1 ) {
             this.impedimentCheckbox.checked = true;
-            this.noteInput.value = this.noteInput.value.replace( "#impediment", "" );
+            this.noteInput.value = this.noteInput.value.replace( "#im", "" );
         }
     }
 

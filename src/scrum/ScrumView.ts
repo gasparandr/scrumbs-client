@@ -152,6 +152,12 @@ export class ScrumView extends View {
 
                 break;
 
+            case ScrumSignals.TEAM_CREATED :
+
+                ( this.teams as ScrumTeams ).addTeam( signal.data );
+
+                break;
+
             default:
                 break;
         }

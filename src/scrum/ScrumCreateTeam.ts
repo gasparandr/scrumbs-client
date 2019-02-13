@@ -1,8 +1,9 @@
 
-
+import {CreateTeamModel} from "../connection/models/CreateTeamModel";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {ViewExitTypes} from "../core/ViewExitTypes";
+import {ScrumSignals} from "./ScrumSignals";
 import {View} from "../core/View";
 
 
@@ -14,7 +15,6 @@ import Back = gsap.Back;
 
 // CSS
 import "../_style/style-sheets/scrum/component/scrum-create-team.scss";
-import {CreateTeamModel} from "../connection/models/CreateTeamModel";
 
 
 // HTML
@@ -88,6 +88,7 @@ export class ScrumCreateTeam extends ViewComponent {
             createTeamModel,
             (response: any) => {
                 console.log( response );
+                this.sendSignal( ScrumSignals.TEAM_CREATED, response.team );
                 this.exitScene( ViewExitTypes.HIDE_COMPONENT );
             },
             (err: string) => console.error( err )

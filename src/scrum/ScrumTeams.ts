@@ -136,39 +136,46 @@ export class ScrumTeams extends ViewComponent {
 
         for ( let team of teams ) {
 
-            let teamContainer           = document.createElement( "li" );
-            teamContainer.className     = "scrum-team";
-
-            let header                  = document.createElement( "div" );
-            header.className            = "scrum-team-header pointer";
-
-            let title                   = document.createElement( "h2" );
-            title.className             = "scrum-team-name bold noselect";
-            title.innerHTML             = team.name;
-
-            let button                  = document.createElement( "button" );
-            button.className            = "scrum-create-member-btn";
-
-            let membersContainer        = document.createElement( "ul" );
-            membersContainer.id         = team._id;
-            membersContainer.className  = "scrum-team-members";
-
-            header.appendChild( title );
-            header.appendChild( button );
-
-            teamContainer.appendChild( header );
-            teamContainer.appendChild( membersContainer );
-
-            if ( team.isDefault ) {
-                this.teamsContainer.insertBefore( teamContainer, this.teamsContainer.firstChild );
-            } else {
-                this.teamsContainer.appendChild( teamContainer );
-            }
-
-            this.addToggleListenerToHeader( header, teamContainer );
-            this.addClickListenerToAddMemberBtn( button, membersContainer );
+            this.addTeam( team );
 
         }
+    }
+
+
+
+    public addTeam(teamData: any): void {
+
+        let teamContainer           = document.createElement( "li" );
+        teamContainer.className     = "scrum-team";
+
+        let header                  = document.createElement( "div" );
+        header.className            = "scrum-team-header pointer";
+
+        let title                   = document.createElement( "h2" );
+        title.className             = "scrum-team-name bold noselect";
+        title.innerHTML             = teamData.name;
+
+        let button                  = document.createElement( "button" );
+        button.className            = "scrum-create-member-btn";
+
+        let membersContainer        = document.createElement( "ul" );
+        membersContainer.id         = teamData._id;
+        membersContainer.className  = "scrum-team-members";
+
+        header.appendChild( title );
+        header.appendChild( button );
+
+        teamContainer.appendChild( header );
+        teamContainer.appendChild( membersContainer );
+
+        if ( teamData.isDefault ) {
+            this.teamsContainer.insertBefore( teamContainer, this.teamsContainer.firstChild );
+        } else {
+            this.teamsContainer.appendChild( teamContainer );
+        }
+
+        this.addToggleListenerToHeader( header, teamContainer );
+        this.addClickListenerToAddMemberBtn( button, membersContainer );
     }
 
 
@@ -188,7 +195,7 @@ export class ScrumTeams extends ViewComponent {
 
     private addMember(memberData: any, membersContainer: HTMLElement, prepend?: boolean): void {
         let member           = document.createElement( "li" );
-        member.id            = memberData._id;
+        member.id            = `${ membersContainer.id }@${ memberData._id }`;
         member.className     = "scrum-team-member pointer noselect";
         member.innerHTML     = memberData.name;
 
@@ -306,8 +313,11 @@ export class ScrumTeams extends ViewComponent {
         teamContainer.previousElementSibling.firstElementChild.innerHTML = name;
 
         for ( let member of removed ) {
-            const memberElement = document.getElementById( member );
-            memberElement.parentNode.removeChild( memberElement );
+            const memberElement = document.getElementById( `${ _id }@${ member }` );
+
+            console.log( memberElement );
+
+            memberElement.parentElement.removeChild( memberElement );
         }
 
         for ( let member of added ) {
