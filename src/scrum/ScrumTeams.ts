@@ -182,20 +182,18 @@ export class ScrumTeams extends ViewComponent {
 
     private populateMembers(teamId: string, members: any[]): void {
 
-        const membersContainer = document.getElementById( teamId );
-
         for ( let i = members.length - 1; i >= 0; i-- ) {
-            this.addMember( members[i], membersContainer );
+            this.addMember( members[i], teamId );
         }
 
-        membersContainer.parentElement.classList.add( "active" );
+        document.getElementById( teamId ).parentElement.classList.add( "active" );
     }
 
 
 
-    private addMember(memberData: any, membersContainer: HTMLElement, prepend?: boolean): void {
+    public addMember(memberData: any, teamId: string, prepend?: boolean): void {
         let member           = document.createElement( "li" );
-        member.id            = `${ membersContainer.id }@${ memberData._id }`;
+        member.id            = `${ teamId }@${ memberData._id }`;
         member.className     = "scrum-team-member pointer noselect";
         member.innerHTML     = memberData.name;
 
@@ -206,6 +204,8 @@ export class ScrumTeams extends ViewComponent {
                     name: memberData.name
                 }
             ));
+
+        const membersContainer = document.getElementById( teamId );
 
         if ( ! prepend ) {
             membersContainer.appendChild( member );
@@ -228,9 +228,8 @@ export class ScrumTeams extends ViewComponent {
             (response: any) => {
                 console.log( response );
                 const { member }        = response;
-                const membersContainer  = document.getElementById( team );
 
-                this.addMember( member, membersContainer, true );
+                this.addMember( member, team, true );
 
             },
             (err: string) => console.error( err )
@@ -296,7 +295,7 @@ export class ScrumTeams extends ViewComponent {
                     input.value = null;
                     input.blur();
                 }
-            })
+            });
         });
     }
 
@@ -321,7 +320,7 @@ export class ScrumTeams extends ViewComponent {
         }
 
         for ( let member of added ) {
-            this.addMember( member, teamContainer );
+            this.addMember( member, _id );
         }
     }
 }

@@ -15,6 +15,7 @@ import Back = gsap.Back;
 
 // CSS
 import "../_style/style-sheets/scrum/component/scrum-create-team.scss";
+import {CreateMemberModel} from "../connection/models/CreateMemberModel";
 
 
 // HTML
@@ -30,7 +31,7 @@ export class ScrumCreateTeam extends ViewComponent {
     private exitBtn: HTMLSpanElement;
     private addMemberBtn: HTMLElement;
     private teamNameInput: HTMLInputElement;
-    private membersContainer: HTMLUListElement;
+    private memberContainer: HTMLUListElement;
 
 
     constructor(view: View, container: HTMLElement) {
@@ -42,11 +43,12 @@ export class ScrumCreateTeam extends ViewComponent {
         this.exitBtn            = document.getElementById( "create-team-exit-button" ) as HTMLSpanElement;
         this.addMemberBtn       = document.getElementById( "create-team-add-member-button" );
         this.teamNameInput      = document.getElementById( "create-team-name-input" ) as HTMLInputElement;
-        this.membersContainer   = document.getElementById( "create-team-members-container" ) as HTMLUListElement;
+        this.memberContainer   = document.getElementById( "create-team-members-container" ) as HTMLUListElement;
 
 
-        this.exitBtnHandler = this.exitBtnHandler.bind( this );
-        this.saveBtnHandler = this.saveBtnHandler.bind( this );
+        this.exitBtnHandler     = this.exitBtnHandler.bind( this );
+        this.saveBtnHandler     = this.saveBtnHandler.bind( this );
+
 
 
         this.enterScene();
@@ -64,7 +66,6 @@ export class ScrumCreateTeam extends ViewComponent {
     private unregisterEventListeners(): void {
         this.exitBtn.removeEventListener( "click", this.exitBtnHandler );
         this.saveBtn.removeEventListener( "click", this.saveBtnHandler );
-
     }
 
 
@@ -102,7 +103,7 @@ export class ScrumCreateTeam extends ViewComponent {
 
     private resetView(): void {
         this.teamNameInput.value            = "";
-        this.membersContainer.innerHTML     = "";
+        this.memberContainer.innerHTML      = "";
     }
 
 
@@ -117,7 +118,7 @@ export class ScrumCreateTeam extends ViewComponent {
 
         member.appendChild( checkbox );
 
-        this.membersContainer.insertBefore( member, this.membersContainer.firstChild );
+        this.memberContainer.insertBefore( member, this.memberContainer.firstChild );
 
         member.addEventListener( "click", () => member.classList.toggle( "active" ) );
 
@@ -144,8 +145,8 @@ export class ScrumCreateTeam extends ViewComponent {
     private getSelectedMembers(): string[] {
         let memberIds = [];
 
-        for ( let i = 0; i < this.membersContainer.children.length; i++ ) {
-            let member = this.membersContainer.children[ i ];
+        for ( let i = 0; i < this.memberContainer.children.length; i++ ) {
+            let member = this.memberContainer.children[ i ];
 
             if ( member.classList.contains( "active" ) ) {
                 memberIds.push( member.id );

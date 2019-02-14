@@ -1,4 +1,5 @@
 
+import {CreateMemberModel} from "../connection/models/CreateMemberModel";
 import {UpdateTeamModel} from "../connection/models/UpdateTeamModel";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
@@ -66,7 +67,7 @@ export class ScrumManageTeams extends ViewComponent {
         this.exitBtnHandler         = this.exitBtnHandler.bind( this );
         this.cancelBtnHandler       = this.cancelBtnHandler.bind( this );
         this.saveBtnHandler         = this.saveBtnHandler.bind( this );
-
+        this.addMemberBtnHandler    = this.addMemberBtnHandler.bind( this );
 
         this.enterScene();
     }
@@ -77,6 +78,7 @@ export class ScrumManageTeams extends ViewComponent {
         this.exitBtn.addEventListener( "click", this.exitBtnHandler );
         this.cancelBtn.addEventListener( "click", this.exitBtnHandler );
         this.saveBtn.addEventListener( "click", this.saveBtnHandler );
+        this.addMemberBtn.addEventListener( "click", this.addMemberBtnHandler );
     }
 
 
@@ -85,6 +87,7 @@ export class ScrumManageTeams extends ViewComponent {
         this.exitBtn.removeEventListener( "click", this.exitBtnHandler );
         this.cancelBtn.removeEventListener( "click", this.exitBtnHandler );
         this.saveBtn.removeEventListener( "click", this.saveBtnHandler );
+        this.addMemberBtn.removeEventListener( "click", this.addMemberBtnHandler );
     }
 
 
@@ -169,10 +172,13 @@ export class ScrumManageTeams extends ViewComponent {
 
 
 
-    private addMember(memberData: any): void {
+    private addMember(memberData: any, active?: boolean): void {
         let member          = document.createElement( "li" );
         member.innerHTML    = memberData.name;
         member.id           = `${ this.localPrefix }${ memberData._id }`;
+
+        if ( active ) member.classList.add( "active" );
+
         let checkbox        = document.createElement( "span" );
         checkbox.className  = "create-team-member-checkbox";
 
@@ -296,6 +302,59 @@ export class ScrumManageTeams extends ViewComponent {
             },
             (err: string) => console.error( err )
         );
+    }
+
+
+
+    private addMemberBtnHandler(e: any) {
+        /** If the input is already in place, we return */
+        if ( this.memberContainer.firstElementChild.tagName === "INPUT" ) return;
+
+        const input = document.createElement( "input" );
+        input.placeholder = "Enter member name";
+
+        this.memberContainer.insertBefore( input, this.memberContainer.firstChild );
+
+        input.addEventListener( "blur", () => {
+            if ( ! input.value ) {
+                input.parentNode.removeChild( input );
+                return;
+            }
+
+            input.readOnly = true;
+
+            const name = input.value;
+            const team = this.loadedTeamId;
+
+            const createMemberModel = new CreateMemberModel( name, team );
+
+
+            this.connection.createMember(
+                createMemberModel,
+                (response: any) => {
+                    const { member } = response;
+
+                    this.addMember( member, true );
+                    input.parentNode.removeChild( input );
+                    this.sendSignal( ScrumSignals.MEMBER_ADDED, { member, team } );
+                },
+                (err: string) => console.error( err )
+            );
+
+        });
+
+        input.addEventListener( "keydown", (e: any) => {
+            const key = e.which || e.keyCode;
+
+            if ( key === 27 ) { // ESC
+                input.value = null;
+                input.blur();
+            } else if ( key === 13 ) { // ENTER
+                input.blur();
+            }
+        });
+
+        input.focus();
     }
 
 
