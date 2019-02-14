@@ -46,6 +46,7 @@ export class AuthenticationSignUp extends ViewComponent {
 
     private signUpBtn: HTMLButtonElement;
 
+    private passwordInputTypeToggle: HTMLSpanElement;
 
 
     constructor(view: View, container: HTMLElement) {
@@ -53,28 +54,30 @@ export class AuthenticationSignUp extends ViewComponent {
 
         this.container.innerHTML = template;
 
-        this.title                  = document.getElementById( "authentication-sign-up-title" ) as HTMLHeadingElement;
-        this.subTitle               = document.getElementById( "authentication-sign-up-subtitle" ) as HTMLHeadingElement;
+        this.title                      = document.getElementById( "authentication-sign-up-title" ) as HTMLHeadingElement;
+        this.subTitle                   = document.getElementById( "authentication-sign-up-subtitle" ) as HTMLHeadingElement;
 
-        this.nameInputLabel         = document.getElementById( "authentication-sign-up-name-label" ) as HTMLLabelElement;
-        this.nameInput              = document.getElementById( "authentication-sign-up-name-input" ) as HTMLInputElement;
-        this.nameInputError         = document.getElementById( "authentication-sign-up-name-input-error" ) as HTMLSpanElement;
+        this.nameInputLabel             = document.getElementById( "authentication-sign-up-name-label" ) as HTMLLabelElement;
+        this.nameInput                  = document.getElementById( "authentication-sign-up-name-input" ) as HTMLInputElement;
+        this.nameInputError             = document.getElementById( "authentication-sign-up-name-input-error" ) as HTMLSpanElement;
 
-        this.emailInputLabel        = document.getElementById( "authentication-sign-up-email-label" ) as HTMLLabelElement;
-        this.emailInput             = document.getElementById( "authentication-sign-up-email-input" ) as HTMLInputElement;
-        this.emailInputError        = document.getElementById( "authentication-sign-up-email-input-error" ) as HTMLSpanElement;
+        this.emailInputLabel            = document.getElementById( "authentication-sign-up-email-label" ) as HTMLLabelElement;
+        this.emailInput                 = document.getElementById( "authentication-sign-up-email-input" ) as HTMLInputElement;
+        this.emailInputError            = document.getElementById( "authentication-sign-up-email-input-error" ) as HTMLSpanElement;
 
-        this.passwordInputLabel     = document.getElementById( "authentication-sign-up-email-input-label" ) as HTMLLabelElement;
-        this.passwordInput          = document.getElementById( "authentication-sign-up-password-input" ) as HTMLInputElement;
-        this.passwordInputError     = document.getElementById( "authentication-sign-up-password-input-error" ) as HTMLSpanElement;
+        this.passwordInputLabel         = document.getElementById( "authentication-sign-up-email-input-label" ) as HTMLLabelElement;
+        this.passwordInput              = document.getElementById( "authentication-sign-up-password-input" ) as HTMLInputElement;
+        this.passwordInputError         = document.getElementById( "authentication-sign-up-password-input-error" ) as HTMLSpanElement;
 
-        this.signUpBtn              = document.getElementById( "authentication-sign-up-btn" ) as HTMLButtonElement;
+        this.signUpBtn                  = document.getElementById( "authentication-sign-up-btn" ) as HTMLButtonElement;
 
+        this.passwordInputTypeToggle    = document.getElementById( "authentication-sign-up-password-toggle-button" ) as HTMLSpanElement;
 
-        this.nameInputListener          = this.nameInputListener.bind( this );
-        this.emailInputListener         = this.emailInputListener.bind( this );
-        this.passwordInputListener      = this.passwordInputListener.bind( this );
-        this.signUpBtnListener          = this.signUpBtnListener.bind( this );
+        this.nameInputListener                  = this.nameInputListener.bind( this );
+        this.emailInputListener                 = this.emailInputListener.bind( this );
+        this.passwordInputListener              = this.passwordInputListener.bind( this );
+        this.signUpBtnListener                  = this.signUpBtnListener.bind( this );
+        this.passwordInputTypeToggleListener    = this.passwordInputTypeToggleListener.bind( this );
 
         this.enterScene();
 
@@ -87,6 +90,7 @@ export class AuthenticationSignUp extends ViewComponent {
         this.emailInput.addEventListener( "focus", this.emailInputListener );
         this.passwordInput.addEventListener( "focus", this.passwordInputListener );
         this.signUpBtn.addEventListener( "click", this.signUpBtnListener );
+        this.passwordInputTypeToggle.addEventListener( "click", this.passwordInputTypeToggleListener );
     }
 
 
@@ -96,6 +100,8 @@ export class AuthenticationSignUp extends ViewComponent {
         this.emailInput.removeEventListener( "focus", this.emailInputListener );
         this.passwordInput.removeEventListener( "focus", this.passwordInputListener );
         this.signUpBtn.removeEventListener( "click", this.signUpBtnListener );
+        this.passwordInputTypeToggle.removeEventListener( "click", this.passwordInputTypeToggleListener );
+
     }
 
 
@@ -134,6 +140,13 @@ export class AuthenticationSignUp extends ViewComponent {
         )
 
     }
+
+
+
+    private passwordInputTypeToggleListener(e: any) {
+        this.passwordInput.type === "text" ? this.passwordInput.type = "password" : this.passwordInput.type = "text";
+    }
+
 
 
     public enterScene(enterType?: string): void {

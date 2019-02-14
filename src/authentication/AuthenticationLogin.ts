@@ -40,8 +40,7 @@ export class AuthenticationLogin extends ViewComponent {
     private forgotPassBtn: HTMLParagraphElement;
     private loginBtn: HTMLButtonElement;
 
-
-
+    private passwordInputTypeToggle: HTMLSpanElement;
 
 
 
@@ -66,11 +65,15 @@ export class AuthenticationLogin extends ViewComponent {
         this.forgotPassBtn          = document.getElementById( "authentication-login-forgot-password" ) as HTMLParagraphElement;
         this.loginBtn               = document.getElementById( "authentication-login-btn" ) as HTMLButtonElement;
 
+        this.passwordInputTypeToggle               = document.getElementById( "authentication-login-password-toggle-button" ) as HTMLSpanElement;
 
-        this.emailInputListener         = this.emailInputListener.bind( this );
-        this.passwordInputListener      = this.passwordInputListener.bind( this );
-        this.forgotPassBtnListener      = this.forgotPassBtnListener.bind( this );
-        this.loginBtnListener           = this.loginBtnListener.bind( this );
+
+
+        this.emailInputListener                 = this.emailInputListener.bind( this );
+        this.passwordInputListener              = this.passwordInputListener.bind( this );
+        this.forgotPassBtnListener              = this.forgotPassBtnListener.bind( this );
+        this.loginBtnListener                   = this.loginBtnListener.bind( this );
+        this.passwordInputTypeToggleListener    = this.passwordInputTypeToggleListener.bind( this );
 
 
         this.enterScene();
@@ -83,6 +86,7 @@ export class AuthenticationLogin extends ViewComponent {
         this.passwordInput.addEventListener( "focus", this.passwordInputListener );
         this.forgotPassBtn.addEventListener( "click", this.forgotPassBtnListener );
         this.loginBtn.addEventListener( "click", this.loginBtnListener );
+        this.passwordInputTypeToggle.addEventListener( "click", this.passwordInputTypeToggleListener );
     }
 
 
@@ -92,6 +96,7 @@ export class AuthenticationLogin extends ViewComponent {
         this.passwordInput.removeEventListener( "focus", this.passwordInputListener );
         this.forgotPassBtn.removeEventListener( "click", this.forgotPassBtnListener );
         this.loginBtn.removeEventListener( "click", this.loginBtnListener );
+        this.passwordInputTypeToggle.removeEventListener( "click", this.passwordInputTypeToggleListener );
     }
 
 
@@ -114,7 +119,7 @@ export class AuthenticationLogin extends ViewComponent {
 
 
 
-    private loginBtnListener(e:any) {
+    private loginBtnListener(e: any) {
         if ( ! this.validateInputs() ) return;
 
         const email     = this.emailInput.value;
@@ -128,6 +133,12 @@ export class AuthenticationLogin extends ViewComponent {
             (err: string) => console.error( err )
         )
 
+    }
+
+
+
+    private passwordInputTypeToggleListener(e: any) {
+        this.passwordInput.type === "text" ? this.passwordInput.type = "password" : this.passwordInput.type = "text";
     }
 
 
