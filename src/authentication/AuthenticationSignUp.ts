@@ -18,7 +18,6 @@ import {SignUpModel} from "../connection/models/SignUpModel";
 import {AuthenticationSignals} from "./AuthenticationSignals";
 
 
-
 // HTML
 const template = require( "../_view-templates/authentication/component/authentication-sign-up.html" );
 

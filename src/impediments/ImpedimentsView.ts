@@ -1,7 +1,9 @@
 
 
-
+import {ImpedimentsUnsolved} from "./ImpedimentsUnsolved";
 import {SystemConstants} from "../core/SystemConstants";
+import {ImpedimentsSolved} from "./ImpedimentsSolved";
+import {ImpedimentsHeader} from "./ImpedimentsHeader";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {INotification} from "../core/INotification";
@@ -12,7 +14,6 @@ import {View} from "../core/View";
 
 // CSS
 import "../_style/style-sheets/impediments/view/impediments-view.scss";
-import {ImpedimentsHeader} from "./ImpedimentsHeader";
 
 
 // HTML
@@ -25,9 +26,13 @@ const impedimentsViewTemplate = require( "../_view-templates/impediments/view/im
 
 export class ImpedimentsView extends View {
     private impedimentsHeader: ViewComponent;
-
     private impedimentsHeaderContainer: HTMLElement;
 
+    private impedimentsSolved: ViewComponent;
+    private impedimentsSolvedContainer: HTMLElement;
+
+    private impedimentsUnsolved: ViewComponent;
+    private impedimentsUnsolvedContainer: HTMLElement;
 
 
 
@@ -42,9 +47,13 @@ export class ImpedimentsView extends View {
 
         this.container.innerHTML                    = impedimentsViewTemplate;
 
-        this.impedimentsHeaderContainer             = document.getElementById( "impediments-header-container" ); // SPECIFY CONTAINER ID
+        this.impedimentsHeaderContainer             = document.getElementById( "impediments-header-container" );
+        this.impedimentsUnsolvedContainer           = document.getElementById( "impediments-solved-container" );
+        this.impedimentsSolvedContainer             = document.getElementById( "impediments-unsolved-container" );
 
         this.impedimentsHeader                      = new ImpedimentsHeader( this, this.impedimentsHeaderContainer );
+        this.impedimentsUnsolved                    = new ImpedimentsUnsolved( this, this.impedimentsUnsolvedContainer );
+        this.impedimentsSolved                      = new ImpedimentsSolved( this, this.impedimentsSolvedContainer );
 
 
 
@@ -64,7 +73,9 @@ export class ImpedimentsView extends View {
 
         this.exitCallback = callback;
 
-        this.impedimentsHeader.exitScene( exitType ); // EXIT THE COMPONENT
+        this.impedimentsHeader.exitScene( exitType );
+        this.impedimentsSolved.exitScene( exitType );
+        this.impedimentsUnsolved.exitScene( exitType );
     }
 
 
