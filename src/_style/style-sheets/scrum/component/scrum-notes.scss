@@ -226,11 +226,12 @@
 
 					&::before {
 						content: "";
+						position: absolute;
 						display: block;
 						width: 21px;
 						height: 10px;
+						top: 26px;
 						left: 9px;
-						@include center( "vertical" );
 						background: url( "../../../img/icons/icon-impediment.svg" ) no-repeat center / contain;
 					}
 
@@ -289,6 +290,7 @@
 		@include center( "horizontal" );
 		bottom: 20px;
 		width: calc( 100% - 40px );
+		box-shadow: 0 -12px 0 3px $tertiary-color;
 		
 
 		#scrum-note-input {

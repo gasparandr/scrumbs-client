@@ -184,6 +184,8 @@ input, textarea {
         background-image: url( "../img/icons/icon-eye-crossed.svg" );
     }
 
+    .input-password[type=password] { letter-spacing: 5px; }
+
 }
 
 
@@ -271,18 +273,23 @@ input, textarea {
     text-transform: uppercase;
     text-align: center;
     font-size: 0.97em;
-    height: 50px;
-    line-height: 50px;
+    height: 49px;
+    line-height: 49px;
     box-shadow: 0 12px 8px -9px lighten( $secondary-color, 17% );
     background: $primary-color;
     background: -moz-linear-gradient( left,    $primary-color 0%, $secondary-color 100% );
     background: -webkit-linear-gradient( left, $primary-color 0%, $secondary-color 100% );
     background: linear-gradient( to right,     $primary-color 0%, $secondary-color 100% );
-    transition: all 0.1s ease-out;
+    transition: all 0.2s ease-in-out;
 
 
-    &:active {
-        box-shadow: 0 1px 1px 0 lighten( $secondary-color, 17% );
+    &:hover {
+        transform: scale( 1.03 );
+        box-shadow: 0 12px 8px -9px lighten( $secondary-color, 17% );
+        background: $accent-color;
+        background: -moz-linear-gradient( left,    $accent-color 0%, $accent-color 100% );
+        background: -webkit-linear-gradient( left, $accent-color 0%, $accent-color 100% );
+        background: linear-gradient( to right,     $accent-color 0%, $accent-color 100% );
     }
 
 }
