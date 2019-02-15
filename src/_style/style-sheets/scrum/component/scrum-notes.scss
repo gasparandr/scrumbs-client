@@ -307,7 +307,13 @@
 			@include center( "vertical" );
 			right: 30px;
 
-			label { padding-left: 24px; }
+			label {
+				padding-left: 24px;
+				font-size: inherit;
+
+				&::before { top: 2px; }
+				&::after { top: 6px; }
+			}
 
 		}
 

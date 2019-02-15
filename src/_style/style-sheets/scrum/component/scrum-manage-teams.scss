@@ -35,10 +35,18 @@
         #manage-teams-save-button { width: 150px; }
 
         #manage-teams-cancel-button {
-            width: 100px;
-            margin-right: 40px;
-            background: transparent;
+            width: 150px;
+            height: 49px;
+            margin-right: 12px;
+            background-color: transparent;
             color: $text-tertiary-color;
+            border-radius: 3px;
+            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+            &:hover {
+                color: $text-primary-color;
+                background-color: $denary-color;
+            }
         }
 
     }
