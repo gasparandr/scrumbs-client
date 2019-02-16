@@ -48,8 +48,8 @@ export class ImpedimentsView extends View {
         this.container.innerHTML                    = impedimentsViewTemplate;
 
         this.impedimentsHeaderContainer             = document.getElementById( "impediments-header-container" );
-        this.impedimentsUnsolvedContainer           = document.getElementById( "impediments-solved-container" );
-        this.impedimentsSolvedContainer             = document.getElementById( "impediments-unsolved-container" );
+        this.impedimentsUnsolvedContainer           = document.getElementById( "impediments-unsolved-container" );
+        this.impedimentsSolvedContainer             = document.getElementById( "impediments-solved-container" );
 
         this.impedimentsHeader                      = new ImpedimentsHeader( this, this.impedimentsHeaderContainer );
         this.impedimentsUnsolved                    = new ImpedimentsUnsolved( this, this.impedimentsUnsolvedContainer );
