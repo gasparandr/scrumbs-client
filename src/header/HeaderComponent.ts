@@ -107,11 +107,15 @@ export class HeaderComponent extends ViewComponent {
 
 
     private scrumBtnListener(e: any): void {
+        this.scrumBtn.classList.add( "active" );
+        this.impedimentsBtn.classList.remove( "active" );
         this.sendSignal( HeaderSignals.SWITCH_TO_SCRUM_VIEW );
     }
 
 
     private impedimentsBtnListener(e: any): void {
+        this.impedimentsBtn.classList.add( "active" );
+        this.scrumBtn.classList.remove( "active" );
         this.sendSignal( HeaderSignals.SWITCH_TO_IMPEDIMENTS_VIEW );
     }
 
