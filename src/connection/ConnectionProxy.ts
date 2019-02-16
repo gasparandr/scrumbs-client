@@ -178,11 +178,11 @@ export class ConnectionProxy extends Proxy {
 
 
 
-    public getNotes(memberId: string, success: Function, failure: Function): void {
+    public getNotesOfMember(memberId: string, success: Function, failure: Function): void {
 
         this.httpRequest(
             "GET",
-            `/api/v1/notes/${ memberId }`,
+            `/api/v1/notes/member/${ memberId }`,
             null,
             success,
             failure
@@ -200,6 +200,32 @@ export class ConnectionProxy extends Proxy {
             success,
             failure
         )
+    }
+
+
+
+    public getSolvedImpediments(success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "GET",
+            "/api/v1/notes/solved",
+            null,
+                success,
+                failure
+        );
+    }
+
+
+
+    public getUnsolvedImpediments(success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "GET",
+            "/api/v1/notes/unsolved",
+            null,
+            success,
+            failure
+        );
     }
 
 

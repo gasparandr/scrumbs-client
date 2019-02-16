@@ -82,7 +82,7 @@ export class ScrumNotes extends ViewComponent {
         this.memberName.innerText       = name;
         this.noteContainer.innerHTML    = "";
 
-        this.connection.getNotes(
+        this.connection.getNotesOfMember(
             id,
             (response: any) => {
                 console.log( response );
