@@ -1,5 +1,5 @@
 
-
+import {ImpedimentSignals} from "./ImpedimentSignals";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {ViewExitTypes} from "../core/ViewExitTypes";
@@ -61,26 +61,24 @@ export class ImpedimentsUnsolved extends ViewComponent {
                 const { impediments } = response;
 
                 for ( let impediment of impediments ) {
-
                     this.addImpediment( impediment );
-
                 }
             },
             (err: string) => console.error( err )
-        )
+        );
     }
 
 
 
     public addImpediment(impedimentData: any): void {
         /** Check if member is already rendered, if so - we append */
-        let memberContainer = document.getElementById( impedimentData.member._id );
+        let memberContainer = document.getElementById( `unsolved-${impedimentData.member._id}` );
 
         if ( memberContainer ) {
-            let impediment             = document.createElement( "li" );
-            impediment.className       = "impediments-unsolved-member-impediment pointer";
-            impediment.id              = impedimentData._id;
-            impediment.innerText       = impedimentData.content;
+            let impediment          = document.createElement( "li" );
+            impediment.className    = "impediments-unsolved-member-impediment pointer";
+            impediment.id           = impedimentData._id;
+            impediment.innerText    = impedimentData.content;
 
             let checkbox            = document.createElement( "span" );
             checkbox.className      = "impediments-unsolved-member-impediment-checkbox";
@@ -94,7 +92,7 @@ export class ImpedimentsUnsolved extends ViewComponent {
         } else {
             /** If the member has no container on the page, we create it now */
             memberContainer                 = document.createElement( "li" );
-            memberContainer.id              = impedimentData.member._id;
+            memberContainer.id              = `unsolved-${impedimentData.member._id}`;
             memberContainer.className       = "impediments-unsolved-member-container";
 
             let memberName                  = document.createElement( "h3" );
@@ -125,12 +123,39 @@ export class ImpedimentsUnsolved extends ViewComponent {
     }
 
 
+
     private addListenerToImpediment(impediment: HTMLElement): void {
 
-        impediment.addEventListener( "click", function () {
+        impediment.addEventListener( "click", () => {
             impediment.classList.add( "active" );
+
+            /** Save the id and deactivate it in the DOM */
+            const impedimentId = impediment.id;
+            impediment.id = null;
+
+            /** Wait for the animation to complete, and remove the impediment element */
+            setTimeout( () => {
+                /** If this is the last node, remove the member container */
+                if ( impediment.parentNode.childNodes.length < 2 ) {
+                    impediment.parentNode.parentNode.parentNode.removeChild( impediment.parentNode.parentNode );
+                } else {
+                    impediment.parentNode.removeChild( impediment )
+                }
+            }, 300 );
+
+            this.connection.solveImpediment(
+                impedimentId,
+                (response: any) => {
+                    console.log( response );
+
+                    const { note } = response;
+                    this.sendSignal( ImpedimentSignals.IMPEDIMENT_SOLVED, note );
+                },
+                (err: string) => console.error( err )
+            )
         });
     }
+
 
 
     public enterScene(enterType?: string): void {

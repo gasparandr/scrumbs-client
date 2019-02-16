@@ -4,6 +4,7 @@ import {ImpedimentsUnsolved} from "./ImpedimentsUnsolved";
 import {SystemConstants} from "../core/SystemConstants";
 import {ImpedimentsSolved} from "./ImpedimentsSolved";
 import {ImpedimentsHeader} from "./ImpedimentsHeader";
+import {ImpedimentSignals} from "./ImpedimentSignals";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {INotification} from "../core/INotification";
@@ -108,6 +109,17 @@ export class ImpedimentsView extends View {
 
         switch ( signal.name ) {
 
+            case ImpedimentSignals.IMPEDIMENT_SOLVED :
+
+                ( this.impedimentsSolved as ImpedimentsSolved ).addImpediment( signal.data );
+
+                break;
+
+            case ImpedimentSignals.IMPEDIMENT_UNSOLVED :
+
+                ( this.impedimentsUnsolved as ImpedimentsUnsolved ).addImpediment( signal.data );
+
+                break;
 
             default:
                 break;
