@@ -7,15 +7,13 @@
 
     background: $tertiary-color;
     height: 70px;
-    padding-left: 30px;
-    padding-right: 37px;
+    padding: 0 25px;
     z-index: 1000;
 
 
     @media screen and ( max-width: 560px ) {
 
-        padding-left: 15px;
-        padding-right: 15px;
+        padding: 0 15px;
 
     }
 

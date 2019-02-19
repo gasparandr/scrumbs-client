@@ -8,13 +8,13 @@
 	overflow: hidden;
 
 	#scrum-teams-container {
-		width: 23%;
+		width: 250px;
 		height: 100%;
 		float: left;
 	}
 
 	#scrum-welcome-screen-container {
-		width: 77%;
+		width: calc( 100% - 250px );
 		height: 100%;
 		float: right;
 		//display: none;
@@ -22,7 +22,7 @@
 
 	#scrum-notes-container {
 		//display: none;
-		width: 77%;
+		width: calc( 100% - 250px );
 		height: 100%;
 		float: right;
 	}

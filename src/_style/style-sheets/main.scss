@@ -62,10 +62,14 @@ body {
 
 #content-wrapper {
     width: 80%;
+    max-width: 1440px;
     height: calc( 100% - 95px );
     @include center( "horizontal" );
     bottom: 0;
-    transition: all 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out,
+                height 0.5s ease-in-out,
+                top 0.5s ease-in-out,
+                bottom 0.5s ease-in-out;
 }
 
 #content-container {
@@ -184,7 +188,7 @@ input, textarea {
         background-image: url( "../img/icons/icon-eye-crossed.svg" );
     }
 
-    .input-password[type=password] { letter-spacing: 5px; }
+    .input-password[type=password]:not(:placeholder-shown) { letter-spacing: 5px; }
 
 }
 

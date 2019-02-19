@@ -12,6 +12,7 @@
 
     h3 {
         padding-left: 15px;
+        margin-bottom: 10px;
         position: relative;
 
         &::before {
@@ -78,6 +79,7 @@
 
     position: relative;
     height: 80px;
+    margin-bottom: 30px;
     border-bottom: 1px solid $denary-color;
     z-index: 1;
 
@@ -236,7 +238,7 @@
 
         .impediments-unsolved-member-impediment {
             opacity: 1;
-            background-color: $nonary-color;
+            border: 1px solid $denary-color;
 
             &.active { opacity: 0; } 
 
@@ -293,7 +295,7 @@
     
             .impediments-solved-member-impediment {
                 opacity: 0;
-                border: 1px solid $denary-color;
+                background-color: $nonary-color;
     
                 &.active { opacity: 1; } 
     

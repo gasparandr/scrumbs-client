@@ -33,7 +33,7 @@ export class HeaderComponent extends ViewComponent {
 
     private authViewComponentActive: string;
 
-    private navigation: HTMLUListElement;
+    private navigation: HTMLDivElement;
     private scrumBtn: HTMLLIElement;
     private impedimentsBtn: HTMLLIElement;
 
@@ -51,7 +51,7 @@ export class HeaderComponent extends ViewComponent {
         this.actionBtn                  = document.getElementById( "header-auth-button" ) as HTMLButtonElement;
         this.authMessage                = document.getElementById( "header-auth-message" ) as HTMLSpanElement;
 
-        this.navigation                 = document.getElementById( "header-navigation" ) as HTMLUListElement;
+        this.navigation                 = document.getElementById( "header-navigation" ) as HTMLDivElement;
         this.scrumBtn                   = document.getElementById( "scrum-page-button" ) as HTMLLIElement;
         this.impedimentsBtn             = document.getElementById( "impediments-page-button" ) as HTMLLIElement;
 
