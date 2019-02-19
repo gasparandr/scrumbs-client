@@ -279,6 +279,22 @@ export class ScrumTeams extends ViewComponent {
     private addClickListenerToAddMemberBtn(button: HTMLButtonElement, membersContainer: HTMLElement): void {
         button.addEventListener( "click", (e: any) => {
 
+            /** If the team is not loaded yet, populate and add the input */
+            if ( ! membersContainer.hasChildNodes() ) {
+
+                this.connection.getMembersOfTeam(
+                    membersContainer.id,
+                    (response: any) => {
+                        this.populateMembers( membersContainer.id, response.members );
+                        this.insertAddMemberInput( membersContainer );
+
+                    },
+                    (err: string) => console.error( err )
+                );
+
+                return;
+            }
+
             /** If the input is already there, abort */
 
             if ( membersContainer.firstChild.nodeName === "INPUT" ) return;
@@ -287,32 +303,38 @@ export class ScrumTeams extends ViewComponent {
 
             if ( ! membersContainer.parentElement.classList.contains( "active" ) ) membersContainer.parentElement.classList.add( "active" );
 
-            /** Create the input, insert it and focus */
+            this.insertAddMemberInput( membersContainer );
+        });
+    }
 
-            const input = document.createElement( "input" );
-            membersContainer.insertBefore( input, membersContainer.firstChild );
-            input.placeholder = "Type member name";
-            input.focus();
 
-            /** Register the event listeners for the input */
 
-            input.addEventListener( "blur", () => {
-                if ( input.value ) this.createMember( input.value, membersContainer.id );
-                input.parentNode.removeChild( input );
-            });
+    private insertAddMemberInput(membersContainer: HTMLElement): void {
 
-            input.addEventListener( "keydown", (e: any) => {
-                const key = e.which || e.keyCode;
+        /** Create the input, insert it and focus */
+        const input = document.createElement( "input" );
+        membersContainer.insertBefore( input, membersContainer.firstChild );
+        input.placeholder = "Type member name";
+        input.focus();
 
-                if ( key === 27 ) { // ESC
-                    input.value = null;
-                    input.blur();
-                } else if ( key === 13 ) { // ENTER
-                    this.createMember( input.value, membersContainer.id );
-                    input.value = null;
-                    input.blur();
-                }
-            });
+        /** Register the event listeners for the input */
+
+        input.addEventListener( "blur", () => {
+            if ( input.value ) this.createMember( input.value, membersContainer.id );
+            input.parentNode.removeChild( input );
+        });
+
+        input.addEventListener( "keydown", (e: any) => {
+            const key = e.which || e.keyCode;
+
+            if ( key === 27 ) { // ESC
+                input.value = null;
+                input.blur();
+            } else if ( key === 13 ) { // ENTER
+                this.createMember( input.value, membersContainer.id );
+                input.value = null;
+                input.blur();
+            }
         });
     }
 
