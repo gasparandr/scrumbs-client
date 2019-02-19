@@ -29,7 +29,7 @@
 
     .impediments-unsolved-member-impediment, .impediments-solved-member-impediment {
         margin-top: 5px;
-        font-size: 1.15em;
+        font-size: 16px;
         border-radius: 3px;
         padding: 18px 60px 18px 20px;
         transition: opacity 0.6s ease-in;
@@ -87,7 +87,7 @@
         @include center( "vertical" );
         left: 20px;
         padding-left: 32px;
-        font-size: 1.43em;
+        font-size: 20px;
 
         &::before {
             content: "";
@@ -168,7 +168,7 @@
                 input {
                     display: block;
                     max-width: 100%;
-                    font-size: 1.15em;
+                    font-size: 16px;
                 }
 
             }
@@ -278,7 +278,7 @@
             padding: 0 20px;
             border-radius: 11px;
             color: $tertiary-color;
-            font-size: 0.85em;
+            font-size: 12px;
             background: $primary-color;
             background: -moz-linear-gradient( left,    $primary-color 0%, $secondary-color 100% );
             background: -webkit-linear-gradient( left, $primary-color 0%, $secondary-color 100% );
