@@ -197,13 +197,18 @@ export class ScrumTeams extends ViewComponent {
         member.className     = "scrum-team-member pointer noselect";
         member.innerHTML     = memberData.name;
 
-        member.addEventListener( "click", () => this.sendSignal(
-            ScrumSignals.LOAD_MEMBER_NOTES,
-            {
-                    id: memberData._id,
-                    name: memberData.name
-                }
-            ));
+        member.addEventListener( "click", () => {
+
+            this.applySelectionToMember( member.id );
+
+            this.sendSignal(
+                ScrumSignals.LOAD_MEMBER_NOTES,
+                {
+                        id: memberData._id,
+                        name: memberData.name
+                    }
+            )
+        });
 
         const membersContainer = document.getElementById( teamId );
 
@@ -212,6 +217,18 @@ export class ScrumTeams extends ViewComponent {
         } else {
             membersContainer.insertBefore( member, membersContainer.firstChild );
         }
+    }
+
+
+
+    private applySelectionToMember(memberId: string): void {
+        const members = document.getElementsByClassName( "scrum-team-member" );
+
+        for ( let i = 0; i < members.length; i++ ) {
+            members[i].classList.remove( "active" );
+        }
+
+        document.getElementById( memberId ).classList.add( "active" );
     }
 
 
