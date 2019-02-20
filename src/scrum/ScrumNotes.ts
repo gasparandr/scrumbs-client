@@ -34,10 +34,16 @@ export class ScrumNotes extends ViewComponent {
     private noteInput: HTMLInputElement;
     private impedimentCheckbox: HTMLInputElement;
 
+    /** Load more feature related properties */
+    private noteBatchIndex: number;
+    private datesDisplayed: string[];
 
 
     constructor(view: View, container: HTMLElement) {
         super( view, container );
+
+        this.noteBatchIndex = 0;
+        this.datesDisplayed = [];
 
         this.container.innerHTML = template;
 
@@ -51,6 +57,7 @@ export class ScrumNotes extends ViewComponent {
 
 
         this.noteInputListener  = this.noteInputListener.bind( this );
+        this.loadMoreNotes      = this.loadMoreNotes.bind( this );
 
 
         this.enterScene();
@@ -60,12 +67,33 @@ export class ScrumNotes extends ViewComponent {
 
     private registerEventListeners(): void {
         this.noteInput.addEventListener( "keyup", this.noteInputListener );
+        this.noteContainer.addEventListener( "scroll", this.loadMoreNotes );
     }
 
 
 
     private unregisterEventListeners(): void {
         this.noteInput.removeEventListener( "keyup", this.noteInputListener );
+        this.noteContainer.removeEventListener( "scroll", this.loadMoreNotes );
+    }
+
+
+
+    private loadMoreNotes(): void {
+
+        if ( this.noteContainer.scrollTop !== 0 ) return;
+
+        this.connection.getNotesOfMember(
+            this.memberId,
+            this.noteBatchIndex,
+            15,
+            (response: any) => {
+                console.log( response );
+                this.populate( response.notes, true );
+            },
+            (err: any) => console.error( err )
+        );
+
     }
 
 
@@ -80,16 +108,27 @@ export class ScrumNotes extends ViewComponent {
 
         this.memberId                   = id;
         this.memberName.innerText       = name;
-        this.noteContainer.innerHTML    = "";
+
+        this.resetNotesContainer();
 
         this.connection.getNotesOfMember(
             id,
+            this.noteBatchIndex,
+            15,
             (response: any) => {
                 console.log( response );
                 this.populate( response.notes );
             },
             (err: any) => console.error( err )
         )
+    }
+
+
+    
+    private resetNotesContainer(): void {
+        this.noteContainer.innerHTML    = "";
+        this.noteBatchIndex             = 0;
+        this.datesDisplayed             = [];
     }
 
 
@@ -136,21 +175,44 @@ export class ScrumNotes extends ViewComponent {
 
 
 
-    public populate(notes: any[]): void {
+    public populate(notes: any[], prepend?: boolean): void {
         if ( ! notes.length ) return;
+
+        this.noteBatchIndex++;
 
         let date = null;
 
-        for ( let i = notes.length - 1; i >= 0; i-- ) {
-            let noteCreated = this.getParsedDate( notes[i].date );
+        /** If the populate is triggered by the load more notes function, we'll need to prepend the incoming notes */
+        if ( prepend ) {
 
-            /** If it's a new date, add a separator before adding the note */
-            if ( date !== noteCreated ) {
-                this.addSeparator( noteCreated );
-                date = noteCreated;
+            for ( let note of notes ) {
+                let noteCreated = this.getParsedDate( note.date );
+
+                this.addNote( note, prepend );
+
+                /** If it's a new date, AND the date is not yet present -> add a separator before adding the note */
+
+                if ( date !== noteCreated && this.datesDisplayed.indexOf( noteCreated ) === -1 ) {
+                    this.addSeparator( noteCreated, prepend );
+                    this.datesDisplayed.push( noteCreated );
+                    date = noteCreated;
+                }
             }
 
-            this.addNote( notes[i] );
+        } else {
+
+            for ( let i = notes.length - 1; i >= 0; i-- ) {
+                let noteCreated = this.getParsedDate( notes[i].date );
+
+                /** If it's a new date, AND the date is not yet present -> add a separator before adding the note */
+                if ( date !== noteCreated && this.datesDisplayed.indexOf( noteCreated ) === -1 ) {
+                    this.addSeparator( noteCreated );
+                    this.datesDisplayed.push( noteCreated );
+                    date = noteCreated;
+                }
+
+                this.addNote( notes[i] );
+            }
         }
     }
 
@@ -194,12 +256,16 @@ export class ScrumNotes extends ViewComponent {
             this.noteContainer.appendChild( note );
         }
 
-        this.noteContainer.scrollTo( 0, this.noteContainer.scrollHeight );
+        if ( this.noteBatchIndex <= 1 ) {
+            this.noteContainer.scrollTo( 0, this.noteContainer.scrollHeight );
+        } else {
+            this.noteContainer.scrollTo( 0, this.noteContainer.scrollHeight / 25 );
+        }
     }
 
 
 
-    public addSeparator(date: string) {
+    public addSeparator(date: string, prepend?: boolean) {
 
         let separator       = document.createElement( "li" );
         separator.className = "scrum-note-date bold";
@@ -209,7 +275,12 @@ export class ScrumNotes extends ViewComponent {
 
         separator.appendChild( dateText );
 
-        this.noteContainer.appendChild( separator );
+
+        if ( prepend ) {
+            this.noteContainer.insertBefore( separator, this.noteContainer.firstChild );
+        } else {
+            this.noteContainer.appendChild( separator );
+        }
     }
 
 

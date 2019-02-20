@@ -178,11 +178,11 @@ export class ConnectionProxy extends Proxy {
 
 
 
-    public getNotesOfMember(memberId: string, success: Function, failure: Function): void {
+    public getNotesOfMember(memberId: string, batch: number = 0, limit: number = 15, success: Function, failure: Function): void {
 
         this.httpRequest(
             "GET",
-            `/api/v1/notes/member/${ memberId }`,
+            `/api/v1/notes/member/${ memberId }&${ batch }&${ limit }`,
             null,
             success,
             failure
