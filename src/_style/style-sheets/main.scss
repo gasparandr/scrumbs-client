@@ -58,6 +58,26 @@ body {
 
 
 
+
+/** ==================================== Scroll bar ==================================== */
+
+
+.simplebar-track {
+    right: 18px;
+
+    .simplebar-scrollbar {
+        width: 8px;
+    
+        &::before { background: $text-secondary-color; }
+    
+        &.simplebar-visible::before { opacity: 0.2; }
+    
+    }
+
+}
+
+
+
 /** ==================================== Main Container ==================================== */
 
 #content-wrapper {
