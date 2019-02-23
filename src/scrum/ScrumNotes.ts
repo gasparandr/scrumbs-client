@@ -11,10 +11,10 @@ import Power0 = gsap.Power0;
 import Back = gsap.Back;
 
 
+declare const SimpleBar: any;
 
 // CSS
 import "../_style/style-sheets/scrum/component/scrum-notes.scss";
-
 
 // HTML
 const template = require( "../_view-templates/scrum/component/scrum-notes.html" );
@@ -29,7 +29,8 @@ export class ScrumNotes extends ViewComponent {
     private memberId: string;
     private options: HTMLSpanElement;
 
-    private noteContainer: HTMLUListElement;
+    private notesMainContainer: HTMLUListElement;
+    private notesContainer: HTMLDivElement;
 
     private noteInput: HTMLInputElement;
     private impedimentCheckbox: HTMLInputElement;
@@ -45,43 +46,47 @@ export class ScrumNotes extends ViewComponent {
         this.noteBatchIndex = 0;
         this.datesDisplayed = [];
 
-        this.container.innerHTML = template;
+        this.container.innerHTML    = template;
 
-        this.memberName         = document.getElementById( "scrum-notes-member-name" ) as HTMLHeadingElement;
-        this.options            = document.getElementById( "scrum-notes-member-options-button" ) as HTMLDivElement;
+        this.memberName             = document.getElementById( "scrum-notes-member-name" ) as HTMLHeadingElement;
+        this.options                = document.getElementById( "scrum-notes-member-options-button" ) as HTMLDivElement;
 
-        this.noteContainer      = document.getElementById( "scrum-notes-note-container" ) as HTMLUListElement;
+        this.notesMainContainer     = document.getElementById( "scrum-notes-note-container" ) as HTMLUListElement;
 
-        this.noteInput          = document.getElementById( "scrum-note-input" ) as HTMLInputElement;
-        this.impedimentCheckbox    = document.getElementById( "scrum-notes-impediment-checkbox" ) as HTMLInputElement;
+        new SimpleBar( this.notesMainContainer );
 
+        this.notesContainer         = this.notesMainContainer.getElementsByClassName( "simplebar-content" )[0] as HTMLDivElement;
 
-        this.noteInputListener  = this.noteInputListener.bind( this );
-        this.loadMoreNotes      = this.loadMoreNotes.bind( this );
+        this.noteInput              = document.getElementById( "scrum-note-input" ) as HTMLInputElement;
+        this.impedimentCheckbox     = document.getElementById( "scrum-notes-impediment-checkbox" ) as HTMLInputElement;
+
+        this.noteInputListener      = this.noteInputListener.bind( this );
+        this.loadMoreNotes          = this.loadMoreNotes.bind( this );
 
 
         this.enterScene();
+
     }
 
 
 
     private registerEventListeners(): void {
         this.noteInput.addEventListener( "keyup", this.noteInputListener );
-        this.noteContainer.addEventListener( "scroll", this.loadMoreNotes );
+        this.notesContainer.addEventListener( "scroll", this.loadMoreNotes );
     }
 
 
 
     private unregisterEventListeners(): void {
         this.noteInput.removeEventListener( "keyup", this.noteInputListener );
-        this.noteContainer.removeEventListener( "scroll", this.loadMoreNotes );
+        this.notesContainer.removeEventListener( "scroll", this.loadMoreNotes );
     }
 
 
 
     private loadMoreNotes(): void {
 
-        if ( this.noteContainer.scrollTop !== 0 ) return;
+        if ( this.notesContainer.scrollTop !== 0 ) return;
 
         this.connection.getNotesOfMember(
             this.memberId,
@@ -126,7 +131,7 @@ export class ScrumNotes extends ViewComponent {
 
     
     private resetNotesContainer(): void {
-        this.noteContainer.innerHTML    = "";
+        this.notesContainer.innerHTML   = "";
         this.noteBatchIndex             = 0;
         this.datesDisplayed             = [];
     }
@@ -251,15 +256,15 @@ export class ScrumNotes extends ViewComponent {
         });
 
         if ( prepend ) {
-            this.noteContainer.insertBefore( note, this.noteContainer.firstChild );
+            this.notesContainer.insertBefore( note, this.notesContainer.firstChild );
         } else {
-            this.noteContainer.appendChild( note );
+            this.notesContainer.appendChild( note );
         }
 
         if ( this.noteBatchIndex <= 1 ) {
-            this.noteContainer.scrollTo( 0, this.noteContainer.scrollHeight );
+            this.notesContainer.scrollTo( 0, this.notesContainer.scrollHeight );
         } else {
-            this.noteContainer.scrollTo( 0, this.noteContainer.scrollHeight / 25 );
+            this.notesContainer.scrollTo( 0, this.notesContainer.scrollHeight / 25 );
         }
     }
 
@@ -277,9 +282,9 @@ export class ScrumNotes extends ViewComponent {
 
 
         if ( prepend ) {
-            this.noteContainer.insertBefore( separator, this.noteContainer.firstChild );
+            this.notesContainer.insertBefore( separator, this.notesContainer.firstChild );
         } else {
-            this.noteContainer.appendChild( separator );
+            this.notesContainer.appendChild( separator );
         }
     }
 
