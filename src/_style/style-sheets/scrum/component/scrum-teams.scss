@@ -53,7 +53,12 @@
 
 		height: calc( 100% - 140px );
 		overflow-y: auto;
+		overflow-x: hidden;
 		color: $tertiary-color;
+
+		.simplebar-track {
+			right: 3px;
+		}
 
 		.scrum-team {
 

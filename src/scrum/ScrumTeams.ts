@@ -12,6 +12,7 @@ import Power0 = gsap.Power0;
 import Back = gsap.Back;
 
 
+declare const SimpleBar: any;
 
 // CSS
 import "../_style/style-sheets/scrum/component/scrum-teams.scss";
@@ -31,7 +32,9 @@ export class ScrumTeams extends ViewComponent {
     private teamSettingsBtn: HTMLButtonElement;
 
     private title: HTMLHeadingElement;
-    private teamsContainer: HTMLUListElement;
+    private teamsMainContainer: HTMLUListElement;
+
+    private teamsContainer: HTMLDivElement;
 
 
     constructor(view: View, container: HTMLElement) {
@@ -39,11 +42,14 @@ export class ScrumTeams extends ViewComponent {
 
         this.container.innerHTML = template;
 
-        this.title              = document.getElementById( "scrum-teams-title" ) as HTMLHeadingElement;
-        this.createTeamBtn      = document.getElementById( "scrum-create-team-btn" ) as HTMLButtonElement;
-        this.teamSettingsBtn    = document.getElementById( "scrum-team-settings-btn" ) as HTMLButtonElement;
-        this.teamsContainer     = document.getElementById( "scrum-teams-team-container" ) as HTMLUListElement;
+        this.title                  = document.getElementById( "scrum-teams-title" ) as HTMLHeadingElement;
+        this.createTeamBtn          = document.getElementById( "scrum-create-team-btn" ) as HTMLButtonElement;
+        this.teamSettingsBtn        = document.getElementById( "scrum-team-settings-btn" ) as HTMLButtonElement;
+        this.teamsMainContainer     = document.getElementById( "scrum-teams-team-container" ) as HTMLUListElement;
 
+        new SimpleBar( this.teamsMainContainer );
+
+        this.teamsContainer         = this.teamsMainContainer.getElementsByClassName( "simplebar-content" )[0] as HTMLDivElement;
 
         this.populate();
 
