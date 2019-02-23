@@ -12,6 +12,7 @@ import Power0 = gsap.Power0;
 import Back = gsap.Back;
 
 
+declare const SimpleBar: any;
 
 // CSS
 import "../_style/style-sheets/scrum/component/scrum-create-team.scss";
@@ -31,7 +32,11 @@ export class ScrumCreateTeam extends ViewComponent {
     private exitBtn: HTMLSpanElement;
     private addMemberBtn: HTMLElement;
     private teamNameInput: HTMLInputElement;
-    private memberContainer: HTMLUListElement;
+    private mainMemberContainer: HTMLUListElement;
+    private memberContainer: HTMLDivElement;
+
+
+
 
 
     constructor(view: View, container: HTMLElement) {
@@ -39,11 +44,15 @@ export class ScrumCreateTeam extends ViewComponent {
 
         this.container.innerHTML = template;
 
-        this.saveBtn            = document.getElementById( "create-team-save-button" ) as HTMLButtonElement;
-        this.exitBtn            = document.getElementById( "create-team-exit-button" ) as HTMLSpanElement;
-        this.addMemberBtn       = document.getElementById( "create-team-add-member-button" );
-        this.teamNameInput      = document.getElementById( "create-team-name-input" ) as HTMLInputElement;
-        this.memberContainer   = document.getElementById( "create-team-members-container" ) as HTMLUListElement;
+        this.saveBtn                = document.getElementById( "create-team-save-button" ) as HTMLButtonElement;
+        this.exitBtn                = document.getElementById( "create-team-exit-button" ) as HTMLSpanElement;
+        this.addMemberBtn           = document.getElementById( "create-team-add-member-button" );
+        this.teamNameInput          = document.getElementById( "create-team-name-input" ) as HTMLInputElement;
+        this.mainMemberContainer    = document.getElementById( "create-team-members-container" ) as HTMLUListElement;
+
+        new SimpleBar( this.mainMemberContainer );
+
+        this.memberContainer        = this.mainMemberContainer.getElementsByClassName( "simplebar-content" )[0] as HTMLDivElement;
 
 
         this.exitBtnHandler     = this.exitBtnHandler.bind( this );

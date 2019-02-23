@@ -80,6 +80,11 @@
     ul {
       height: calc( 100% - 325px );
       overflow-y: auto;
+      overflow-x: hidden;
+
+      .simplebar-track {
+        right: 0;
+      }
     }
 
     li {
