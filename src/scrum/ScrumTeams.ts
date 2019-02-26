@@ -227,6 +227,24 @@ export class ScrumTeams extends ViewComponent {
 
 
 
+    public updateMember(memberId: string, name: string) {
+        let memberElements = [];
+
+        let teamContainers = document.getElementsByClassName( "scrum-team-members" );
+
+        for ( let i = 0; i < teamContainers.length; i++ ) {
+            const member = document.getElementById( `${ teamContainers[i].id }@${ memberId }` );
+
+            if ( member ) memberElements.push( member );
+        }
+
+        for ( let i = 0; i < memberElements.length; i++ ) {
+            memberElements[i].innerText = name;
+        }
+    }
+
+
+
     private applySelectionToMember(memberId: string): void {
         const members = document.getElementsByClassName( "scrum-team-member" );
 

@@ -9,4 +9,5 @@ export class ScrumSignals {
     public static readonly TEAM_UPDATED: string                     = "TEAM_UPDATED";
     public static readonly TEAM_CREATED: string                     = "TEAM_CREATED";
     public static readonly MEMBER_ADDED: string                     = "MEMBER_ADDED";
+    public static readonly MEMBER_UPDATED: string                   = "MEMBER_UPDATED";
 }

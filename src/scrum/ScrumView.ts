@@ -166,6 +166,15 @@ export class ScrumView extends View {
 
                 break;
 
+
+            case ScrumSignals.MEMBER_UPDATED :
+
+                const { memberId, name } = signal.data;
+
+                ( this.teams as ScrumTeams ).updateMember( memberId, name );
+
+                break;
+
             default:
                 break;
         }

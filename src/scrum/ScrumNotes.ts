@@ -1,10 +1,11 @@
 
 import {CreateNoteModel} from "../connection/models/CreateNoteModel";
+import {EditMemberModel} from "../connection/models/EditMemberModel";
 import {ViewEnterTypes} from "../core/ViewEnterTypes";
 import {ViewComponent} from "../core/ViewComponent";
 import {ViewExitTypes} from "../core/ViewExitTypes";
+import {ScrumSignals} from "./ScrumSignals";
 import {View} from "../core/View";
-
 
 import TweenLite = gsap.TweenLite;
 import Power0 = gsap.Power0;
@@ -16,6 +17,7 @@ declare const SimpleBar: any;
 // CSS
 import "../_style/style-sheets/scrum/component/scrum-notes.scss";
 
+
 // HTML
 const template = require( "../_view-templates/scrum/component/scrum-notes.html" );
 
@@ -26,6 +28,7 @@ const template = require( "../_view-templates/scrum/component/scrum-notes.html" 
 
 export class ScrumNotes extends ViewComponent {
     private memberName: HTMLHeadingElement;
+    private memberNameInput: HTMLInputElement;
     private memberId: string;
     private options: HTMLSpanElement;
 
@@ -49,6 +52,7 @@ export class ScrumNotes extends ViewComponent {
         this.container.innerHTML    = template;
 
         this.memberName             = document.getElementById( "scrum-notes-member-name" ) as HTMLHeadingElement;
+        this.memberNameInput        = document.getElementById( "scrum-notes-member-name-input" ) as HTMLInputElement;
         this.options                = document.getElementById( "scrum-notes-member-options-button" ) as HTMLDivElement;
 
         this.notesMainContainer     = document.getElementById( "scrum-notes-note-container" ) as HTMLUListElement;
@@ -60,8 +64,11 @@ export class ScrumNotes extends ViewComponent {
         this.noteInput              = document.getElementById( "scrum-note-input" ) as HTMLInputElement;
         this.impedimentCheckbox     = document.getElementById( "scrum-notes-impediment-checkbox" ) as HTMLInputElement;
 
-        this.noteInputListener      = this.noteInputListener.bind( this );
-        this.loadMoreNotes          = this.loadMoreNotes.bind( this );
+        this.noteInputListener              = this.noteInputListener.bind( this );
+        this.loadMoreNotes                  = this.loadMoreNotes.bind( this );
+        this.memberNameListener             = this.memberNameListener.bind( this );
+        this.memberNameInputBlurListener    = this.memberNameInputBlurListener.bind( this );
+        this.memberNameKeydownListener      = this.memberNameKeydownListener.bind( this );
 
 
         this.enterScene();
@@ -71,6 +78,9 @@ export class ScrumNotes extends ViewComponent {
 
 
     private registerEventListeners(): void {
+        this.memberName.addEventListener( "click", this.memberNameListener );
+        this.memberNameInput.addEventListener( "blur", this.memberNameInputBlurListener );
+        this.memberNameInput.addEventListener( "keydown", this.memberNameKeydownListener );
         this.noteInput.addEventListener( "keyup", this.noteInputListener );
         this.notesContainer.addEventListener( "scroll", this.loadMoreNotes );
     }
@@ -78,8 +88,76 @@ export class ScrumNotes extends ViewComponent {
 
 
     private unregisterEventListeners(): void {
+        this.memberName.removeEventListener( "click", this.memberNameListener );
+        this.memberNameInput.removeEventListener( "blur", this.memberNameInputBlurListener );
+        this.memberNameInput.removeEventListener( "keydown", this.memberNameKeydownListener );
         this.noteInput.removeEventListener( "keyup", this.noteInputListener );
         this.notesContainer.removeEventListener( "scroll", this.loadMoreNotes );
+    }
+
+
+
+    private memberNameListener(): void {
+        this.memberName.style.display       = "none";
+        this.memberNameInput.style.display  = "block";
+        this.memberNameInput.value          = this.memberName.innerText;
+        this.memberNameInput.focus();
+    }
+
+
+
+    private memberNameInputBlurListener(): void {
+        this.memberNameInput.style.display = "none";
+
+        if ( this.memberNameInput.value && this.memberNameInput.value !== this.memberName.innerText ) {
+
+            this.updateMemberName( this.memberNameInput.value );
+            this.memberNameInput.value = null;
+
+        } else {
+
+            this.memberName.style.display = "block";
+        }
+    }
+
+
+
+    private memberNameKeydownListener(e: any): void {
+
+        const key = e.which || e.keyCode;
+
+        if ( key === 27 ) { // ESC
+
+            this.memberNameInput.value = null;
+            this.memberNameInput.blur();
+
+        } else if ( key === 13 ) { // ENTER
+
+            this.updateMemberName( this.memberNameInput.value );
+            this.memberNameInput.value = null;
+            this.memberNameInput.blur();
+        }
+    }
+
+
+
+    private updateMemberName(name: string): void {
+
+        const editMemberModel = new EditMemberModel( this.memberId, name );
+
+        this.connection.editMember(
+            editMemberModel,
+            (response: any) => {
+
+                const { name, _id } = response.member;
+
+                this.memberName.innerText       = name;
+                this.memberName.style.display   = "block";
+
+                this.sendSignal( ScrumSignals.MEMBER_UPDATED, { memberId: _id, name } );
+            },
+            (err: string) => console.error( err )
+        );
     }
 
 

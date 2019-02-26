@@ -21,6 +21,17 @@
 			cursor: text;
 		}
 
+		#scrum-notes-member-name-input {
+			display: none;
+			@include center( "vertical" );
+			width: 200px;
+			height: 50px;
+			border: none;
+			outline: none;
+			left: 20px;
+			font-size: 20px;
+		}
+
 		#scrum-notes-member-options-button {
 			@include center( "vertical" );
 			right: 20px;
