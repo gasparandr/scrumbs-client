@@ -14,14 +14,11 @@
 		position: relative;
 		z-index: 1;
 
-		h2 {
-			cursor: text;
-		}
-
 		#scrum-notes-member-name {
 			@include center( "vertical" );
 			left: 20px;
 			font-size: 20px;
+			cursor: text;
 		}
 
 		#scrum-notes-member-options-button {
