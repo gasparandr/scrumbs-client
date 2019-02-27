@@ -31,7 +31,14 @@ export class ScrumNotes extends ViewComponent {
     private memberNameInput: HTMLInputElement;
     private memberId: string;
     private memberTeamId: string;
-    private options: HTMLSpanElement;
+
+    private options: HTMLDivElement;
+    private optionsDropDown: HTMLUListElement;
+    private optionExportNotes: HTMLLIElement;
+    private optionExportImpediments: HTMLLIElement;
+    private optionClearNotes: HTMLLIElement;
+    private optionRemoveMember: HTMLLIElement;
+
 
     private notesMainContainer: HTMLUListElement;
     private notesContainer: HTMLDivElement;
@@ -53,15 +60,20 @@ export class ScrumNotes extends ViewComponent {
         this.noteBatchIndex = 0;
         this.datesDisplayed = [];
 
-        this.container.innerHTML    = template;
+        this.container.innerHTML        = template;
 
-        this.memberName             = document.getElementById( "scrum-notes-member-name" ) as HTMLHeadingElement;
-        this.memberNameInput        = document.getElementById( "scrum-notes-member-name-input" ) as HTMLInputElement;
-        this.options                = document.getElementById( "scrum-notes-member-options-button" ) as HTMLDivElement;
+        this.memberName                 = document.getElementById( "scrum-notes-member-name" ) as HTMLHeadingElement;
+        this.memberNameInput            = document.getElementById( "scrum-notes-member-name-input" ) as HTMLInputElement;
+        this.options                    = document.getElementById( "scrum-notes-member-options-button" ) as HTMLDivElement;
+        this.optionsDropDown            = document.getElementById( "scrum-notes-member-options-list" ) as HTMLUListElement;
+        this.optionExportNotes          = document.getElementById( "scrum-notes-member-option-export-notes" ) as HTMLLIElement;
+        this.optionExportImpediments    = document.getElementById( "scrum-notes-member-option-export-impediments" ) as HTMLLIElement;
+        this.optionClearNotes           = document.getElementById( "scrum-notes-member-option-clear-notes" ) as HTMLLIElement;
+        this.optionRemoveMember         = document.getElementById( "scrum-notes-member-option-remove-member" ) as HTMLLIElement;
 
-        this.emptyState             = document.getElementById( "scrum-note-empty-state-container" ) as HTMLDivElement;
+        this.emptyState                 = document.getElementById( "scrum-note-empty-state-container" ) as HTMLDivElement;
 
-        this.notesMainContainer     = document.getElementById( "scrum-notes-note-container" ) as HTMLUListElement;
+        this.notesMainContainer         = document.getElementById( "scrum-notes-note-container" ) as HTMLUListElement;
 
         new SimpleBar( this.notesMainContainer );
 
@@ -75,7 +87,8 @@ export class ScrumNotes extends ViewComponent {
         this.memberNameListener             = this.memberNameListener.bind( this );
         this.memberNameInputBlurListener    = this.memberNameInputBlurListener.bind( this );
         this.memberNameKeydownListener      = this.memberNameKeydownListener.bind( this );
-
+        this.optionsBtnListener             = this.optionsBtnListener.bind( this );
+        this.documentClickListener          = this.documentClickListener.bind( this );
 
         this.enterScene();
 
@@ -89,6 +102,8 @@ export class ScrumNotes extends ViewComponent {
         this.memberNameInput.addEventListener( "keydown", this.memberNameKeydownListener );
         this.noteInput.addEventListener( "keyup", this.noteInputListener );
         this.notesContainer.addEventListener( "scroll", this.loadMoreNotes );
+        this.options.addEventListener( "click", this.optionsBtnListener );
+        document.addEventListener( "click", this.documentClickListener );
     }
 
 
@@ -99,6 +114,8 @@ export class ScrumNotes extends ViewComponent {
         this.memberNameInput.removeEventListener( "keydown", this.memberNameKeydownListener );
         this.noteInput.removeEventListener( "keyup", this.noteInputListener );
         this.notesContainer.removeEventListener( "scroll", this.loadMoreNotes );
+        this.options.removeEventListener( "click", this.optionsBtnListener );
+        document.removeEventListener( "click", this.documentClickListener );
     }
 
 
@@ -143,6 +160,18 @@ export class ScrumNotes extends ViewComponent {
             this.memberNameInput.value = null;
             this.memberNameInput.blur();
         }
+    }
+
+
+
+    private optionsBtnListener(e: any): void {
+        this.optionsDropDown.style.display = this.optionsDropDown.style.display === "block" ? "none" : "block";
+    }
+
+
+
+    private documentClickListener(e: any): void {
+        if ( e.target.id !== this.options.id ) this.optionsDropDown.style.display = "none";
     }
 
 
