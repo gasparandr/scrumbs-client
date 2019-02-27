@@ -192,11 +192,11 @@ export class ConnectionProxy extends Proxy {
 
 
 
-    public getNotesOfMember(memberId: string, batch: number = 0, limit: number = 15, success: Function, failure: Function): void {
+    public getNotesOfMember(memberId: string, teamId: string, batch: number = 0, limit: number = 15, success: Function, failure: Function): void {
 
         this.httpRequest(
             "GET",
-            `/api/v1/notes/member/${ memberId }&${ batch }&${ limit }`,
+            `/api/v1/notes/member/${ memberId }&${ teamId }&${ batch }&${ limit }`,
             null,
             success,
             failure
@@ -206,6 +206,8 @@ export class ConnectionProxy extends Proxy {
 
 
     public createNote(data: ICreateNoteModel, success: Function, failure: Function): void {
+
+        console.log( data );
 
         this.httpRequest(
             "POST",

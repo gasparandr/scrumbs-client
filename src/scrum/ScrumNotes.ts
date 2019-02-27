@@ -30,6 +30,7 @@ export class ScrumNotes extends ViewComponent {
     private memberName: HTMLHeadingElement;
     private memberNameInput: HTMLInputElement;
     private memberId: string;
+    private memberTeamId: string;
     private options: HTMLSpanElement;
 
     private notesMainContainer: HTMLUListElement;
@@ -168,6 +169,7 @@ export class ScrumNotes extends ViewComponent {
 
         this.connection.getNotesOfMember(
             this.memberId,
+            this.memberTeamId,
             this.noteBatchIndex,
             15,
             (response: any) => {
@@ -182,20 +184,24 @@ export class ScrumNotes extends ViewComponent {
 
 
     public loadMemberNotes(memberData: any): void {
-        const { id, name } = memberData;
+        const { id, team, name } = memberData;
 
-        if ( ! id || ! name ) {
+        if ( ! id || ! name || ! team ) {
             console.error( "Invalid member data, unable to load notes." );
             return;
         }
 
         this.memberId                   = id;
+        this.memberTeamId               = team;
         this.memberName.innerText       = name;
+
+        console.log( id, team );
 
         this.resetNotesContainer();
 
         this.connection.getNotesOfMember(
             id,
+            team,
             this.noteBatchIndex,
             15,
             (response: any) => {
@@ -225,6 +231,7 @@ export class ScrumNotes extends ViewComponent {
 
         const createNoteModel = new CreateNoteModel(
             this.memberId,
+            this.memberTeamId,
             this.noteInput.value,
             this.impedimentCheckbox.checked
         );

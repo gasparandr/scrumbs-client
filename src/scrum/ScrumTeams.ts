@@ -211,6 +211,7 @@ export class ScrumTeams extends ViewComponent {
                 ScrumSignals.LOAD_MEMBER_NOTES,
                 {
                         id: memberData._id,
+                        team: teamId,
                         name: member.innerText
                     }
             )
