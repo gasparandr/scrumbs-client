@@ -39,6 +39,9 @@ export class ScrumNotes extends ViewComponent {
     private noteInput: HTMLInputElement;
     private impedimentCheckbox: HTMLInputElement;
 
+    private emptyState: HTMLDivElement;
+
+
     /** Load more feature related properties */
     private noteBatchIndex: number;
     private datesDisplayed: string[];
@@ -55,6 +58,8 @@ export class ScrumNotes extends ViewComponent {
         this.memberName             = document.getElementById( "scrum-notes-member-name" ) as HTMLHeadingElement;
         this.memberNameInput        = document.getElementById( "scrum-notes-member-name-input" ) as HTMLInputElement;
         this.options                = document.getElementById( "scrum-notes-member-options-button" ) as HTMLDivElement;
+
+        this.emptyState             = document.getElementById( "scrum-note-empty-state-container" ) as HTMLDivElement;
 
         this.notesMainContainer     = document.getElementById( "scrum-notes-note-container" ) as HTMLUListElement;
 
@@ -206,6 +211,7 @@ export class ScrumNotes extends ViewComponent {
             15,
             (response: any) => {
                 console.log( response );
+
                 this.populate( response.notes );
             },
             (err: any) => console.error( err )
@@ -266,7 +272,16 @@ export class ScrumNotes extends ViewComponent {
 
 
     public populate(notes: any[], prepend?: boolean): void {
-        if ( ! notes.length ) return;
+
+        /** If there are no notes for the member, hide the notes container and show the empty state */
+        if ( ! notes.length ) {
+            this.notesMainContainer.style.display   = "none";
+            this.emptyState.style.display           = "block";
+            return;
+        }
+
+        this.notesMainContainer.style.display       = "block";
+        this.emptyState.style.display               = "none";
 
         this.noteBatchIndex++;
 
