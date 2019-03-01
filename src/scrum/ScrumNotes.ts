@@ -301,6 +301,24 @@ export class ScrumNotes extends ViewComponent {
 
                 console.log( response );
 
+                const currentDate = this.getParsedDate( new Date().toISOString() );
+
+                /** If this is the first note, we hide the empty state and display the container */
+                if ( this.notesMainContainer.style.display === "none" ) {
+                    this.emptyState.style.display           = "none";
+                    this.notesMainContainer.style.display   = "block";
+
+                    /** Add a separator with the current date */
+                    this.addSeparator( currentDate );
+                }
+
+                /** If this is the first note today, add a separator */
+                if ( this.datesDisplayed.indexOf( currentDate ) === -1 ) {
+                    /** Add a separator with the current date */
+                    this.addSeparator( currentDate );
+                }
+
+                /** Add the note */
                 this.addNote( note );
 
             },
@@ -348,7 +366,6 @@ export class ScrumNotes extends ViewComponent {
 
                 if ( date !== noteCreated && this.datesDisplayed.indexOf( noteCreated ) === -1 ) {
                     this.addSeparator( noteCreated, prepend );
-                    this.datesDisplayed.push( noteCreated );
                     date = noteCreated;
                 }
             }
@@ -361,7 +378,6 @@ export class ScrumNotes extends ViewComponent {
                 /** If it's a new date, AND the date is not yet present -> add a separator before adding the note */
                 if ( date !== noteCreated && this.datesDisplayed.indexOf( noteCreated ) === -1 ) {
                     this.addSeparator( noteCreated );
-                    this.datesDisplayed.push( noteCreated );
                     date = noteCreated;
                 }
 
@@ -373,15 +389,6 @@ export class ScrumNotes extends ViewComponent {
 
 
     public addNote(noteData: any, prepend?: boolean): void {
-
-        /** If this is the first note, we hide the empty state and display the container */
-        if ( this.notesMainContainer.style.display === "none" ) {
-            this.emptyState.style.display           = "none";
-            this.notesMainContainer.style.display   = "block";
-
-            /** Add a separator with the current date */
-            this.addSeparator( this.getParsedDate( new Date().toISOString() ) );
-        }
 
         let note        = document.createElement( "li" );
         note.id         = noteData._id;
@@ -430,6 +437,10 @@ export class ScrumNotes extends ViewComponent {
 
 
     public addSeparator(date: string, prepend?: boolean) {
+
+        this.datesDisplayed.push( date );
+
+        console.log( this.datesDisplayed );
 
         let separator       = document.createElement( "li" );
         separator.className = "scrum-note-date bold";
