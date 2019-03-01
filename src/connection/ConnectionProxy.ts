@@ -205,6 +205,19 @@ export class ConnectionProxy extends Proxy {
 
 
 
+    public deleteNotesOfMember(memberId: string, teamId: string, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "DELETE",
+            `/api/v1/notes/member/${ memberId }&${ teamId }`,
+            null,
+            success,
+            failure
+        );
+    }
+
+
+
     public createNote(data: ICreateNoteModel, success: Function, failure: Function): void {
 
         console.log( data );

@@ -89,6 +89,7 @@ export class ScrumNotes extends ViewComponent {
         this.memberNameKeydownListener      = this.memberNameKeydownListener.bind( this );
         this.optionsBtnListener             = this.optionsBtnListener.bind( this );
         this.documentClickListener          = this.documentClickListener.bind( this );
+        this.clearNotesListener             = this.clearNotesListener.bind( this );
 
         this.enterScene();
 
@@ -103,6 +104,7 @@ export class ScrumNotes extends ViewComponent {
         this.noteInput.addEventListener( "keyup", this.noteInputListener );
         this.notesContainer.addEventListener( "scroll", this.loadMoreNotes );
         this.options.addEventListener( "click", this.optionsBtnListener );
+        this.optionClearNotes.addEventListener( "click", this.clearNotesListener );
         document.addEventListener( "click", this.documentClickListener );
     }
 
@@ -115,6 +117,7 @@ export class ScrumNotes extends ViewComponent {
         this.noteInput.removeEventListener( "keyup", this.noteInputListener );
         this.notesContainer.removeEventListener( "scroll", this.loadMoreNotes );
         this.options.removeEventListener( "click", this.optionsBtnListener );
+        this.optionClearNotes.removeEventListener( "click", this.clearNotesListener );
         document.removeEventListener( "click", this.documentClickListener );
     }
 
@@ -166,6 +169,23 @@ export class ScrumNotes extends ViewComponent {
 
     private optionsBtnListener(e: any): void {
         this.optionsDropDown.style.display = this.optionsDropDown.style.display === "block" ? "none" : "block";
+    }
+
+
+
+    private clearNotesListener(): void {
+
+        this.connection.deleteNotesOfMember(
+            this.memberId,
+            this.memberTeamId,
+            (response: any) => {
+
+                this.notesMainContainer.style.display   = "none";
+                this.emptyState.style.display           = "block";
+                this.notesContainer.innerHTML           = "";
+            },
+            (err: string) => console.error( err )
+        );
     }
 
 
@@ -353,6 +373,16 @@ export class ScrumNotes extends ViewComponent {
 
 
     public addNote(noteData: any, prepend?: boolean): void {
+
+        /** If this is the first note, we hide the empty state and display the container */
+        if ( this.notesMainContainer.style.display === "none" ) {
+            this.emptyState.style.display           = "none";
+            this.notesMainContainer.style.display   = "block";
+
+            /** Add a separator with the current date */
+            this.addSeparator( this.getParsedDate( new Date().toISOString() ) );
+        }
+
         let note        = document.createElement( "li" );
         note.id         = noteData._id;
         note.className  = "scrum-note pointer";
