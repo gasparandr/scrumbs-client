@@ -90,6 +90,7 @@ export class ScrumNotes extends ViewComponent {
         this.optionsBtnListener             = this.optionsBtnListener.bind( this );
         this.documentClickListener          = this.documentClickListener.bind( this );
         this.clearNotesListener             = this.clearNotesListener.bind( this );
+        this.removeMemberListener           = this.removeMemberListener.bind( this );
 
         this.enterScene();
 
@@ -105,6 +106,7 @@ export class ScrumNotes extends ViewComponent {
         this.notesContainer.addEventListener( "scroll", this.loadMoreNotes );
         this.options.addEventListener( "click", this.optionsBtnListener );
         this.optionClearNotes.addEventListener( "click", this.clearNotesListener );
+        this.optionRemoveMember.addEventListener( "click", this.removeMemberListener );
         document.addEventListener( "click", this.documentClickListener );
     }
 
@@ -118,6 +120,7 @@ export class ScrumNotes extends ViewComponent {
         this.notesContainer.removeEventListener( "scroll", this.loadMoreNotes );
         this.options.removeEventListener( "click", this.optionsBtnListener );
         this.optionClearNotes.removeEventListener( "click", this.clearNotesListener );
+        this.optionRemoveMember.removeEventListener( "click", this.removeMemberListener );
         document.removeEventListener( "click", this.documentClickListener );
     }
 
@@ -183,6 +186,19 @@ export class ScrumNotes extends ViewComponent {
                 this.notesMainContainer.style.display   = "none";
                 this.emptyState.style.display           = "block";
                 this.notesContainer.innerHTML           = "";
+            },
+            (err: string) => console.error( err )
+        );
+    }
+
+
+
+    private removeMemberListener(): void {
+
+        this.connection.deleteMember(
+            this.memberId,
+            () => {
+                this.sendSignal( ScrumSignals.MEMBER_DELETED, this.memberId );
             },
             (err: string) => console.error( err )
         );
@@ -296,7 +312,7 @@ export class ScrumNotes extends ViewComponent {
 
         this.connection.createNote(
             createNoteModel,
-            (response: any ) => {
+            (response: any) => {
                 const { note } = response;
 
                 console.log( response );

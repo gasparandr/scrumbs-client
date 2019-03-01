@@ -153,6 +153,19 @@ export class ConnectionProxy extends Proxy {
 
 
 
+    public deleteMember(memberId: string, success: Function, failure: Function): void {
+
+        this.httpRequest(
+            "DELETE",
+            `/api/v1/members/${ memberId }`,
+            null,
+            success,
+            failure
+        );
+    }
+
+
+
     public getMembersOfTeam(teamId: string, success: Function, failure: Function): void {
 
         this.httpRequest(
